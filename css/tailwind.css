@@ -1,0 +1,1344 @@
+/* Archivo CSS personalizado para el sitio web de Aceleratik */
+/* Incluye estilos adicionales y animaciones que complementan Tailwind CSS */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+/* Variables CSS personalizadas */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --accent-color: #3b82f6;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --background-light: #f9fafb;
+  --border-color: #e5e7eb;
+  --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Configuración base */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation; /* Mejora rendimiento en dispositivos táctiles */
+}
+
+/* Estilos para el scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -10px, 0);
+  }
+  70% {
+    transform: translate3d(0, -5px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* Clases de animación */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-pulse-custom {
+  animation: pulse 2s infinite;
+}
+
+.animate-bounce-custom {
+  animation: bounce 1s infinite;
+}
+
+/* Estilos para el header fijo */
+.header-fixed {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Estilos para botones personalizados */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Estilos para cards */
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-large);
+  transform: translateY(-4px);
+}
+
+.card-team-member {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-team-member:hover {
+  box-shadow: var(--shadow-large);
+  transform: translateY(-8px);
+}
+
+.card-team-member::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.card-team-member:hover::before {
+  transform: scaleX(1);
+}
+
+/* Estilos para el timeline */
+.timeline-item {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos para el calendario */
+.calendar-day {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.calendar-day:hover {
+  background-color: var(--background-light);
+  transform: scale(1.1);
+}
+
+.calendar-day.has-event {
+  position: relative;
+}
+
+.calendar-day.has-event::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+/* Estilos para el stepper */
+.step-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.step-item:hover {
+  transform: translateY(-2px);
+}
+
+.step-item.active {
+  transform: scale(1.05);
+}
+
+.step-circle {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.step-circle::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.step-item.active .step-circle::before {
+  opacity: 0.2;
+}
+
+/* Estilos para formularios */
+.form-input {
+  transition: all 0.3s ease;
+  border: 2px solid var(--border-color);
+}
+
+.form-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  outline: none;
+}
+
+.form-input.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Estilos para gradientes */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Estilos para el scroll to top */
+.scroll-to-top {
+  display: none;
+}
+
+/* Estilos para loading states */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Estilos para modales */
+.modal-overlay {
+  display: none;
+}
+
+.modal-content {
+  display: none;
+}
+
+/* Estilos responsivos adicionales */
+@media (max-width: 768px) {
+  .card-team-member:hover {
+    transform: translateY(-4px);
+  }
+
+  .timeline-item {
+    margin-bottom: 2rem;
+  }
+
+  .step-item {
+    margin-bottom: 1rem;
+  }
+
+  .scroll-to-top {
+    width: 2.5rem;
+    height: 2.5rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Estilos para impresión */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+}
+
+/* Estilos para modo oscuro (preparación futura) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --background-light: #1f2937;
+    --border-color: #374151;
+  }
+}
+
+/* Estilos para accesibilidad */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles para accesibilidad - modificados para evitar bordes en navegación */
+*:focus:not(.nav-link) {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+button:focus:not(.nav-link),
+a:focus:not(.nav-link),
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Estilos para elementos interactivos */
+.interactive {
+  transition: all 0.2s ease;
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+}
+
+.interactive:active {
+  transform: translateY(0);
+}
+
+/* Utilidades adicionales */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.backdrop-blur {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.border-gradient {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--primary-color), var(--accent-color)) border-box;
+}
+
+/* Clase para ocultar la barra de desplazamiento manteniendo la funcionalidad */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Animaciones de entrada para elementos */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s ease;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Estilos para el logo */
+.logo {
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para iconos */
+.icon {
+  transition: all 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  color: var(--primary-color);
+}
+
+/* Estilos para separadores */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 2rem 0;
+}
+
+.divider-vertical {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--border-color), transparent);
+  margin: 0 2rem;
+}
+
+/* Estilos para badges */
+.badge {
+  display: none;
+}
+
+.badge-primary {
+  display: none;
+}
+
+.badge-secondary {
+  display: none;
+}
+
+.badge-success {
+  display: none;
+}
+
+.badge-warning {
+  display: none;
+}
+
+.badge-error {
+  display: none;
+}
+
+/* Estilos para el carrusel del equipo */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item {
+  transition: all 0.3s ease;
+}
+
+#team-carousel {
+  width: 100%;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-indicator {
+  transition: background-color 0.3s ease;
+}
+
+/* Efectos hover para los controles del carrusel */
+#prev-team,
+#next-team {
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+#prev-team:hover,
+#next-team:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Animación para las tarjetas del equipo */
+.carousel-item .bg-white {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item:hover .bg-white {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Estilos para la navegación principal */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  border: none;
+  box-shadow: none;
+}
+
+.nav-link::-moz-focus-inner {
+  border: 0;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.nav-link:hover::after {
+  width: 50%;
+  opacity: 0.7;
+}
+
+/* La clase active la aplicaremos solo desde JavaScript */
+.nav-link.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.nav-link.active::after {
+  width: 80%;
+  opacity: 1;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
+}
+
+/* Estilos para títulos estilo NextJS */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* Estilos para las tarjetas de enfoque */
+.enfoque-card {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.enfoque-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.enfoque-card:hover::before {
+  opacity: 1;
+}
+
+.enfoque-card:hover .icon-container {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.enfoque-card:hover i {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Estilos para el acordeón de Problemas Actuales */
+.problema-btn {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.problema-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(237, 67, 55, 0.3);
+}
+
+.problema-btn:hover {
+  background-color: #ef4444;
+}
+
+.problema-btn:active {
+  background-color: #b91c1c;
+}
+
+/* Animación de rebote suave para el icono */
+@keyframes bounce-down {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  40% {
+    transform: translateY(3px) rotate(0deg);
+  }
+  60% {
+    transform: translateY(2px) rotate(0deg);
+  }
+}
+
+.problema-btn i.fa-chevron-down {
+  animation: bounce-down 2s ease infinite;
+  animation-delay: 1s;
+}
+
+/* Estilos para el acordeón de presupuesto */
+.accordion-header {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.accordion-header.active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.accordion-icon {
+  transition: transform 0.3s ease;
+}
+
+.accordion-item {
+  transition: box-shadow 0.3s ease;
+}
+
+.accordion-item:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.accordion-header.active + .accordion-content {
+  box-shadow: inset 0 4px 3px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes para accesibilidad y experiencia táctil */
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Mejoras para experiencia móvil */
+input,
+select,
+textarea {
+  font-size: 16px; /* Previene zoom en iOS */
+}
+
+/* Ajustes para responsividad de imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mejores espaciados para móvil */
+.section-mobile {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.section-heading-mobile {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.card-mobile {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Tipografía optimizada para móvil */
+.text-mobile-base {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.text-mobile-lg {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.text-mobile-xl {
+  font-size: 1.25rem;
+  line-height: 1.375;
+}
+
+.text-mobile-2xl {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+/* Mejorar toque para elementos interactivos en móvil */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.touch-feedback:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Optimizar espaciado vertical para móvil */
+@media (max-width: 640px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .card,
+  .rounded-lg {
+    border-radius: 0.75rem;
+  }
+
+  /* Espaciado entre componentes */
+  .component-spacing > * + * {
+    margin-top: 1.25rem;
+  }
+
+  /* Mejorar espaciado de formularios en móvil */
+  input,
+  select,
+  textarea {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    min-height: 44px;
+  }
+}
+
+/* Animación de pulso para el punto actual en la línea de tiempo */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.timeline-dot-current {
+  animation: pulse 2s infinite;
+}
+
+/* Utilidades para touch feedback en móvil */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.touch-feedback {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-feedback::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.8s;
+}
+
+.touch-feedback:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Mejoras específicas para móvil */
+@media (max-width: 640px) {
+  /* Mejora el espaciado vertical en móvil */
+  section {
+    scroll-margin-top: 70px;
+  }
+
+  /* Mejora la legibilidad del texto en fondos con gradiente */
+  .bg-gradient-text {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Asegura que los formularios sean fáciles de usar en móvil */
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px; /* Previene zoom en teclados de iOS */
+  }
+
+  /* Mejora la navegación con una indicación visual del scroll */
+  .scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s ease-out;
+  }
+}
+
+/* Estilos para el scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  z-index: 1000;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+/* Estilos para el acordeón de problemas mejorado */
+.accordion-problema {
+  transition: box-shadow 0.3s ease;
+}
+
+.accordion-problema.active .problema-btn {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.accordion-problema .problema-content {
+  max-height: 0;
+  will-change: max-height;
+  position: relative;
+  z-index: 0;
+  transform: translate3d(0, 0, 0); /* Forzar aceleración de hardware */
+}
+
+.accordion-problema.active {
+  box-shadow: 0 4px 10px -2px rgba(239, 68, 68, 0.3);
+}
+
+.accordion-problema:not(.active):hover {
+  transform: translateY(-1px);
+}
+
+.accordion-problema .problema-btn {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animación para el menú móvil */
+#mobile-menu {
+  transform-origin: top center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(-10px);
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 0 0 8px 8px;
+  border-top: 1px solid rgba(229, 231, 235, 0.5);
+}
+
+#mobile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Eliminar las clases hidden/block para usar nuestra propia animación */
+#mobile-menu:not(.hidden) {
+  display: block;
+}
+
+/* Mejoras para la apariencia del menú móvil */
+#mobile-menu a {
+  position: relative;
+  overflow: hidden;
+}
+
+#mobile-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+#mobile-menu a:hover::after {
+  width: 50%;
+}
+
+/* La clase active para el menú móvil también se aplica solo desde JavaScript */
+#mobile-menu a.active {
+  color: var(--primary-color);
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+#mobile-menu a.active::after {
+  width: 50%;
+}
+
+/* Animación para el icono del menú */
+#menu-toggle i {
+  transition: transform 0.3s ease;
+}
+
+#menu-toggle[aria-expanded="true"] i.fa-bars {
+  transform: rotate(90deg);
+}
+
+/* Animación para la barra de gradiente del menú móvil */
+#mobile-menu .gradient-animate {
+  animation: gradientShift 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Estilos para timeline móvil */
+.timeline-container {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+  min-height: 100px;
+}
+
+.timeline-line {
+  background: linear-gradient(to bottom, transparent 0%, #3b82f6 10%, #8b5cf6 90%, transparent 100%);
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  box-shadow: 0 0 0 4px white;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.timeline-dot::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.3;
+  z-index: 2;
+}
+
+.timeline-dot-current {
+  animation: pulse 2s infinite;
+}
+
+.timeline-dot-current::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.6;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Media queries para ajustes en diferentes tamaños de pantalla */
+@media (max-width: 1023px) {
+  /* Estilos para pantallas móviles y tablets (timeline vertical) */
+  .timeline-item {
+    margin-bottom: 2rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .timeline-dot {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .timeline-line {
+    left: 1rem;
+    width: 2px;
+  }
+
+  .timeline-container {
+    padding-bottom: 2rem;
+  }
+
+  /* Asegurar que los milestone-items se muestren correctamente en tamaños intermedios */
+  .milestone-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Ajustes específicos para tablets medianas */
+  .timeline-item {
+    padding-left: 3rem;
+  }
+
+  .timeline-dot {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .timeline-line {
+    left: 1.25rem;
+  }
+
+  .timeline-item .bg-white {
+    padding: 1.5rem;
+  }
+
+  /* Estilos específicos para el timeline horizontal en tablets */
+  .milestone-item {
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  .milestone-item:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Payment options styling */
+.payment-option {
+  display: none;
+}
+
+.payment-hidden {
+  display: none;
+}
+
+.payment-active {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .payment-hidden {
+    display: none;
+  }
+
+  .payment-active {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .payment-option {
+    opacity: 0.9;
+  }
+
+  .payment-option:hover {
+    opacity: 1;
+    transform: translateY(-0.25rem);
+  }
+
+  .payment-active {
+    opacity: 1;
+    border-color: rgba(59, 130, 246, 1);
+  }
+}
+
+/* Contact section responsive styling */
+.contact-content {
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-info-content {
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-tab {
+  display: none;
+}
+
+.contact-info-tab {
+  display: none;
+}
+
+/* Default state for mobile first */
+@media (max-width: 767px) {
+  .contact-content:not(.active-content) {
+    display: none;
+  }
+
+  .contact-info-content[data-content="map"] {
+    display: none;
+  }
+}
+
+/* For desktop view */
+@media (min-width: 768px) {
+  .contact-content {
+    display: block;
+  }
+
+  .contact-info-content {
+    display: block;
+  }
+}

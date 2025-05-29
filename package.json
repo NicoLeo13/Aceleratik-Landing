@@ -1,0 +1,47 @@
+{
+  "name": "aceleratik-website",
+  "version": "1.0.0",
+  "description": "Sitio web oficial de Aceleratik - Consultoría tecnológica para el sector agrícola",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -c-1",
+    "dev": "npx http-server -p 3000 -c-1 -o",
+    "build": "echo 'No build process needed for static site'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linting configured'",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "aceleratik",
+    "consultoria",
+    "tecnologia",
+    "agricola",
+    "decampocamp",
+    "website",
+    "html",
+    "tailwind",
+    "javascript"
+  ],
+  "author": "Equipo Aceleratik",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aceleratik/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aceleratik/website/issues"
+  },
+  "homepage": "https://aceleratik.com",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

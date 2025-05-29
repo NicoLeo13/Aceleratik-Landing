@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Aceleratik es una consultora tecnológica especializada en transformación digital, ofreciendo servicios para potenciar empresas de diversos sectores." />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Aceleratik - Consultoría Tecnológica</title>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="css/tailwind.css" rel="stylesheet" />
+    <!-- Cosas pa q cargue bien en lectores de pantalla -->
+    <script>
+      // truco para que no rompa todo
+      document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+    </script>
+    <script src="js/tailwind.config.js"></script>
+  </head>
+  <body class="bg-white text-gray-900">
+    <!-- Header con menu de navegacion y toda la movida -->
+    <header class="bg-white shadow-lg fixed w-full top-0 z-50">
+      <nav class="container mx-auto px-4 py-3 md:py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="img/header-Aceleratik.webp" alt="Logo de Aceleratik" class="h-12 md:h-16 lg:h-20 py-2" />
+          </div>
+          <div class="hidden md:flex space-x-4 lg:space-x-6">
+            <a href="#inicio" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Inicio</a>
+            <a href="#equipo" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Equipo</a>
+            <a href="#proyecto" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Proyecto</a>
+            <a href="#planificacion" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Planificación</a>
+            <a href="#presupuesto" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Presupuesto</a>
+            <a href="#contacto" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Contacto</a>
+          </div>
+          <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none p-2 touch-target hover:bg-gray-100 rounded-lg transition-colors" aria-label="Menú principal" aria-expanded="false" aria-controls="mobile-menu">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+        <!-- Menu movil, se esconde en desktop -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+          <div class="flex flex-col">
+            <a href="#inicio" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Inicio</a>
+            <a href="#equipo" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Equipo</a>
+            <a href="#proyecto" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Proyecto</a>
+            <a href="#planificacion" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Planificación</a>
+            <a href="#presupuesto" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Presupuesto</a>
+            <a href="#contacto" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Contacto</a>
+          </div>
+          <div class="py-3 text-center bg-gray-50">
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="pt-20">
+      <!-- Seccion inicio - info de Aceleratik -->
+      <section id="inicio" class="py-10 md:py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div class="container mx-auto px-4">
+          <!-- Diseño mobile-first para el hero -->
+          <div class="text-center mb-10 md:mb-20">
+            <!-- Etiqueta superior con diseño más accesible en móvil -->
+            <div class="relative mb-6 md:mb-12">
+              <div class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold tracking-wider shadow-lg mb-4 md:mb-6"> CONSULTORÍA TECNOLÓGICA INTEGRAL </div>
+            </div>
+
+            <!-- Título principal optimizado para móvil -->
+            <div class="relative mb-12 md:mb-24">
+              <h1>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold block leading-tight">Aceleramos</span>
+                <span class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mt-1 md:mt-2 text-gray-800 tracking-tight">Tu Transformación</span>
+                <span class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 tracking-tight">Digital</span>
+              </h1>
+              <div class="w-20 md:w-40 h-1 md:h-2 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto mt-4 md:mt-6 shadow-lg"></div>
+            </div>
+
+            <!-- Descripción mejorada para móvil -->
+            <p class="text-base md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-light px-2 leading-relaxed"> En <span class="font-bold text-primary">Aceleratik</span> impulsamos la innovación tecnológica para transformar y potenciar empresas de diversos sectores. </p>
+          </div>
+
+          <!-- Sección "¿Quiénes Somos?" optimizada para responsive -->
+          <div class="mb-12 component-spacing">
+            <!-- Título con visibilidad para todas las pantallas -->
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 md:mb-8 text-center md:text-left bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">¿Quiénes Somos?</h2>
+
+            <!-- Contenido adaptado a móvil y desktop -->
+            <div class="grid md:grid-cols-2 md:gap-16 lg:gap-20 md:items-center">
+              <!-- Imagen visible primero en móvil, segundo en desktop -->
+              <div class="order-1 md:order-2 mb-8 md:mb-0 flex items-center justify-center">
+                <div class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-2xl shadow-xl p-2 md:p-3 transform transition-all duration-300 hover:scale-[1.02] w-full overflow-hidden relative">
+                  <!-- Gradient blobs for Vercel/Next.js style effect -->
+                  <div class="absolute -inset-0 opacity-50 overflow-hidden">
+                    <div class="absolute top-[20%] left-[30%] w-[40%] h-[30%] rounded-full bg-blue-400 mix-blend-multiply filter blur-3xl"></div>
+                    <div class="absolute bottom-[20%] right-[20%] w-[35%] h-[30%] rounded-full bg-purple-400 mix-blend-multiply filter blur-3xl"></div>
+                    <div class="absolute top-[50%] right-[30%] w-[30%] h-[25%] rounded-full bg-indigo-300 mix-blend-multiply filter blur-3xl"></div>
+                  </div>
+                  <div class="relative min-h-[200px] sm:min-h-[250px] md:min-h-[280px] lg:min-h-[320px] flex items-center justify-center z-10">
+                    <img src="img/logo-Aceleratik.webp" alt="Logo de Aceleratik" class="w-[85%] md:w-[90%] h-auto object-contain drop-shadow-lg" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Texto mostrado después en móvil, primero en desktop -->
+              <div class="order-2 md:order-1">
+                <div class="space-y-6">
+                  <p class="text-lg md:text-xl lg:text-2xl font-medium text-gray-900 leading-relaxed"> Aceleratik es una <span class="text-blue-600 font-semibold">empresa de consultoría tecnológica</span> fundada con el objetivo de impulsar la innovación en múltiples industrias. </p>
+                  <div class="space-y-4">
+                    <p class="text-base md:text-lg text-gray-600 leading-relaxed"> Combinamos experiencia técnica con conocimiento profundo de diversos sectores<span class="hidden md:inline"> para ofrecer soluciones digitales que transforman negocios tradicionales en empresas digitalmente competitivas</span>. </p>
+                    <p class="text-base md:text-lg text-gray-600 leading-relaxed"> Nuestro enfoque se centra en entender las necesidades específicas de cada cliente y desarrollar estrategias tecnológicas personalizadas que generen valor real y sostenible. </p>
+                  </div>
+                  <div class="pt-4">
+                    <div class="inline-flex items-center space-x-2 text-blue-600 font-medium hover:text-blue-700 transition-colors">
+                      <span>Conoce más sobre nosotros</span>
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nuestros Valores - Optimizado para móvil -->
+          <div class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Nuestros Valores</span>
+              <div class="absolute w-12 md:w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-3 md:translate-y-4"></div>
+            </h2>
+
+            <!-- Tarjetas de valores para móvil con diseño horizontal -->
+            <div class="flex flex-col space-y-4 md:hidden">
+              <div class="flex bg-white rounded-lg shadow-md p-4 touch-feedback">
+                <div class="flex-shrink-0 mr-4 w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center">
+                  <i class="fas fa-lightbulb text-2xl text-primary"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                  <h3 class="text-lg font-semibold mb-1">Innovación</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed"> Buscamos constantemente nuevas formas de resolver problemas complejos mediante tecnología de vanguardia. </p>
+                </div>
+              </div>
+
+              <div class="flex bg-white rounded-lg shadow-md p-4 touch-feedback">
+                <div class="flex-shrink-0 mr-4 w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center">
+                  <i class="fas fa-handshake text-2xl text-primary"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                  <h3 class="text-lg font-semibold mb-1">Colaboración</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed"> Trabajamos de la mano con nuestros clientes para entender sus necesidades y crear soluciones conjuntas. </p>
+                </div>
+              </div>
+
+              <div class="flex bg-white rounded-lg shadow-md p-4 touch-feedback">
+                <div class="flex-shrink-0 mr-4 w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center">
+                  <i class="fas fa-chart-line text-2xl text-primary"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                  <h3 class="text-lg font-semibold mb-1">Resultados</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed"> Nos enfocamos en generar impacto medible y valor tangible para nuestros clientes. </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vista para tablets y desktop (original) -->
+            <div class="hidden md:grid md:grid-cols-3 gap-8">
+              <div class="text-center bg-white rounded-lg shadow-lg p-8">
+                <div class="text-4xl text-primary mb-4">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Innovación</h3>
+                <p class="text-gray-600 text-base"> Buscamos constantemente nuevas formas de resolver problemas complejos mediante tecnología de vanguardia. </p>
+              </div>
+              <div class="text-center bg-white rounded-lg shadow-lg p-8">
+                <div class="text-4xl text-primary mb-4">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Colaboración</h3>
+                <p class="text-gray-600 text-base"> Trabajamos de la mano con nuestros clientes para entender sus necesidades y crear soluciones conjuntas. </p>
+              </div>
+              <div class="text-center bg-white rounded-lg shadow-lg p-8">
+                <div class="text-4xl text-primary mb-4">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Resultados</h3>
+                <p class="text-gray-600 text-base"> Nos enfocamos en generar impacto medible y valor tangible para nuestros clientes. </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nuestra Trayectoria - Diseño unificado y responsive -->
+          <div class="bg-white rounded-lg shadow-lg p-5 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Nuestra Trayectoria</span>
+              <div class="absolute w-12 md:w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-3 md:translate-y-4"></div>
+            </h2>
+
+            <!-- Timeline vertical para móvil y tablets pequeñas -->
+            <div class="lg:hidden relative">
+              <div class="relative timeline-container">
+                <!-- Línea vertical central -->
+                <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-blue-500 to-transparent timeline-line"></div>
+
+                <!-- Hito 1: Inicio -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-rocket text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">2023</h4>
+                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">Fundación</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Fundación de Aceleratik con enfoque en consultoría tecnológica para el sector agrícola.</p>
+                  </div>
+                </div>
+
+                <!-- Hito 2: Primeros Proyectos -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-check-circle text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">2024</h4>
+                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">Crecimiento</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Primeros proyectos exitosos de digitalización en empresas medianas del sector.</p>
+                  </div>
+                </div>
+
+                <!-- Hito 3: Expansión -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-users text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">2025</h4>
+                      <span class="text-xs font-medium bg-green-100 text-green-700 py-1 px-2 rounded-full">Expansión</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Expansión del equipo y desarrollo de metodologías propias de transformación digital.</p>
+                  </div>
+                </div>
+
+                <!-- Hito 4: Alianzas -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-handshake text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">2024</h4>
+                      <span class="text-xs font-medium bg-yellow-100 text-yellow-700 py-1 px-2 rounded-full">Alianzas</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Alianzas estratégicas con proveedores tecnológicos líderes en el mercado.</p>
+                  </div>
+                </div>
+
+                <!-- Hito 5: Proyecto Actual -->
+                <div class="timeline-item pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center z-10 timeline-dot timeline-dot-current">
+                    <i class="fas fa-star text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">2025</h4>
+                      <span class="text-xs font-medium bg-purple-100 text-purple-700 py-1 px-2 rounded-full">Actualidad</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Inicio del proyecto deCampoaCampo, nuestro mayor desafío hasta la fecha.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline horizontal para pantallas grandes -->
+            <div class="hidden lg:block relative bg-white rounded-lg shadow-lg p-10">
+              <div class="absolute left-1/2 transform -translate-x-1/2 top-10 bottom-10 w-1 bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500"></div>
+
+              <div class="space-y-16">
+                <div class="flex items-center">
+                  <div class="w-1/2 pr-10 text-right">
+                    <div class="bg-blue-50 p-4 rounded-lg shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                      <h3 class="text-xl font-semibold text-blue-700 mb-2">2023</h3>
+                      <p class="text-gray-600">Fundación de Aceleratik con enfoque en consultoría tecnológica para el sector agrícola.</p>
+                    </div>
+                  </div>
+                  <div class="w-8 h-8 bg-blue-500 rounded-full relative z-10 flex items-center justify-center shadow-md">
+                    <i class="fas fa-rocket text-white text-sm"></i>
+                  </div>
+                  <div class="w-1/2 pl-10"></div>
+                </div>
+
+                <div class="flex items-center">
+                  <div class="w-1/2 pr-10"></div>
+                  <div class="w-8 h-8 bg-blue-500 rounded-full relative z-10 flex items-center justify-center shadow-md">
+                    <i class="fas fa-check-circle text-white text-sm"></i>
+                  </div>
+                  <div class="w-1/2 pl-10">
+                    <div class="bg-blue-50 p-4 rounded-lg shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                      <h3 class="text-xl font-semibold text-blue-700 mb-2">2024</h3>
+                      <p class="text-gray-600">Primeros proyectos exitosos de digitalización en empresas medianas del sector.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div class="w-1/2 pr-10 text-right">
+                    <div class="bg-yellow-50 p-4 rounded-lg shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                      <h3 class="text-xl font-semibold text-yellow-700 mb-2">2024</h3>
+                      <p class="text-gray-600">Alianzas estratégicas con proveedores tecnológicos líderes en el mercado.</p>
+                    </div>
+                  </div>
+                  <div class="w-8 h-8 bg-yellow-500 rounded-full relative z-10 flex items-center justify-center shadow-md">
+                    <i class="fas fa-handshake text-white text-sm"></i>
+                  </div>
+                  <div class="w-1/2 pl-10"></div>
+                </div>
+
+                <div class="flex items-center">
+                  <div class="w-1/2 pr-10"></div>
+                  <div class="w-8 h-8 bg-green-500 rounded-full relative z-10 flex items-center justify-center shadow-md">
+                    <i class="fas fa-users text-white text-sm"></i>
+                  </div>
+                  <div class="w-1/2 pl-10">
+                    <div class="bg-green-50 p-4 rounded-lg shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                      <h3 class="text-xl font-semibold text-green-700 mb-2">2025</h3>
+                      <p class="text-gray-600">Expansión del equipo y desarrollo de metodologías propias de transformación digital.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div class="w-1/2 pr-10 text-right">
+                    <div class="bg-purple-50 p-4 rounded-lg shadow-sm transform transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                      <h3 class="text-xl font-semibold text-purple-700 mb-2">2025</h3>
+                      <p class="text-gray-600">Inicio del proyecto deCampoaCampo, nuestro mayor desafío hasta la fecha.</p>
+                    </div>
+                  </div>
+                  <div class="w-8 h-8 bg-purple-500 rounded-full relative z-10 flex items-center justify-center shadow-md">
+                    <i class="fas fa-star text-white text-sm"></i>
+                  </div>
+                  <div class="w-1/2 pl-10"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Equipo - Responsive para todos los dispositivos -->
+      <section id="equipo" class="py-12 md:py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 relative">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Nuestro Equipo</span>
+            <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
+          </h2>
+
+          <!-- Carousel del Equipo - Responsive design -->
+          <div class="relative max-w-5xl mx-auto">
+            <!-- Instrucciones de deslizamiento solo para móvil -->
+            <div class="md:hidden text-center mb-4 text-xs text-gray-500 flex items-center justify-center">
+              <i class="fas fa-hand-point-right mr-1"></i>
+              <span>Desliza para ver más</span>
+              <i class="fas fa-chevron-right ml-1 animate-pulse"></i>
+            </div>
+
+            <!-- Contenedor del Carousel con soporte táctil mejorado -->
+            <div class="carousel-container overflow-hidden touch-action-pan-y">
+              <div id="team-carousel" class="flex transition-transform duration-500 ease-in-out">
+                <!-- Miembro del equipo 1 -->
+                <div class="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
+                  <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                    <!-- Layout adaptativo según dispositivo -->
+                    <div class="sm:flex items-center p-4 border-b">
+                      <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-blue-100 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0 sm:flex-shrink-0">
+                        <i class="fas fa-tasks text-3xl md:text-4xl text-blue-600"></i>
+                      </div>
+                      <div class="sm:ml-4 text-center sm:text-left">
+                        <h3 class="text-lg md:text-xl font-semibold">Franco</h3>
+                        <p class="text-primary font-medium text-sm md:text-base">Product Owner</p>
+                      </div>
+                    </div>
+                    <div class="p-4 text-center sm:text-left flex-grow">
+                      <p class="text-gray-600 text-sm leading-relaxed"> Product Owner con 2 años de experiencia en proyectos de transformación digital. Coordina las prioridades del proyecto y actúa como enlace entre los stakeholders y el equipo de desarrollo. </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Miembro del equipo 2 -->
+                <div class="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
+                  <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                    <div class="sm:flex items-center p-4 border-b">
+                      <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-indigo-100 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0 sm:flex-shrink-0">
+                        <i class="fas fa-users-cog text-3xl md:text-4xl text-indigo-600"></i>
+                      </div>
+                      <div class="sm:ml-4 text-center sm:text-left">
+                        <h3 class="text-lg md:text-xl font-semibold">Pablo</h3>
+                        <p class="text-primary font-medium text-sm md:text-base">Scrum Master</p>
+                      </div>
+                    </div>
+                    <div class="p-4 text-center sm:text-left flex-grow">
+                      <p class="text-gray-600 text-sm leading-relaxed"> Scrum Master con 3 años de experiencia en metodologías ágiles. Facilita los procesos del equipo, elimina impedimentos y asegura que se sigan las buenas prácticas de Scrum. </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Miembro del equipo 3 -->
+                <div class="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
+                  <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                    <div class="sm:flex items-center p-4 border-b">
+                      <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-green-100 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0 sm:flex-shrink-0">
+                        <i class="fas fa-chart-line text-3xl md:text-4xl text-green-600"></i>
+                      </div>
+                      <div class="sm:ml-4 text-center sm:text-left">
+                        <h3 class="text-lg md:text-xl font-semibold">Agustin</h3>
+                        <p class="text-primary font-medium text-sm md:text-base">Financial Analyst</p>
+                      </div>
+                    </div>
+                    <div class="p-4 text-center sm:text-left flex-grow">
+                      <p class="text-gray-600 text-sm leading-relaxed"> Financial Analyst con 2 años de experiencia en el sector tecnológico. Analiza la viabilidad económica del proyecto y asesora en decisiones financieras que impactan el desarrollo. </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Miembro del equipo 4 -->
+                <div class="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
+                  <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                    <div class="sm:flex items-center p-4 border-b">
+                      <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-purple-100 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0 sm:flex-shrink-0">
+                        <i class="fas fa-code-branch text-3xl md:text-4xl text-purple-600"></i>
+                      </div>
+                      <div class="sm:ml-4 text-center sm:text-left">
+                        <h3 class="text-lg md:text-xl font-semibold">Juan Ignacio</h3>
+                        <p class="text-primary font-medium text-sm md:text-base">Technical Analyst</p>
+                      </div>
+                    </div>
+                    <div class="p-4 text-center sm:text-left flex-grow">
+                      <p class="text-gray-600 text-sm leading-relaxed"> Technical Analyst con 1 año de experiencia. Evalúa soluciones técnicas, documenta requerimientos y ayuda a determinar la factibilidad de implementación de nuevas funcionalidades. </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Miembro del equipo 5 -->
+                <div class="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
+                  <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                    <div class="sm:flex items-center p-4 border-b">
+                      <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-red-100 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0 sm:flex-shrink-0">
+                        <i class="fas fa-project-diagram text-3xl md:text-4xl text-red-600"></i>
+                      </div>
+                      <div class="sm:ml-4 text-center sm:text-left">
+                        <h3 class="text-lg md:text-xl font-semibold">Nicolas</h3>
+                        <p class="text-primary font-medium text-sm md:text-base">Business Analyst</p>
+                      </div>
+                    </div>
+                    <div class="p-4 text-center sm:text-left flex-grow">
+                      <p class="text-gray-600 text-sm leading-relaxed"> Business Analyst con 3 años de experiencia. Identifica necesidades de negocio y las traduce en requerimientos técnicos, facilitando la comunicación entre el cliente y el equipo de desarrollo. </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Miembro del equipo 6 -->
+                <div class="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
+                  <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                    <div class="sm:flex items-center p-4 border-b">
+                      <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-yellow-100 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0 sm:flex-shrink-0">
+                        <i class="fas fa-database text-3xl md:text-4xl text-yellow-600"></i>
+                      </div>
+                      <div class="sm:ml-4 text-center sm:text-left">
+                        <h3 class="text-lg md:text-xl font-semibold">Camila</h3>
+                        <p class="text-primary font-medium text-sm md:text-base">Data Analyst</p>
+                      </div>
+                    </div>
+                    <div class="p-4 text-center sm:text-left flex-grow">
+                      <p class="text-gray-600 text-sm leading-relaxed"> Data Analyst con 2 años de experiencia. Recopila y analiza datos para extraer insights valiosos que apoyan la toma de decisiones y mejoran las estrategias del proyecto. </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Miembro del equipo 7 -->
+                <div class="carousel-item w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
+                  <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
+                    <div class="sm:flex items-center p-4 border-b">
+                      <div class="w-16 h-16 md:w-24 md:h-24 rounded-full bg-teal-100 flex items-center justify-center mx-auto sm:mx-0 mb-3 sm:mb-0 sm:flex-shrink-0">
+                        <i class="fas fa-cogs text-3xl md:text-4xl text-teal-600"></i>
+                      </div>
+                      <div class="sm:ml-4 text-center sm:text-left">
+                        <h3 class="text-lg md:text-xl font-semibold">Marco</h3>
+                        <p class="text-primary font-medium text-sm md:text-base">ERP Consultant</p>
+                      </div>
+                    </div>
+                    <div class="p-4 text-center sm:text-left flex-grow">
+                      <p class="text-gray-600 text-sm leading-relaxed"> ERP Consultant con 3 años de experiencia. Asesora en la implementación y personalización de sistemas de gestión empresarial, optimizando procesos de negocio y flujos de trabajo. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controles del Carousel mejorados -->
+            <button id="prev-team" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 md:p-3 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 touch-target" title="Anterior miembro del equipo" aria-label="Anterior miembro del equipo">
+              <i class="fas fa-chevron-left text-lg md:text-xl"></i>
+            </button>
+            <button id="next-team" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 md:p-3 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 touch-target" title="Siguiente miembro del equipo" aria-label="Siguiente miembro del equipo">
+              <i class="fas fa-chevron-right text-lg md:text-xl"></i>
+            </button>
+
+            <!-- Indicadores del Carousel generados dinámicamente por JS -->
+            <div id="carousel-indicators" class="flex justify-center mt-6 md:mt-8 space-x-2 md:space-x-3">
+              <!-- se carga dinamicamente, no tocar -->
+            </div>
+
+            <!-- Mensaje de accesibilidad para móvil -->
+            <div class="md:hidden text-center mt-3 text-xs text-gray-500">
+              <span>También puedes usar los puntos para navegar</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Proyecto Actual - Optimizada para móvil -->
+      <section id="proyecto" class="py-12 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <!-- Título optimizado para móvil -->
+          <div class="relative text-center mb-12 md:mb-24">
+            <!-- Etiqueta superior adaptada para móvil -->
+            <div class="inline-block bg-gradient-to-r from-green-600 to-blue-600 text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold tracking-wider shadow-lg mb-6 md:mb-0 animate-pulse"> CASO EN PROCESO: SECTOR GANADERO </div>
+
+            <h2 class="mt-4 md:mt-10">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-blue-600 to-indigo-600 gradient-animate text-3xl md:text-5xl font-extrabold tracking-tight block">Proyecto Destacado</span>
+              <span class="block text-4xl md:text-6xl font-black mt-2 md:mt-3 text-gray-800 tracking-tight">deCampoaCampo</span>
+            </h2>
+            <div class="w-24 md:w-32 h-1 md:h-2 bg-gradient-to-r from-green-500 via-blue-500 to-indigo-500 gradient-animate rounded-full mx-auto mt-4 md:mt-6 shadow-lg"></div>
+          </div>
+
+          <!-- Descripción del proyecto - Diseño unificado y responsive -->
+          <div class="mb-12 md:mb-16">
+            <!-- Grid container que cambia de dirección según tamaño de pantalla -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 md:items-center">
+              <!-- Columna izquierda: Información del proyecto -->
+              <div class="order-2 md:order-1">
+                <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6 flex items-center">
+                  <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                  Sobre deCampoaCampo
+                </h3>
+
+                <!-- Contenedor único para los párrafos con estilos adaptativos -->
+                <div class="space-y-5">
+                  <div class="bg-white rounded-xl shadow-sm p-5 md:p-6 border-l-4 border-blue-500 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-blue-100 p-1.5 rounded-md text-blue-600">
+                        <i class="fas fa-building text-lg"></i>
+                      </div>
+                      <p class="text-gray-700 text-sm md:text-base leading-relaxed"> deCampoaCampo es un <span class="bg-yellow-100 px-1 font-medium">mercado ganadero digital</span> fundado en 2009 que comercializa hacienda en todo el país las 24 horas del día, operando como una <span class="border-b-2 border-blue-400">unidad de negocios</span> de la firma consignataria Pedro Genta y Cía. SA. </p>
+                    </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl shadow-sm p-5 md:p-6 border-l-4 border-green-500 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-green-100 p-1.5 rounded-md text-green-600">
+                        <i class="fas fa-exchange-alt text-lg"></i>
+                      </div>
+                      <p class="text-gray-700 text-sm md:text-base leading-relaxed"> La plataforma permite la <span class="bg-green-100 px-1 font-medium">publicación y comercialización</span> de tropas de ganado de todo el país, tanto para faena como para invernada, cría y recría, con <span class="border-b-2 border-green-400">gran fluidez</span> y un manejo eficiente de la documentación. </p>
+                    </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl shadow-sm p-5 md:p-6 border-l-4 border-purple-500 hover:shadow-md transition-all duration-300">
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-purple-100 p-1.5 rounded-md text-purple-600">
+                        <i class="fas fa-chart-line text-lg"></i>
+                      </div>
+                      <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                        Además de ser una <span class="border-b-2 border-purple-400">herramienta comercial</span> para la compra y venta de ganado, deCampoaCampo funciona como una <span class="bg-purple-100 px-1 font-medium">herramienta de gestión</span> donde se almacena información valiosa sobre condiciones comerciales, resultados de faena, tendencias de precios y otros datos útiles para el
+                        sector ganadero.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Columna derecha: Tarjeta de información y logo -->
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 md:p-8 mb-6 md:mb-0 shadow-md order-1 md:order-2 border border-gray-100 hover:shadow-lg transition-all duration-300">
+                <!-- Contenedor de la imagen con efecto de gradiente sutil -->
+                <div class="relative rounded-lg overflow-hidden mb-5">
+                  <!-- Overlay de gradiente -->
+                  <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 mix-blend-overlay"></div>
+                  <img src="img/dCaC.webp" alt="Logo deCampoaCampo" class="w-full h-36 md:h-48 object-cover rounded-lg" loading="lazy" />
+                  <!-- Badge flotante -->
+                </div>
+
+                <div class="text-center md:text-left">
+                  <h4 class="text-lg font-semibold mb-4 flex items-center justify-center">
+                    <div class="bg-indigo-100 p-1.5 rounded-md text-indigo-600 mr-2">
+                      <i class="fas fa-info-circle"></i>
+                    </div>
+                    <span>Datos Clave</span>
+                  </h4>
+
+                  <!-- Adaptable grid para datos clave -->
+                  <div class="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
+                    <!-- Versión unificada con estilo moderno -->
+                    <div class="bg-white bg-opacity-80 rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-blue-400">
+                      <div class="flex items-center mb-0.5 sm:mb-1">
+                        <i class="fas fa-calendar-alt text-blue-500 mr-1.5 sm:mr-2 text-xs sm:text-sm"></i>
+                        <span class="text-xs text-gray-500 font-medium">Fundación</span>
+                      </div>
+                      <div class="font-medium text-gray-800 text-sm sm:text-base">2023</div>
+                    </div>
+
+                    <div class="bg-white bg-opacity-80 rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-indigo-400">
+                      <div class="flex items-center mb-0.5 sm:mb-1">
+                        <i class="fas fa-users text-indigo-500 mr-1.5 sm:mr-2 text-xs sm:text-sm"></i>
+                        <span class="text-xs text-gray-500 font-medium">Empleados</span>
+                      </div>
+                      <div class="font-medium text-gray-800 text-sm sm:text-base">51-200</div>
+                    </div>
+
+                    <div class="bg-white bg-opacity-80 rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-purple-400">
+                      <div class="flex items-center mb-0.5 sm:mb-1">
+                        <i class="fas fa-map-marker-alt text-purple-500 mr-1.5 sm:mr-2 text-xs sm:text-sm"></i>
+                        <span class="text-xs text-gray-500 font-medium">Sede</span>
+                      </div>
+                      <div class="font-medium text-gray-800 text-sm sm:text-base">CABA</div>
+                    </div>
+
+                    <div class="bg-white bg-opacity-80 rounded-lg p-2 sm:p-3 shadow-sm hover:shadow-md transition-all duration-300 border-l-2 border-green-400">
+                      <div class="flex items-center mb-0.5 sm:mb-1">
+                        <i class="fas fa-cogs text-green-500 mr-1.5 sm:mr-2 text-xs sm:text-sm"></i>
+                        <span class="text-xs text-gray-500 font-medium">Servicios</span>
+                      </div>
+                      <div class="font-medium text-gray-800 text-sm sm:text-base">deCampoPagos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Objetivos del proyecto - Optimizados para móvil -->
+          <div class="mb-12 md:mb-16">
+            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Enfoque de Nuestra Consultoría</span>
+              <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-2"></div>
+            </h3>
+
+            <!-- Versión móvil - Tarjetas horizontales para mejor UX -->
+            <div class="flex flex-col space-y-3 md:hidden">
+              <div class="enfoque-card bg-blue-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+                <div class="flex items-center p-3">
+                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                    <i class="fas fa-search text-xl text-blue-600"></i>
+                  </div>
+                  <div class="flex-grow">
+                    <h4 class="font-semibold text-blue-800 text-base">Diagnóstico</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">Análisis integral del negocio para identificar cuellos de botella y oportunidades</p>
+                  </div>
+                  <!-- <div class="flex-shrink-0 text-blue-400">
+                    <i class="fas fa-chevron-right"></i>
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="enfoque-card bg-green-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+                <div class="flex items-center p-3">
+                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                    <i class="fas fa-sitemap text-xl text-green-600"></i>
+                  </div>
+                  <div class="flex-grow">
+                    <h4 class="font-semibold text-green-800 text-base">Mapeo de Procesos</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">Documentación y comprensión de los procesos clave del negocio</p>
+                  </div>
+                  <!-- <div class="flex-shrink-0 text-green-400">
+                    <i class="fas fa-chevron-right"></i>
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="enfoque-card bg-purple-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+                <div class="flex items-center p-3">
+                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                    <i class="fas fa-lightbulb text-xl text-purple-600"></i>
+                  </div>
+                  <div class="flex-grow">
+                    <h4 class="font-semibold text-purple-800 text-base">Soluciones TI</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">Recomendaciones tecnológicas personalizadas para resolver problemas específicos</p>
+                  </div>
+                  <!-- <div class="flex-shrink-0 text-purple-400">
+                    <i class="fas fa-chevron-right"></i>
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="enfoque-card bg-orange-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+                <div class="flex items-center p-3">
+                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                    <i class="fas fa-handshake text-xl text-orange-600"></i>
+                  </div>
+                  <div class="flex-grow">
+                    <h4 class="font-semibold text-orange-800 text-base">Acompañamiento</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">Soporte en la selección de proveedores y supervisión de implementaciones</p>
+                  </div>
+                  <!-- <div class="flex-shrink-0 text-orange-400">
+                    <i class="fas fa-chevron-right"></i>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Versión desktop - Mantener el grid original -->
+            <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="enfoque-card bg-blue-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+                  <i class="fas fa-search text-3xl text-blue-600 transition-transform duration-300"></i>
+                </div>
+                <h4 class="font-semibold mb-2 text-blue-800">Diagnóstico</h4>
+                <p class="text-sm text-gray-600">Análisis integral del negocio para identificar cuellos de botella y oportunidades</p>
+              </div>
+              <div class="enfoque-card bg-green-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+                  <i class="fas fa-sitemap text-3xl text-green-600 transition-transform duration-300"></i>
+                </div>
+                <h4 class="font-semibold mb-2 text-green-800">Mapeo de Procesos</h4>
+                <p class="text-sm text-gray-600">Documentación y comprensión de los procesos clave del negocio</p>
+              </div>
+              <div class="enfoque-card bg-purple-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+                  <i class="fas fa-lightbulb text-3xl text-purple-600 transition-transform duration-300"></i>
+                </div>
+                <h4 class="font-semibold mb-2 text-purple-800">Soluciones TI</h4>
+                <p class="text-sm text-gray-600">Recomendaciones tecnológicas personalizadas para resolver problemas específicos</p>
+              </div>
+              <div class="enfoque-card bg-orange-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+                  <i class="fas fa-handshake text-3xl text-orange-600 transition-transform duration-300"></i>
+                </div>
+                <h4 class="font-semibold mb-2 text-orange-800">Acompañamiento</h4>
+                <p class="text-sm text-gray-600">Soporte en la selección de proveedores y supervisión de implementaciones</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problemas actuales - Optimizados para móvil -->
+          <div class="mb-12 md:mb-16">
+            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-400">Problemas Actuales</span>
+              <div class="absolute w-16 h-1 bg-gradient-to-r from-red-600 to-red-400 rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
+            </h3>
+
+            <!-- Versión móvil - Acordeón simplificado -->
+            <div class="flex flex-col space-y-3 md:hidden">
+              <!-- Problema 1 -->
+              <div class="accordion-problema rounded-lg overflow-hidden shadow-md">
+                <button class="w-full bg-red-500 px-4 py-3 flex items-center justify-between cursor-pointer problema-btn touch-target" type="button">
+                  <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-exclamation-triangle text-red-500 text-sm"></i>
+                    </div>
+                    <h4 class="font-semibold text-white ml-3 text-sm">Limitaciones de Escalabilidad</h4>
+                  </div>
+                  <i class="fas fa-chevron-down text-white"></i>
+                </button>
+                <div class="problema-content bg-red-50 overflow-hidden transition-all duration-300" style="max-height: 0">
+                  <div class="p-4">
+                    <p class="text-red-800 text-sm leading-relaxed"> Aunque Physis se adapta al mercado ganadero, no puede soportar el objetivo de crecimiento del 15% en ventas ni el desarrollo de deCampoaPagos. </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Problema 2 -->
+              <div class="accordion-problema rounded-lg overflow-hidden shadow-md">
+                <button class="w-full bg-red-500 px-4 py-3 flex items-center justify-between cursor-pointer problema-btn touch-target" type="button">
+                  <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-comments text-red-500 text-sm"></i>
+                    </div>
+                    <h4 class="font-semibold text-white ml-3 text-sm">Alto Volumen de Contactos</h4>
+                  </div>
+                  <i class="fas fa-chevron-down text-white"></i>
+                </button>
+                <div class="problema-content bg-red-50 overflow-hidden transition-all duration-300" style="max-height: 0">
+                  <div class="p-4">
+                    <p class="text-red-800 text-sm leading-relaxed"> El equipo de soporte dedica demasiado tiempo a consultas rutinarias que podrían automatizarse, retrasando la atención de casos importantes. </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Problema 3 -->
+              <div class="accordion-problema rounded-lg overflow-hidden shadow-md">
+                <button class="w-full bg-red-500 px-4 py-3 flex items-center justify-between cursor-pointer problema-btn touch-target" type="button">
+                  <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-user-graduate text-red-500 text-sm"></i>
+                    </div>
+                    <h4 class="font-semibold text-white ml-3 text-sm">Falta de Gestión del Conocimiento</h4>
+                  </div>
+                  <i class="fas fa-chevron-down text-white"></i>
+                </button>
+                <div class="problema-content bg-red-50 overflow-hidden transition-all duration-300" style="max-height: 0">
+                  <div class="p-4">
+                    <p class="text-red-800 text-sm leading-relaxed"> Los procesos dependen de individuos específicos, creando un riesgo de pérdida de conocimiento cuando estos colaboradores dejan la empresa. </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Problema 4 -->
+              <div class="accordion-problema rounded-lg overflow-hidden shadow-md">
+                <button class="w-full bg-red-500 px-4 py-3 flex items-center justify-between cursor-pointer problema-btn touch-target" type="button">
+                  <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-chart-line text-red-500 text-sm"></i>
+                    </div>
+                    <h4 class="font-semibold text-white ml-3 text-sm">Análisis Limitado</h4>
+                  </div>
+                  <i class="chevron-icon fas fa-chevron-down text-white"></i>
+                </button>
+                <div class="problema-content bg-red-50 overflow-hidden transition-all duration-300" style="max-height: 0">
+                  <div class="p-4">
+                    <p class="text-red-800 text-sm leading-relaxed"> Physis carece de herramientas avanzadas de análisis de datos, perdiendo oportunidades de optimización y crecimiento. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Versión desktop - Mantener el grid original -->
+            <div class="hidden md:grid md:grid-cols-2 gap-8">
+              <div class="bg-red-50 border-l-4 border-red-400 p-6">
+                <h4 class="font-semibold text-red-800 mb-3"> <i class="fas fa-exclamation-triangle mr-2"></i>Limitaciones de Escalabilidad en ERP Physis </h4>
+                <p class="text-red-700 text-sm"> Aunque Physis se adapta al mercado ganadero, no puede soportar el objetivo de crecimiento del 15% en ventas ni el desarrollo de deCampoaPagos, limitando la centralización de procesos organizacionales. </p>
+              </div>
+              <div class="bg-red-50 border-l-4 border-red-400 p-6">
+                <h4 class="font-semibold text-red-800 mb-3"> <i class="fas fa-comments mr-2"></i>Alto Volumen de Contactos con Clientes </h4>
+                <p class="text-red-700 text-sm"> El equipo de soporte dedica demasiado tiempo a consultas rutinarias que podrían automatizarse, lo que retrasa la atención de casos que realmente requieren intervención humana. </p>
+              </div>
+              <div class="bg-red-50 border-l-4 border-red-400 p-6">
+                <h4 class="font-semibold text-red-800 mb-3"> <i class="fas fa-user-graduate mr-2"></i>Falta de Gestión del Conocimiento </h4>
+                <p class="text-red-700 text-sm"> Los procesos comerciales y de negocio dependen de individuos específicos, creando un riesgo importante de pérdida de conocimiento cuando estos colaboradores dejan la empresa. </p>
+              </div>
+              <div class="bg-red-50 border-l-4 border-red-400 p-6">
+                <h4 class="font-semibold text-red-800 mb-3"> <i class="fas fa-chart-line mr-2"></i>Análisis Limitado </h4>
+                <p class="text-red-700 text-sm"> Physis carece de herramientas avanzadas de análisis de datos, perdiendo oportunidades de optimización y crecimiento necesarias para alcanzar los objetivos comerciales de deCampoaCampo. </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nuestra propuesta de solución -->
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white p-8">
+            <h3 class="text-2xl font-semibold text-center mb-8 relative">
+              <span class="bg-clip-text text-transparent bg-white">Nuestra Propuesta de Consultoría</span>
+              <div class="absolute w-16 h-1 bg-white rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4 opacity-70"></div>
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 class="text-xl font-semibold mb-4"> <i class="fas fa-exchange-alt mr-2"></i>Optimización y Escalabilidad ERP </h4>
+                <ul class="space-y-2 text-sm">
+                  <li><i class="fas fa-check mr-2"></i>Análisis de escalabilidad de Physis para crecimiento del 15%</li>
+                  <li><i class="fas fa-check mr-2"></i>Evaluación de SAP Business One con módulo ganadero</li>
+                  <li><i class="fas fa-check mr-2"></i>Evaluación de Microsoft Dynamics 365 Business Central</li>
+                  <li><i class="fas fa-check mr-2"></i>Integración con deCampoaPagos</li>
+                  <li><i class="fas fa-check mr-2"></i>Recomendación de proveedores certificados para implementación</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-4"> <i class="fas fa-clipboard-list mr-2"></i>Soluciones Complementarias </h4>
+                <ul class="space-y-2 text-sm">
+                  <li><i class="fas fa-check mr-2"></i>Sistema de Gestión del Conocimiento para procesos críticos</li>
+                  <li><i class="fas fa-check mr-2"></i>Implementación de chatbot para atención al cliente</li>
+                  <li><i class="fas fa-check mr-2"></i>Herramientas de análisis avanzado de datos</li>
+                  <li><i class="fas fa-check mr-2"></i>Plan de capacitación para el personal</li>
+                  <li><i class="fas fa-check mr-2"></i>Gestión del cambio organizacional</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-8">
+              <h4 class="text-xl font-semibold mb-4 text-center"> <i class="fas fa-chart-line mr-2"></i>Beneficios Esperados </h4>
+              <div class="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                  <h5 class="font-semibold mb-2 text-center">Operativos</h5>
+                  <ul class="text-xs space-y-1">
+                    <li><i class="fas fa-arrow-up mr-1"></i>Soporte para crecimiento del 15% en ventas</li>
+                    <li><i class="fas fa-arrow-down mr-1"></i>Reducción de 60% en consultas de soporte</li>
+                    <li><i class="fas fa-arrow-up mr-1"></i>Preservación del conocimiento organizacional</li>
+                  </ul>
+                </div>
+                <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                  <h5 class="font-semibold mb-2 text-center">Financieros</h5>
+                  <ul class="text-xs space-y-1">
+                    <li><i class="fas fa-arrow-up mr-1"></i>ROI estimado en 18 meses</li>
+                    <li><i class="fas fa-arrow-down mr-1"></i>Reducción de costos operativos</li>
+                    <li><i class="fas fa-arrow-up mr-1"></i>Optimización de recursos de personal</li>
+                  </ul>
+                </div>
+                <div class="bg-white bg-opacity-10 p-4 rounded-lg">
+                  <h5 class="font-semibold mb-2 text-center">Estratégicos</h5>
+                  <ul class="text-xs space-y-1">
+                    <li><i class="fas fa-arrow-up mr-1"></i>Mejor toma de decisiones basada en datos</li>
+                    <li><i class="fas fa-arrow-up mr-1"></i>Escalabilidad para crecimiento futuro</li>
+                    <li><i class="fas fa-arrow-up mr-1"></i>Integración completa con deCampoaPagos</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Planificación -->
+      <section id="planificacion" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="relative text-center mb-20">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate text-4xl font-extrabold tracking-tight">Planificación</span>
+            <span class="block text-5xl font-black mt-2 text-gray-800 tracking-tighter">del Proyecto</span>
+            <div class="absolute w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-6 shadow-lg"></div>
+          </h2>
+
+          <!-- Cronograma de Hitos Ágiles -->
+          <div class="mb-16">
+            <h3 class="text-2xl font-semibold text-center mb-8">Cronograma de Hitos</h3>
+
+            <!-- Versión Mobile: Timeline Vertical -->
+            <div class="lg:hidden">
+              <div class="relative timeline-container">
+                <!-- Línea vertical central -->
+                <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-blue-500 to-transparent timeline-line"></div>
+
+                <!-- Hito 1: Inicio del Proyecto -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-flag text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">Inicio</h4>
+                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">15 Ene, 2025</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Análisis inicial y evaluación de necesidades</p>
+                  </div>
+                </div>
+
+                <!-- Hito 2: Análisis de Sistemas ERP -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-search text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">Análisis ERP</h4>
+                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">15 Feb, 2025</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Evaluación de opciones de ERP para reemplazar Physis</p>
+                  </div>
+                </div>
+
+                <!-- Hito 3: Selección de Proveedores -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-handshake text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">Selección</h4>
+                      <span class="text-xs font-medium bg-green-100 text-green-700 py-1 px-2 rounded-full">15 Mar, 2025</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Recomendación de proveedores y soluciones</p>
+                  </div>
+                </div>
+
+                <!-- Hito 4: Plan de Implementación -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-tasks text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">Plan</h4>
+                      <span class="text-xs font-medium bg-yellow-100 text-yellow-700 py-1 px-2 rounded-full">15 Abr, 2025</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Estrategia de migración y capacitación</p>
+                  </div>
+                </div>
+
+                <!-- Hito 5: Cierre de Consultoría -->
+                <div class="timeline-item pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center z-10 timeline-dot timeline-dot-current">
+                    <i class="fas fa-check-circle text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">Cierre</h4>
+                      <span class="text-xs font-medium bg-purple-100 text-purple-700 py-1 px-2 rounded-full">15 May, 2025</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Entrega de documentación y recomendaciones finales</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Versión Desktop: Timeline Horizontal con los mismos datos -->
+            <div class="hidden lg:block relative bg-white rounded-lg shadow-lg p-8">
+              <div class="relative">
+                <!-- Línea de tiempo horizontal -->
+                <div class="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2"></div>
+
+                <!-- Hitos del proyecto -->
+                <div class="relative z-10">
+                  <div class="flex flex-col lg:flex-row justify-between items-center">
+                    <!-- Hito 1: Inicio del Proyecto -->
+                    <div class="milestone-item mb-8 lg:mb-0 text-center w-full lg:w-1/5">
+                      <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-flag"></i>
+                      </div>
+                      <div class="bg-blue-50 p-4 rounded-lg shadow">
+                        <h4 class="font-semibold">Inicio</h4>
+                        <p class="text-sm text-gray-600">15 Ene, 2025</p>
+                        <p class="text-xs mt-2">Análisis inicial y evaluación de necesidades</p>
+                      </div>
+                    </div>
+
+                    <!-- Hito 2: Análisis de Sistemas ERP -->
+                    <div class="milestone-item mb-8 lg:mb-0 text-center w-full lg:w-1/5">
+                      <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-search"></i>
+                      </div>
+                      <div class="bg-blue-50 p-4 rounded-lg shadow">
+                        <h4 class="font-semibold">Análisis ERP</h4>
+                        <p class="text-sm text-gray-600">15 Feb, 2025</p>
+                        <p class="text-xs mt-2">Evaluación de opciones de ERP para reemplazar Physis</p>
+                      </div>
+                    </div>
+
+                    <!-- Hito 3: Selección de Proveedores -->
+                    <div class="milestone-item mb-8 lg:mb-0 text-center w-full lg:w-1/5">
+                      <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-handshake"></i>
+                      </div>
+                      <div class="bg-green-50 p-4 rounded-lg shadow">
+                        <h4 class="font-semibold">Selección</h4>
+                        <p class="text-sm text-gray-600">15 Mar, 2025</p>
+                        <p class="text-xs mt-2">Recomendación de proveedores y soluciones</p>
+                      </div>
+                    </div>
+
+                    <!-- Hito 4: Plan de Implementación -->
+                    <div class="milestone-item mb-8 lg:mb-0 text-center w-full lg:w-1/5">
+                      <div class="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-tasks"></i>
+                      </div>
+                      <div class="bg-yellow-50 p-4 rounded-lg shadow">
+                        <h4 class="font-semibold">Plan</h4>
+                        <p class="text-sm text-gray-600">15 Abr, 2025</p>
+                        <p class="text-xs mt-2">Estrategia de migración y capacitación</p>
+                      </div>
+                    </div>
+
+                    <!-- Hito 5: Cierre de Consultoría -->
+                    <div class="milestone-item text-center w-full lg:w-1/5">
+                      <div class="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-check-circle"></i>
+                      </div>
+                      <div class="bg-purple-50 p-4 rounded-lg shadow">
+                        <h4 class="font-semibold">Cierre</h4>
+                        <p class="text-sm text-gray-600">15 May, 2025</p>
+                        <p class="text-xs mt-2">Entrega de documentación y recomendaciones finales</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Leyenda del cronograma -->
+              <div class="flex flex-wrap justify-center gap-4 text-sm mt-8">
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-blue-500 rounded mr-2"></div>
+                  <span>Análisis y Evaluación</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-green-500 rounded mr-2"></div>
+                  <span>Selección de Soluciones</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-yellow-500 rounded mr-2"></div>
+                  <span>Planificación</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 bg-purple-500 rounded mr-2"></div>
+                  <span>Finalización</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metodología Ágil -->
+          <div>
+            <h3 class="text-2xl font-semibold text-center mb-8">Metodología Ágil - Fases de la Consultoría</h3>
+
+            <!-- Versión Mobile: Swipeable Cards -->
+            <div class="md:hidden">
+              <div class="relative bg-white rounded-lg shadow-lg p-6">
+                <!-- Barra progreso (no tocar) -->
+                <div class="flex items-center justify-between mb-6">
+                  <div class="flex-1 h-1 bg-gray-200 rounded-full mx-2">
+                    <div id="mobile-progress" class="h-full bg-primary rounded-full transition-all duration-500" style="width: 25%"></div>
+                  </div>
+                </div>
+
+                <!-- Indicador de Fase -->
+                <div class="text-center mb-6">
+                  <span class="bg-primary bg-opacity-10 text-primary text-sm font-semibold px-4 py-1 rounded-full" id="fase-indicator"> Fase 1 de 4 </span>
+                </div>
+
+                <!-- Contenedor de Cards -->
+                <div id="mobile-phases" class="overflow-hidden">
+                  <div class="flex transition-transform duration-300" style="transform: translateX(0%)">
+                    <!-- Fase 1: Diagnóstico -->
+                    <div class="w-full flex-shrink-0">
+                      <div class="text-center">
+                        <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                          <i class="fas fa-search text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-4">Diagnóstico</h4>
+                        <div class="space-y-4">
+                          <p class="text-gray-600">Análisis de procesos actuales y evaluación de escalabilidad de Physis</p>
+                          <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Duración</p>
+                              <p class="font-semibold text-gray-700">3 semanas</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Estado</p>
+                              <p class="font-semibold text-green-700">En progreso</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Fase 2: Evaluación -->
+                    <div class="w-full flex-shrink-0">
+                      <div class="text-center">
+                        <div class="w-20 h-20 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                          <i class="fas fa-balance-scale text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-4">Evaluación</h4>
+                        <div class="space-y-4">
+                          <p class="text-gray-600">Análisis comparativo de ERPs y soluciones complementarias</p>
+                          <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Duración</p>
+                              <p class="font-semibold text-gray-700">4 semanas</p>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Estado</p>
+                              <p class="font-semibold text-gray-700">Pendiente</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Fase 3: Recomendación -->
+                    <div class="w-full flex-shrink-0">
+                      <div class="text-center">
+                        <div class="w-20 h-20 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                          <i class="fas fa-clipboard-check text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-4">Recomendación</h4>
+                        <div class="space-y-4">
+                          <p class="text-gray-600">Propuesta detallada de soluciones y proveedores recomendados</p>
+                          <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Duración</p>
+                              <p class="font-semibold text-gray-700">2 semanas</p>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Estado</p>
+                              <p class="font-semibold text-gray-700">Pendiente</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Fase 4: Acompañamiento -->
+                    <div class="w-full flex-shrink-0">
+                      <div class="text-center">
+                        <div class="w-20 h-20 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                          <i class="fas fa-handshake text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-4">Acompañamiento</h4>
+                        <div class="space-y-4">
+                          <p class="text-gray-600">Asesoría durante selección de proveedores e implementación</p>
+                          <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Duración</p>
+                              <p class="font-semibold text-gray-700">8 semanas</p>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                              <p class="text-gray-500">Estado</p>
+                              <p class="font-semibold text-gray-700">Pendiente</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botones de navegación -->
+                <button id="prev-phase-mobile" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 disabled:opacity-50 disabled:cursor-not-allowed" title="Fase anterior" aria-label="Fase anterior">
+                  <i class="fas fa-chevron-left text-lg"></i>
+                </button>
+                <button id="next-phase-mobile" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 disabled:opacity-50 disabled:cursor-not-allowed" title="Fase siguiente" aria-label="Fase siguiente">
+                  <i class="fas fa-chevron-right text-lg"></i>
+                </button>
+
+                <!-- Indicadores de fase (dots) -->
+                <div class="flex justify-center space-x-2 mt-6">
+                  <button class="w-2 h-2 rounded-full bg-primary transition-all duration-300" data-phase="0" title="Fase 1" aria-label="Fase 1"></button>
+                  <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-phase="1" title="Fase 2" aria-label="Fase 2"></button>
+                  <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-phase="2" title="Fase 3" aria-label="Fase 3"></button>
+                  <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-phase="3" title="Fase 4" aria-label="Fase 4"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- La versión desktop del cronograma ha sido unificada en la sección anterior -->
+            <div class="hidden md:block bg-white rounded-lg shadow-lg p-8">
+              <!-- Metodología Ágil en formato de grid para pantallas medianas y grandes -->
+              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
+                <!-- Fase 1: Diagnóstico -->
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-search text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold mb-3">Diagnóstico</h4>
+                  <p class="text-sm text-gray-600 mb-3">Análisis de procesos actuales y evaluación de escalabilidad de Physis</p>
+                  <div class="grid grid-cols-2 gap-2 text-sm">
+                    <div class="bg-gray-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Duración</p>
+                      <p class="font-semibold text-gray-700">3 semanas</p>
+                    </div>
+                    <div class="bg-green-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Estado</p>
+                      <p class="font-semibold text-green-700">En progreso</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Fase 2: Evaluación -->
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-balance-scale text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold mb-3">Evaluación</h4>
+                  <p class="text-sm text-gray-600 mb-3">Análisis comparativo de ERPs y soluciones complementarias</p>
+                  <div class="grid grid-cols-2 gap-2 text-sm">
+                    <div class="bg-gray-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Duración</p>
+                      <p class="font-semibold text-gray-700">4 semanas</p>
+                    </div>
+                    <div class="bg-gray-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Estado</p>
+                      <p class="font-semibold text-gray-700">Pendiente</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Fase 3: Recomendación -->
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-clipboard-check text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold mb-3">Recomendación</h4>
+                  <p class="text-sm text-gray-600 mb-3">Propuesta detallada de soluciones y proveedores recomendados</p>
+                  <div class="grid grid-cols-2 gap-2 text-sm">
+                    <div class="bg-gray-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Duración</p>
+                      <p class="font-semibold text-gray-700">2 semanas</p>
+                    </div>
+                    <div class="bg-gray-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Estado</p>
+                      <p class="font-semibold text-gray-700">Pendiente</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Fase 4: Acompañamiento -->
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-handshake text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold mb-3">Acompañamiento</h4>
+                  <p class="text-sm text-gray-600 mb-3">Asesoría durante selección de proveedores e implementación</p>
+                  <div class="grid grid-cols-2 gap-2 text-sm">
+                    <div class="bg-gray-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Duración</p>
+                      <p class="font-semibold text-gray-700">8 semanas</p>
+                    </div>
+                    <div class="bg-gray-50 p-2 rounded-lg">
+                      <p class="text-gray-500 text-xs">Estado</p>
+                      <p class="font-semibold text-gray-700">Pendiente</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Presupuesto -->
+      <section id="presupuesto" class="py-12 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <!-- Título con diseño optimizado para móvil -->
+          <h2 class="relative text-center mb-10 md:mb-20">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate text-3xl md:text-4xl font-extrabold tracking-tight">Presupuesto</span>
+            <span class="block text-3xl md:text-5xl font-black mt-2 text-gray-800 tracking-tighter">del Proyecto</span>
+            <div class="absolute w-20 md:w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4 md:translate-y-6 shadow-lg"></div>
+          </h2>
+
+          <!-- Navegación rápida para móvil -->
+          <div class="flex justify-center mb-6 md:hidden">
+            <a href="#resumen-inversion" class="bg-primary text-white px-4 py-2 rounded-l-lg text-sm font-medium"> <i class="fas fa-money-bill-wave mr-1"></i>Resumen </a>
+            <a href="#detalles-inversion" class="bg-gray-700 text-white px-4 py-2 border-l border-gray-500 text-sm font-medium"> <i class="fas fa-list-ul mr-1"></i>Detalles </a>
+            <a href="#opciones-pago" class="bg-green-600 text-white px-4 py-2 rounded-r-lg text-sm font-medium"> <i class="fas fa-credit-card mr-1"></i>Pago </a>
+          </div>
+
+          <!-- Grid para desktop / Stack para móvil -->
+          <div class="grid lg:grid-cols-2 gap-3 sm:gap-4 md:gap-8 lg:gap-12">
+            <!-- Resumen del presupuesto optimizado para móvil -->
+            <div id="resumen-inversion" class="w-full overflow-x-hidden bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-3 sm:p-4 md:p-6 lg:p-8 shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <!-- Encabezado con total destacado -->
+              <div class="text-center mb-6 md:mb-8">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-semibold mb-3 md:mb-4">Inversión en Consultoría</h3>
+                <div class="bg-white rounded-lg p-3 md:p-4 shadow-md inline-block">
+                  <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">$245,000</div>
+                  <div class="text-gray-600 text-sm md:text-base">Pesos Argentinos</div>
+                  <div class="text-xs text-gray-500 mt-1">*Precios válidos por 30 días</div>
+                </div>
+              </div>
+
+              <!-- Gráfico circular responsivo para todas las resoluciones -->
+              <div class="mb-4 md:mb-6">
+                <div class="relative w-full max-w-[220px] h-40 md:h-48 lg:h-64 mx-auto">
+                  <!-- SVG para gráfico circular con estructura simplificada para JS -->
+                  <svg viewBox="0 0 100 100" class="w-full h-full" id="budget-chart">
+                    <!-- Fondo gris del gráfico -->
+                    <circle cx="50" cy="50" r="45" fill="transparent" stroke="#f3f4f6" stroke-width="10" />
+
+                    <!-- Círculos para cada categoría del presupuesto - simplificados para JS -->
+                    <!-- Estos círculos serán manipulados por JavaScript -->
+                    <circle id="chart-analisis" cx="50" cy="50" r="45" fill="transparent" stroke="#2563eb" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                    <circle id="chart-gestion" cx="50" cy="50" r="45" fill="transparent" stroke="#10b981" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                    <circle id="chart-supervision" cx="50" cy="50" r="45" fill="transparent" stroke="#8b5cf6" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                    <circle id="chart-capacitacion" cx="50" cy="50" r="45" fill="transparent" stroke="#f59e0b" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                  </svg>
+
+                  <!-- Texto central para total -->
+                  <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <span class="text-xs md:text-sm text-gray-500">Total</span>
+                    <span class="text-lg md:text-xl font-bold text-primary" id="total-budget">$0</span>
+                  </div>
+                </div>
+
+                <!-- Leyenda del gráfico responsiva -->
+                <div class="grid grid-cols-2 sm:grid-cols-2 gap-1 md:gap-2 lg:gap-4 text-xs md:text-sm mt-2 md:mt-4 max-w-xl mx-auto" id="budget-legend">
+                  <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="analisis">
+                    <div class="w-2 h-2 md:w-3 md:h-3 lg:w-4 lg:h-4 bg-blue-500 rounded-full mr-1 md:mr-2 flex-shrink-0"></div>
+                    <span class="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm truncate">Análisis</span>
+                  </div>
+                  <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="gestion">
+                    <div class="w-2 h-2 md:w-3 md:h-3 lg:w-4 lg:h-4 bg-green-500 rounded-full mr-1 md:mr-2 flex-shrink-0"></div>
+                    <span class="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm truncate">Gestión</span>
+                  </div>
+                  <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="supervision">
+                    <div class="w-2 h-2 md:w-3 md:h-3 lg:w-4 lg:h-4 bg-purple-500 rounded-full mr-1 md:mr-2 flex-shrink-0"></div>
+                    <span class="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm truncate">Supervisión</span>
+                  </div>
+                  <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="capacitacion">
+                    <div class="w-2 h-2 md:w-3 md:h-3 lg:w-4 lg:h-4 bg-yellow-500 rounded-full mr-1 md:mr-2 flex-shrink-0"></div>
+                    <span class="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm truncate">Capacitación</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desglose por categorías -->
+              <div class="space-y-2 md:space-y-3" id="budget-breakdown">
+                <div class="flex justify-between items-center p-2 md:p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow" data-category="analisis">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full mr-2"></div>
+                    <span class="font-medium text-xs md:text-sm category-name">Categoría 1</span>
+                  </div>
+                  <span class="text-primary font-semibold text-xs md:text-sm category-total">$0</span>
+                </div>
+                <div class="flex justify-between items-center p-2 md:p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow" data-category="gestion">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full mr-2"></div>
+                    <span class="font-medium text-xs md:text-sm category-name">Categoría 2</span>
+                  </div>
+                  <span class="text-primary font-semibold text-xs md:text-sm category-total">$0</span>
+                </div>
+                <div class="flex justify-between items-center p-2 md:p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow" data-category="supervision">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 md:w-3 md:h-3 bg-purple-500 rounded-full mr-2"></div>
+                    <span class="font-medium text-xs md:text-sm category-name">Categoría 3</span>
+                  </div>
+                  <span class="text-primary font-semibold text-xs md:text-sm category-total">$0</span>
+                </div>
+                <div class="flex justify-between items-center p-2 md:p-3 bg-white rounded shadow-sm hover:shadow-md transition-shadow" data-category="capacitacion">
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 md:w-3 md:h-3 bg-yellow-500 rounded-full mr-2"></div>
+                    <span class="font-medium text-xs md:text-sm category-name">Categoría 4</span>
+                  </div>
+                  <span class="text-primary font-semibold text-xs md:text-sm category-total">$0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detalles del presupuesto - Responsive para móvil y desktop -->
+            <div id="detalles-inversion" class="w-full overflow-x-hidden bg-white rounded-lg shadow-lg p-3 sm:p-4 md:p-6 lg:p-8">
+              <!-- Título con mayor espacio para móvil -->
+              <div class="mb-6 md:mb-8">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-semibold text-center relative">
+                  <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Detalles de la Inversión</span>
+                  <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-3 md:translate-y-4"></div>
+                </h3>
+              </div>
+
+              <!-- Selector de categoría para móvil con diseño mejorado -->
+              <div class="lg:hidden mb-4">
+                <div class="flex overflow-x-auto py-2 no-scrollbar justify-starts sm:justify-center">
+                  <button class="category-btn flex-shrink-0 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-blue-500 text-white mx-1 text-xs md:text-sm whitespace-nowrap shadow-sm" data-category="analisis"> <i class="fas fa-search mr-1"></i>Análisis </button>
+                  <button class="category-btn flex-shrink-0 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gray-200 text-gray-700 mx-1 text-xs md:text-sm whitespace-nowrap shadow-sm" data-category="gestion"> <i class="fas fa-sync-alt mr-1"></i>Gestión </button>
+                  <button class="category-btn flex-shrink-0 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gray-200 text-gray-700 mx-1 text-xs md:text-sm whitespace-nowrap shadow-sm" data-category="supervision"> <i class="fas fa-clipboard-check mr-1"></i>Supervisión </button>
+                  <button class="category-btn flex-shrink-0 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gray-200 text-gray-700 mx-1 text-xs md:text-sm whitespace-nowrap shadow-sm" data-category="capacitacion"> <i class="fas fa-graduation-cap mr-1"></i>Capacitación </button>
+                </div>
+              </div>
+
+              <!-- Acordeón para los detalles - Optimizado para móvil -->
+              <div class="space-y-3 md:space-y-4 accordion-container">
+                <!-- Análisis y Evaluación -->
+                <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 category-content lg:block" data-category="analisis">
+                  <div class="accordion-header flex justify-between items-center p-3 md:p-4 bg-white cursor-pointer hover:bg-blue-50 transition-all duration-300 rounded-t-lg">
+                    <h4 class="font-semibold flex items-center">
+                      <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-md mr-2 md:mr-3">
+                        <i class="fas fa-search text-xs md:text-sm"></i>
+                      </div>
+                      <span class="text-blue-600 text-sm md:text-base category-title">Análisis</span>
+                    </h4>
+                    <div class="flex items-center">
+                      <span class="font-bold text-primary mr-2 text-sm md:text-base category-accordion-total">$0</span>
+                      <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-chevron-down text-blue-500 transition-transform accordion-icon text-xs md:text-sm"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-content bg-gray-50 p-0 max-h-0 overflow-hidden transition-all duration-300">
+                    <div class="p-3 md:p-4 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white">
+                      <ul class="space-y-2">
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Diagnóstico de situación actual</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Evaluación comparativa de soluciones</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Selección de proveedores</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Informe técnico detallado</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Gestión del Cambio -->
+                <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 category-content hidden lg:block lg:mt-6" data-category="gestion">
+                  <div class="accordion-header flex justify-between items-center p-3 md:p-4 bg-white cursor-pointer hover:bg-green-50 transition-all duration-300 rounded-t-lg">
+                    <h4 class="font-semibold flex items-center">
+                      <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-green-500 flex items-center justify-center text-white shadow-md mr-2 md:mr-3">
+                        <i class="fas fa-sync-alt text-xs md:text-sm"></i>
+                      </div>
+                      <span class="text-green-600 text-sm md:text-base category-title">Gestión</span>
+                    </h4>
+                    <div class="flex items-center">
+                      <span class="font-bold text-primary mr-2 text-sm md:text-base category-accordion-total">$0</span>
+                      <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-chevron-down text-green-500 transition-transform accordion-icon text-xs md:text-sm"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-content bg-gray-50 p-0 max-h-0 overflow-hidden transition-all duration-300">
+                    <div class="p-3 md:p-4 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white">
+                      <ul class="space-y-2">
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Mapeo de procesos actuales</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Diseño de procesos optimizados</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Plan de comunicación interna</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Gestión de resistencia al cambio</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Supervisión de Implementación -->
+                <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 category-content hidden lg:block lg:mt-6" data-category="supervision">
+                  <div class="accordion-header flex justify-between items-center p-3 md:p-4 bg-white cursor-pointer hover:bg-purple-50 transition-all duration-300 rounded-t-lg">
+                    <h4 class="font-semibold flex items-center">
+                      <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-purple-500 flex items-center justify-center text-white shadow-md mr-2 md:mr-3">
+                        <i class="fas fa-clipboard-check text-xs md:text-sm"></i>
+                      </div>
+                      <span class="text-purple-600 text-sm md:text-base category-title">Supervisión</span>
+                    </h4>
+                    <div class="flex items-center">
+                      <span class="font-bold text-primary mr-2 text-sm md:text-base category-accordion-total">$0</span>
+                      <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-chevron-down text-purple-500 transition-transform accordion-icon text-xs md:text-sm"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-content bg-gray-50 p-0 max-h-0 overflow-hidden transition-all duration-300">
+                    <div class="p-3 md:p-4 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white">
+                      <ul class="space-y-2">
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Control de calidad del proveedor</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Seguimiento de hitos del proyecto</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Validación de entregables</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Informes de avance periódicos</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Capacitación -->
+                <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 category-content hidden lg:block lg:mt-6" data-category="capacitacion">
+                  <div class="accordion-header flex justify-between items-center p-3 md:p-4 bg-white cursor-pointer hover:bg-orange-50 transition-all duration-300 rounded-t-lg">
+                    <h4 class="font-semibold flex items-center">
+                      <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-orange-500 flex items-center justify-center text-white shadow-md mr-2 md:mr-3">
+                        <i class="fas fa-graduation-cap text-xs md:text-sm"></i>
+                      </div>
+                      <span class="text-orange-600 text-sm md:text-base category-title">Capacitación</span>
+                    </h4>
+                    <div class="flex items-center">
+                      <span class="font-bold text-primary mr-2 text-sm md:text-base category-accordion-total">$0</span>
+                      <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-orange-100 flex items-center justify-center">
+                        <i class="fas fa-chevron-down text-orange-500 transition-transform accordion-icon text-xs md:text-sm"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-content bg-gray-50 p-0 max-h-0 overflow-hidden transition-all duration-300">
+                    <div class="p-3 md:p-4 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white">
+                      <ul class="space-y-2">
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Plan de capacitación personalizado</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Materiales de capacitación</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Documentación de procesos</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                        <li class="bg-white rounded-lg p-2 md:p-3 shadow-sm flex justify-between items-center">
+                          <span class="text-gray-800 text-xs md:text-sm">Evaluación post-implementación</span>
+                          <span class="font-semibold text-primary text-xs md:text-sm">$0</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opciones de pago -->
+          <div id="opciones-pago" class="mt-8 md:mt-16 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 md:p-8 shadow-lg">
+            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8">Opciones de Pago</h3>
+
+            <!-- Tabs para móvil - Solo visible en móvil -->
+            <div class="md:hidden mb-6 bg-white rounded-lg overflow-hidden shadow">
+              <div class="flex text-sm font-medium border-b">
+                <button class="flex-1 py-3 px-2 bg-primary text-white text-center payment-tab active" data-tab="1"> <i class="fas fa-check-circle mr-1"></i>Pago Único </button>
+                <button class="flex-1 py-3 px-2 bg-gray-100 text-gray-700 text-center payment-tab" data-tab="2"> <i class="fas fa-star mr-1"></i>3 Cuotas </button>
+                <button class="flex-1 py-3 px-2 bg-gray-100 text-gray-700 text-center payment-tab" data-tab="3"> <i class="fas fa-calendar-alt mr-1"></i>5 Cuotas </button>
+              </div>
+            </div>
+
+            <!-- Contenedor responsivo de tarjetas de pago -->
+            <div class="payment-container">
+              <!-- Grid para desktop, contenedor de tarjetas únicas para ambas vistas -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Opción 1: Pago Único -->
+                <div class="payment-option bg-white rounded-lg p-6 text-center border-2 border-gray-200 md:border-gray-200 shadow-md hover:shadow-lg transition-shadow md:transform md:hover:-translate-y-1 md:transition-transform md:duration-300 relative payment-active" data-option="1">
+                  <!-- Badge para móvil y desktop -->
+                  <div class="absolute -top-3 left-1/2 md:-right-3 md:left-auto transform -translate-x-1/2 md:translate-x-0 bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full shadow-sm"> <i class="fas fa-tag mr-1"></i>5% de descuento </div>
+
+                  <h4 class="font-semibold mb-2 md:mb-4">Pago Único</h4>
+                  <div class="text-3xl md:text-2xl font-bold text-primary mb-2">$0</div>
+
+                  <!-- Badge solo para móvil -->
+                  <div class="md:hidden bg-green-50 text-green-700 text-xs inline-block px-3 py-1 rounded-full mb-3"> <i class="fas fa-check mr-1"></i>Mejor precio </div>
+
+                  <!-- Texto para desktop -->
+                  <p class="hidden md:block text-sm text-gray-600 mb-4">Descuento del 5% incluido</p>
+
+                  <!-- Lista de características (ajustada para móvil/desktop) -->
+                  <div class="space-y-2 mb-4 md:hidden">
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>Pago al inicio del proyecto</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>Descuento por pronto pago</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>Garantía extendida</span>
+                    </div>
+                  </div>
+
+                  <!-- Lista para desktop -->
+                  <ul class="hidden md:block text-xs text-gray-500 space-y-1">
+                    <li>• Pago al inicio del proyecto</li>
+                    <li>• Descuento por pronto pago</li>
+                    <li>• Garantía extendida</li>
+                  </ul>
+
+                  <!-- Botón solo para móvil -->
+                  <!-- <button class="md:hidden bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md w-full mt-2"> <i class="fas fa-credit-card mr-1"></i>Seleccionar </button> -->
+                </div>
+
+                <!-- Opción 2: 3 Cuotas -->
+                <div class="payment-option bg-white rounded-lg p-6 text-center border-2 border-primary md:border-primary shadow-md hover:shadow-lg transition-shadow md:transform md:hover:-translate-y-1 md:transition-transform md:duration-300 relative payment-hidden" data-option="2">
+                  <!-- Badge para móvil y desktop (diferente posición) -->
+                  <div class="absolute -top-3 left-1/2 md:-top-3 md:-right-3 md:left-auto transform -translate-x-1/2 md:translate-x-0 bg-primary text-white text-xs px-3 py-1 rounded-full shadow-md"> <i class="fas fa-trophy mr-1"></i>Recomendado </div>
+
+                  <h4 class="font-semibold mb-2 md:mb-4">3 Cuotas</h4>
+                  <div class="text-3xl md:text-2xl font-bold text-primary mb-2">$0</div>
+                  <div class="text-xs text-gray-500 mb-3">por cuota mensual</div>
+
+                  <!-- Lista de características (ajustada para móvil/desktop) -->
+                  <div class="space-y-2 mb-4 md:hidden">
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>30% al inicio</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>40% a los 30 días</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>30% al finalizar</span>
+                    </div>
+                  </div>
+
+                  <!-- Lista para desktop -->
+                  <ul class="hidden md:block text-xs text-gray-500 space-y-1">
+                    <li>• 30% al inicio</li>
+                    <li>• 40% a los 30 días</li>
+                    <li>• 30% al finalizar</li>
+                  </ul>
+
+                  <!-- Botón solo para móvil -->
+                  <!-- <button class="md:hidden bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md w-full mt-2"> <i class="fas fa-credit-card mr-1"></i>Seleccionar </button> -->
+                </div>
+
+                <!-- Opción 3: 5 Cuotas -->
+                <div class="payment-option bg-white rounded-lg p-6 text-center border-2 border-gray-200 shadow-md hover:shadow-lg transition-shadow md:transform md:hover:-translate-y-1 md:transition-transform md:duration-300 relative payment-hidden" data-option="3">
+                  <h4 class="font-semibold mb-2 md:mb-4">5 Cuotas</h4>
+                  <div class="text-3xl md:text-2xl font-bold text-primary mb-2">$0</div>
+                  <div class="text-xs text-gray-500 mb-3">por cuota mensual</div>
+
+                  <!-- Lista de características (ajustada para móvil/desktop) -->
+                  <div class="space-y-2 mb-4 md:hidden">
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>Cuotas fijas mensuales</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>Sin interés adicional</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                      <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                      <span>Flexibilidad de pago</span>
+                    </div>
+                  </div>
+
+                  <!-- Lista para desktop -->
+                  <ul class="hidden md:block text-xs text-gray-500 space-y-1">
+                    <li>• Cuotas fijas mensuales</li>
+                    <li>• Sin interés adicional</li>
+                    <li>• Flexibilidad de pago</li>
+                  </ul>
+
+                  <!-- Botón solo para móvil -->
+                  <!-- <button class="md:hidden bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md w-full mt-2"> <i class="fas fa-credit-card mr-1"></i>Seleccionar </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Contacto - Optimizada para responsive -->
+      <section id="contacto" class="py-12 md:py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="relative text-center mb-10 md:mb-20">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate text-3xl md:text-4xl font-extrabold tracking-tight">Contacta con</span>
+            <span class="block text-3xl md:text-5xl font-black mt-2 text-gray-800 tracking-tight">Nosotros</span>
+            <div class="w-20 md:w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto mt-4 md:mt-6 shadow-lg"></div>
+          </h2>
+
+          <!-- Navegación rápida para móvil -->
+          <div class="flex justify-center mb-8 md:hidden">
+            <a href="mailto:contacto@aceleratik.com?subject=Consulta%20para%20Aceleratik&body=Hola%2C%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." class="bg-primary text-white px-4 py-2 rounded-l-lg text-sm font-medium active" data-tab="form"> <i class="fas fa-envelope mr-1"></i>Mensaje </a>
+            <a href="https://maps.google.com/?q=Av.+Cordoba+2122,+CABA" target="_blank" rel="noopener" class="bg-gray-700 text-white px-4 py-2 border-l border-gray-500 text-sm font-medium" data-tab="info"> <i class="fas fa-map-marker-alt mr-1"></i>Ubicación </a>
+            <a href="tel:+541145678900" class="bg-green-600 text-white px-4 py-2 rounded-r-lg text-sm font-medium"> <i class="fas fa-phone mr-1"></i>Llamar </a>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-6 md:gap-12">
+            <!-- Formulario de contacto - adaptativo para móvil y desktop -->
+            <div id="form-contacto" class="bg-white rounded-lg shadow-md p-5 md:p-8 contact-content" data-content="form">
+              <h3 class="text-xl md:text-2xl font-semibold mb-4 md:mb-6">Envíanos un Mensaje</h3>
+              <form id="contact-form" class="space-y-4 md:space-y-6">
+                <!-- Campos con mejor espaciado para móvil -->
+                <div>
+                  <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1 md:mb-2"> Nombre Completo <span class="text-red-500">*</span> </label>
+                  <input type="text" id="nombre" name="nombre" required class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent touch-target" placeholder="Tu nombre completo" />
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1 md:mb-2"> Correo Electrónico <span class="text-red-500">*</span> </label>
+                  <input type="email" id="email" name="email" required class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent touch-target" placeholder="tu@email.com" inputmode="email" />
+                </div>
+
+                <!-- Diseño de dos columnas para campos opcionales en móvil -->
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label for="empresa" class="block text-sm font-medium text-gray-700 mb-1 md:mb-2"> Empresa </label>
+                    <input type="text" id="empresa" name="empresa" class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent touch-target" placeholder="Tu empresa" />
+                  </div>
+
+                  <div>
+                    <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1 md:mb-2"> Teléfono </label>
+                    <input type="tel" id="telefono" name="telefono" class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent touch-target" placeholder="+54 11 1234-5678" inputmode="tel" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="mensaje" class="block text-sm font-medium text-gray-700 mb-1 md:mb-2"> Mensaje <span class="text-red-500">*</span> </label>
+                  <textarea id="mensaje" name="mensaje" rows="4" required class="w-full px-3 py-2 md:px-4 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent touch-target" placeholder="Cuéntanos sobre tu proyecto o consulta..."></textarea>
+                </div>
+
+                <!-- Botón optimizado para móvil -->
+                <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-secondary transition-colors font-semibold touch-target"> <i class="fas fa-paper-plane mr-2"></i>Enviar Mensaje </button>
+              </form>
+            </div>
+
+            <!-- Información de contacto - adaptativo para móvil y desktop -->
+            <div id="info-contacto" class="contact-content contact-info-container" data-content="info">
+              <!-- Encabezado con pestañas para móvil -->
+              <div class="md:hidden bg-gray-100 rounded-lg overflow-hidden mb-6">
+                <div class="flex text-sm font-medium">
+                  <button class="flex-1 py-3 bg-primary text-white text-center active-tab contact-info-tab" data-tab="contact"> Contacto </button>
+                  <button class="flex-1 py-3 bg-gray-200 text-gray-700 text-center contact-info-tab" data-tab="map"> Mapa </button>
+                </div>
+              </div>
+
+              <h3 class="hidden md:block text-xl md:text-2xl font-semibold mb-6">Información de Contacto</h3>
+
+              <!-- Tarjetas de contacto para móvil y desktop -->
+              <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-6 contact-info-content" data-content="contact">
+                <!-- Dirección -->
+                <a href="https://maps.google.com/?q=Av. Cordoba 2122, Buenos Aires" target="_blank" rel="noopener" class="block bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                  <div class="flex items-center p-3 border-b border-gray-100">
+                    <div class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="ml-3">
+                      <h4 class="font-semibold text-sm md:text-base">Dirección</h4>
+                      <p class="text-xs md:text-sm text-primary">Ver en mapa</p>
+                    </div>
+                    <div class="ml-auto text-gray-400">
+                      <i class="fas fa-chevron-right"></i>
+                    </div>
+                  </div>
+                  <div class="p-3">
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                      Av. Cordoba 2122<br />
+                      Ciudad Autónoma de Buenos Aires
+                    </p>
+                  </div>
+                </a>
+
+                <!-- Teléfono -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                  <div class="flex items-center p-3 border-b border-gray-100">
+                    <div class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="ml-3">
+                      <h4 class="font-semibold text-sm md:text-base">Teléfono</h4>
+                    </div>
+                  </div>
+                  <div class="p-3 flex flex-col space-y-2">
+                    <a href="tel:+541145678900" class="flex items-center justify-between">
+                      <span class="text-gray-600 text-sm">+54 11 4567-8900</span>
+                      <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Llamar</span>
+                    </a>
+                    <a href="https://wa.me/5491123456789" class="flex items-center justify-between">
+                      <span class="text-gray-600 text-sm">+54 9 11 2345-6789</span>
+                      <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full"> <i class="fab fa-whatsapp mr-1"></i>WhatsApp </span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                  <div class="flex items-center p-3 border-b border-gray-100">
+                    <div class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="ml-3">
+                      <h4 class="font-semibold text-sm md:text-base">Email</h4>
+                    </div>
+                  </div>
+                  <div class="p-3 flex flex-col space-y-2">
+                    <a href="mailto:info@aceleratik.com" class="flex items-center justify-between">
+                      <span class="text-gray-600 text-sm">info@aceleratik.com</span>
+                      <span class="text-primary text-xs">
+                        <i class="fas fa-paper-plane"></i>
+                      </span>
+                    </a>
+                    <a href="mailto:proyectos@aceleratik.com" class="flex items-center justify-between">
+                      <span class="text-gray-600 text-sm">proyectos@aceleratik.com</span>
+                      <span class="text-primary text-xs">
+                        <i class="fas fa-paper-plane"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Horarios -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                  <div class="flex items-center p-3 border-b border-gray-100">
+                    <div class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="ml-3">
+                      <h4 class="font-semibold text-sm md:text-base">Horarios de Atención</h4>
+                    </div>
+                  </div>
+                  <div class="p-3">
+                    <div class="flex justify-between mb-1">
+                      <span class="text-gray-600 text-sm">Lunes a Viernes:</span>
+                      <span class="text-gray-800 text-sm font-medium">9:00 - 18:00</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-gray-600 text-sm">Sábados:</span>
+                      <span class="text-gray-800 text-sm font-medium">9:00 - 13:00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Redes sociales - visibles para móvil y desktop -->
+              <div class="bg-white rounded-lg shadow-sm p-4 mb-6 contact-info-content" data-content="contact">
+                <h4 class="font-semibold mb-3 text-sm md:text-base">Síguenos en Redes Sociales</h4>
+                <div class="flex justify-between">
+                  <a href="#" class="w-16 h-16 flex flex-col items-center justify-center rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center">
+                      <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <span class="text-xs mt-1 text-gray-600">LinkedIn</span>
+                  </a>
+                  <a href="#" class="w-16 h-16 flex flex-col items-center justify-center rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center">
+                      <i class="fab fa-twitter"></i>
+                    </div>
+                    <span class="text-xs mt-1 text-gray-600">Twitter</span>
+                  </a>
+                  <a href="#" class="w-16 h-16 flex flex-col items-center justify-center rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 bg-blue-800 text-white rounded-full flex items-center justify-center">
+                      <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <span class="text-xs mt-1 text-gray-600">Facebook</span>
+                  </a>
+                  <a href="#" class="w-16 h-16 flex flex-col items-center justify-center rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 bg-gradient-to-tr from-purple-600 to-pink-600 text-white rounded-full flex items-center justify-center">
+                      <i class="fab fa-instagram"></i>
+                    </div>
+                    <span class="text-xs mt-1 text-gray-600">Instagram</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Mapa - visible tanto en móvil como en desktop, pero controlado por tabs en móvil -->
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden contact-info-content hidden md:block" data-content="map">
+                <div id="google-map" class="aspect-video bg-gray-200 w-full h-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer - Optimizado para móvil -->
+    <footer class="bg-gray-900 text-white py-8 md:py-12">
+      <div class="container mx-auto px-4">
+        <!-- Sección principal para móvil con acordeón -->
+        <div class="md:hidden">
+          <!-- Logo y descripción siempre visible -->
+          <div class="text-center mb-6">
+            <div class="text-xl font-bold mb-3"> <i class="fas fa-rocket mr-1"></i>Aceleratik </div>
+            <p class="text-gray-400 text-xs px-6 mb-4"> Acelerando la transformación digital con soluciones tecnológicas innovadoras. </p>
+            <div class="flex justify-center space-x-5">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin text-lg"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter text-lg"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-facebook text-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Acordeón de enlaces para móvil -->
+          <div class="space-y-2 mb-6">
+            <!-- Servicios -->
+            <div class="border-b border-gray-800">
+              <button class="footer-accordion-btn flex justify-between items-center w-full py-2 px-1 text-left focus:outline-none">
+                <h4 class="font-semibold text-sm">Servicios</h4>
+                <i class="fas fa-chevron-down text-xs text-gray-500 transition-transform"></i>
+              </button>
+              <div class="footer-accordion-content max-h-0 overflow-hidden transition-all duration-300">
+                <ul class="py-2 space-y-2 text-xs text-gray-400">
+                  <li><a href="#" class="block py-1 hover:text-white transition-colors">Consultoría Tecnológica</a></li>
+                  <li><a href="#" class="block py-1 hover:text-white transition-colors">Desarrollo de Software</a></li>
+                  <li><a href="#" class="block py-1 hover:text-white transition-colors">Transformación Digital</a></li>
+                  <li><a href="#" class="block py-1 hover:text-white transition-colors">Análisis de Datos</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Empresa -->
+            <div class="border-b border-gray-800">
+              <button class="footer-accordion-btn flex justify-between items-center w-full py-2 px-1 text-left focus:outline-none">
+                <h4 class="font-semibold text-sm">Empresa</h4>
+                <i class="fas fa-chevron-down text-xs text-gray-500 transition-transform"></i>
+              </button>
+              <div class="footer-accordion-content max-h-0 overflow-hidden transition-all duration-300">
+                <ul class="py-2 space-y-2 text-xs text-gray-400">
+                  <li><a href="#inicio" class="block py-1 hover:text-white transition-colors">Sobre Nosotros</a></li>
+                  <li><a href="#equipo" class="block py-1 hover:text-white transition-colors">Nuestro Equipo</a></li>
+                  <li><a href="#proyecto" class="block py-1 hover:text-white transition-colors">Proyectos</a></li>
+                  <li><a href="#contacto" class="block py-1 hover:text-white transition-colors">Contacto</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Contacto -->
+            <div class="border-b border-gray-800">
+              <button class="footer-accordion-btn flex justify-between items-center w-full py-2 px-1 text-left focus:outline-none">
+                <h4 class="font-semibold text-sm">Contacto</h4>
+                <i class="fas fa-chevron-down text-xs text-gray-500 transition-transform"></i>
+              </button>
+              <div class="footer-accordion-content max-h-0 overflow-hidden transition-all duration-300">
+                <div class="py-2 space-y-2 text-xs text-gray-400">
+                  <a href="tel:+541145678900" class="flex items-center py-1">
+                    <i class="fas fa-phone mr-2"></i>
+                    <span>+54 11 4567-8900</span>
+                  </a>
+                  <a href="mailto:info@aceleratik.com" class="flex items-center py-1">
+                    <i class="fas fa-envelope mr-2"></i>
+                    <span>info@aceleratik.com</span>
+                  </a>
+                  <a href="https://maps.google.com/?q=Av. Cordoba 2122, Buenos Aires" class="flex items-start py-1">
+                    <i class="fas fa-map-marker-alt mr-2 mt-1"></i>
+                    <span>Av. Cordoba 2122, CABA</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vista para escritorio (diseño original con grid) -->
+        <div class="hidden md:grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="text-2xl font-bold mb-4"> <i class="fas fa-rocket mr-2"></i>Aceleratik </div>
+            <p class="text-gray-400 text-sm mb-4"> Acelerando la transformación digital del sector agrícola con soluciones tecnológicas innovadoras. </p>
+            <div class="flex space-x-3">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Servicios</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-white transition-colors">Consultoría Tecnológica</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Desarrollo de Software</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Transformación Digital</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Análisis de Datos</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Empresa</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#inicio" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+              <li><a href="#equipo" class="hover:text-white transition-colors">Nuestro Equipo</a></li>
+              <li><a href="#proyecto" class="hover:text-white transition-colors">Proyectos</a></li>
+              <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4">Contacto</h4>
+            <div class="space-y-2 text-sm text-gray-400">
+              <div class="flex items-center">
+                <i class="fas fa-phone mr-2"></i>
+                <span>+54 11 4567-8900</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-envelope mr-2"></i>
+                <span>info@aceleratik.com</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mr-2 mt-1"></i>
+                <span>Av. Cordoba 2122, CABA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright - Igual para ambas vistas -->
+        <div class="border-t border-gray-800 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-xs md:text-sm text-gray-400">
+          <p>&copy; 2025 Aceleratik. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- Cargar configuración antes que otros scripts -->
+    <script src="config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/maps.js"></script>
+  </body>
+</html>
