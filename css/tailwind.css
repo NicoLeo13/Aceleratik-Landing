@@ -1265,7 +1265,7 @@ img {
   }
 }
 
-/* Payment options styling */
+/* Opciones de pago */
 .payment-option {
   display: none;
 }
@@ -1304,7 +1304,7 @@ img {
   }
 }
 
-/* Contact section responsive styling */
+/* Sección de contacto */
 .contact-content {
   transition: all 0.3s ease-in-out;
 }
@@ -1321,7 +1321,60 @@ img {
   display: none;
 }
 
-/* Default state for mobile first */
+/* Sección de arquitectura */
+.architecture-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.architecture-btn {
+  color: white !important;
+}
+
+.architecture-btn span,
+.architecture-btn i {
+  color: white !important;
+}
+
+.architecture-btn:focus,
+.architecture-btn:active,
+.architecture-btn:hover {
+  color: white !important;
+}
+
+/* Tarjetas de arquitectura */
+.architecture-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.architecture-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.architecture-description {
+  min-height: 120px;
+}
+
+@media (min-width: 768px) {
+  .architecture-description {
+    min-height: 160px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .architecture-description {
+    min-height: 150px;
+  }
+}
+
+/* Reemplazamos architecture-button-container con mt-auto directamente en HTML */
+
+/* Estado por defecto para mobile first */
 @media (max-width: 767px) {
   .contact-content:not(.active-content) {
     display: none;
@@ -1332,7 +1385,7 @@ img {
   }
 }
 
-/* For desktop view */
+/* Para vista de escritorio */
 @media (min-width: 768px) {
   .contact-content {
     display: block;

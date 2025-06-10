@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initPaymentTabs();
   initProblemasAccordion();
   initBudgetChart();
+  initArchitectureSection();
 
   // Actualizar links activos después de cargar todo
   setTimeout(function () {
@@ -1505,4 +1506,400 @@ function initBudgetChart() {
     const paymentAmount = Math.round(totalBudget / 5);
     fivePayment.textContent = `$${paymentAmount.toLocaleString()}`;
   }
+}
+
+function initArchitectureSection() {
+  // Elementos para las tarjetas de arquitectura
+  const slider = document.getElementById("architecture-slider");
+  const sliderContent = slider?.querySelector(".flex");
+  const progressBar = document.getElementById("architecture-progress");
+  const indicator = document.getElementById("architecture-indicator");
+  const prevBtn = document.getElementById("prev-arch");
+  const nextBtn = document.getElementById("next-arch");
+  const dots = document.querySelectorAll(".architecture-dot");
+
+  // Elementos para el modal de arquitectura
+  const modal = document.getElementById("architecture-modal");
+  const modalBackdrop = document.getElementById("modal-backdrop");
+  const modalTitle = document.getElementById("modal-title");
+  const modalImage = document.getElementById("architecture-image");
+  const closeModalBtn = document.getElementById("close-modal");
+  const closeModalBtnFooter = document.getElementById("close-modal-btn");
+  const downloadBtn = document.getElementById("download-architecture");
+
+  // Botones para mostrar imágenes de arquitectura
+  const currentArchBtn = document.getElementById("btn-show-current-arch");
+  const targetArchBtn = document.getElementById("btn-show-target-arch");
+  const currentArchBtnDesktop = document.getElementById("btn-show-current-arch-desktop");
+  const targetArchBtnDesktop = document.getElementById("btn-show-target-arch-desktop");
+
+  // Imágenes de arquitectura
+  const architectureImages = {
+    current: "img/AE.webp",
+    target: "img/AD.webp",
+  };
+
+  // Índice de la arquitectura actual (0: actual, 1: destino)
+  let currentArchIndex = 0;
+
+  // Variables para el swipe en móvil
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+
+  // Inicializar componentes de arquitectura si existen
+  if (!slider) return;
+
+  // FUNCIONES
+
+  // Ir a la arquitectura - actualizar todos los elementos de la interfaz
+  function goToArchSlide(index) {
+    if (!sliderContent) return;
+
+    // Actualizar índice y limitar
+    currentArchIndex = Math.max(0, Math.min(index, 1));
+
+    // Actualizar transform para el movimiento de la tarjeta
+    sliderContent.style.transform = `translateX(-${currentArchIndex * 100}%)`;
+
+    // Actualizar ancho y color de la barra de progreso
+    if (progressBar) {
+      progressBar.style.width = currentArchIndex === 0 ? "50%" : "100%";
+
+      if (currentArchIndex === 0) {
+        progressBar.style.background = "linear-gradient(to right, #2563eb, #4f46e5)";
+      } else {
+        progressBar.style.background = "linear-gradient(to right, #10b981, #0d9488)";
+      }
+    }
+
+    // Actualizar texto e estilo del indicador
+    if (indicator) {
+      if (currentArchIndex === 0) {
+        indicator.textContent = "Actual";
+        indicator.style.backgroundColor = "rgba(37, 99, 235, 0.1)";
+        indicator.style.color = "#2563eb";
+        indicator.style.borderColor = "#dbeafe";
+      } else {
+        indicator.textContent = "Destino";
+        indicator.style.backgroundColor = "rgba(16, 185, 129, 0.1)";
+        indicator.style.color = "#10b981";
+        indicator.style.borderColor = "#d1fae5";
+      }
+    }
+
+    // Actualizar estado de los puntos
+    updateDotsState();
+
+    // Habilitar/deshabilitar botones de navegación
+    if (prevBtn) prevBtn.disabled = currentArchIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentArchIndex === 1;
+  }
+
+  // Actualizar estado de los puntos
+  function updateDotsState() {
+    dots.forEach((dot, i) => {
+      if (i === currentArchIndex) {
+        dot.classList.add("bg-primary");
+        dot.classList.remove("bg-gray-300");
+      } else {
+        dot.classList.remove("bg-primary");
+        dot.classList.add("bg-gray-300");
+      }
+    });
+  }
+
+  // Mostrar modal con imagen de arquitectura
+  function showArchitectureModal(type) {
+    if (!modal || !modalImage || !modalTitle) return;
+
+    // Configurar contenido del modal
+    modalTitle.textContent = type === "current" ? "Arquitectura Actual" : "Arquitectura Destino";
+    modalImage.src = architectureImages[type];
+    modalImage.alt = type === "current" ? "Diagrama de arquitectura actual" : "Diagrama de arquitectura propuesta";
+
+    // Configurar botón de descarga
+    if (downloadBtn) {
+      downloadBtn.onclick = () => {
+        const link = document.createElement("a");
+        link.href = architectureImages[type];
+        link.download = type === "current" ? "arquitectura-actual.webp" : "arquitectura-destino.webp";
+        link.click();
+      };
+    }
+
+    // Mostrar modal con animación
+    modal.classList.remove("hidden");
+
+    // Agregar clase al body para evitar desplazamiento
+    document.body.classList.add("overflow-hidden");
+
+    // Activar animaciones después de un pequeño retraso para asegurar que el modal esté visible
+    setTimeout(() => {
+      if (modalBackdrop) modalBackdrop.classList.add("opacity-100");
+      if (modal.querySelector(".relative")) {
+        const modalContent = modal.querySelector(".relative");
+        modalContent.classList.remove("scale-95", "opacity-0");
+        modalContent.classList.add("scale-100", "opacity-100");
+      }
+    }, 10);
+  }
+
+  // Inicializar estilos y estados de los botones
+  function setupButtonStyles() {
+    // Obtener todos los botones de arquitectura
+    const buttons = document.querySelectorAll(".architecture-btn");
+
+    // Configurar estilos por defecto según su contenedor
+    buttons.forEach((button) => {
+      // Asegurar que los botones mantengan su fondo gradiente
+      button.addEventListener("focus", (e) => {
+        // Prevenir estilos de foco por defecto que puedan sobreescribir nuestros estilos personalizados
+        e.preventDefault();
+        e.target.blur();
+      });
+
+      // Forzar texto a ser siempre blanco independientemente del estado
+      button.classList.add("text-white", "!text-white");
+
+      // Agregar listener de clic para asegurar que los estilos se mantengan consistentes después de hacer clic
+      button.addEventListener("click", () => {
+        // Pequeño retraso para asegurar que el navegador tenga tiempo para aplicar cualquier estilo por defecto
+        setTimeout(() => {
+          // Para botones azules (arquitectura actual)
+          if (button.id.includes("current")) {
+            button.classList.remove("bg-white", "border-blue-200", "text-primary", "text-blue-600", "text-black", "text-gray-700", "text-gray-800");
+            button.classList.add("bg-gradient-to-r", "from-blue-500", "to-indigo-600", "text-white", "!text-white");
+          }
+
+          // Para botones verdes (arquitectura destino)
+          if (button.id.includes("target")) {
+            button.classList.remove("bg-white", "border-green-200", "text-green-600", "text-black", "text-gray-700", "text-gray-800");
+            button.classList.add("bg-gradient-to-r", "from-green-500", "to-teal-600", "text-white", "!text-white");
+          }
+
+          // Forzar todos los elementos de texto dentro del botón a ser blanco
+          const textElements = button.querySelectorAll("span, i");
+          textElements.forEach((el) => {
+            el.classList.add("text-white", "!text-white");
+          });
+        }, 10);
+      });
+
+      // Para botones azules (arquitectura actual)
+      if (button.id.includes("current")) {
+        button.classList.remove("bg-white", "border-blue-200", "text-primary", "text-blue-600", "text-black", "text-gray-700", "text-gray-800");
+        button.classList.add("bg-gradient-to-r", "from-blue-500", "to-indigo-600", "text-white", "!text-white");
+      }
+
+      // Para botones verdes (arquitectura destino)
+      if (button.id.includes("target")) {
+        button.classList.remove("bg-white", "border-green-200", "text-green-600", "text-black", "text-gray-700", "text-gray-800");
+        button.classList.add("bg-gradient-to-r", "from-green-500", "to-teal-600", "text-white", "!text-white");
+      }
+
+      // Forzar todos los elementos de texto dentro del botón a ser blanco
+      const textElements = button.querySelectorAll("span, i");
+      textElements.forEach((el) => {
+        el.classList.add("text-white", "!text-white");
+      });
+    });
+  }
+
+  // Ocultar modal
+  function hideModal() {
+    if (!modal) return;
+
+    // Ocultar con animación
+    if (modalBackdrop) modalBackdrop.classList.remove("opacity-100");
+    if (modal.querySelector(".relative")) {
+      const modalContent = modal.querySelector(".relative");
+      modalContent.classList.remove("scale-100", "opacity-100");
+      modalContent.classList.add("scale-95", "opacity-0");
+    }
+
+    // Después de la animación, ocultar completamente
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      // Eliminar clase del body para permitir el desplazamiento nuevamente
+      document.body.classList.remove("overflow-hidden");
+
+      updateDotsState();
+    }, 300);
+  }
+
+  // Manejar inicio de swipe en móvil
+  function handleTouchStart(e) {
+    // No iniciar swipe si se toca un botón o elemento interactivo
+    if (e.target.closest(".architecture-btn") || e.target.closest("button")) {
+      return;
+    }
+
+    startX = e.touches[0].clientX;
+    isDragging = true;
+
+    // Stop any ongoing transition
+    if (sliderContent) {
+      sliderContent.style.transition = "none";
+    }
+  }
+
+  // Manejar movimiento de swipe en móvil
+  function handleTouchMove(e) {
+    if (!isDragging) return;
+
+    // No mover si se toca un botón
+    if (e.target.closest(".architecture-btn") || e.target.closest("button")) {
+      return;
+    }
+
+    currentX = e.touches[0].clientX;
+    const diffX = currentX - startX;
+    const translateX = -currentArchIndex * 100 + (diffX / slider.offsetWidth) * 100;
+
+    // Restringir movimiento dentro de los límites
+    if (translateX <= 0 && translateX >= -100) {
+      sliderContent.style.transform = `translateX(${translateX}%)`;
+    }
+  }
+
+  // Manejar fin de swipe en móvil
+  function handleTouchEnd(e) {
+    if (!isDragging) return;
+
+    // No procesar swipe si termina en un botón
+    if (e.target.closest(".architecture-btn") || e.target.closest("button")) {
+      isDragging = false;
+      if (sliderContent) {
+        sliderContent.style.transition = "transform 0.3s ease-out";
+        // Restablecer a la posición actual
+        sliderContent.style.transform = `translateX(-${currentArchIndex * 100}%)`;
+      }
+      return;
+    }
+
+    isDragging = false;
+
+    // Restaurar transición
+    if (sliderContent) {
+      sliderContent.style.transition = "transform 0.3s ease-out";
+    }
+
+    // Calcular dirección y distancia del swipe
+    const diffX = currentX - startX;
+    const threshold = slider.offsetWidth * 0.2; // 20% del ancho del umbral para el swipe
+
+    if (Math.abs(diffX) > threshold) {
+      // Swipe suficientemente lejos para cambiar de tarjeta
+      if (diffX > 0 && currentArchIndex > 0) {
+        // Swipe hacia la derecha, ir a la tarjeta anterior
+        goToArchSlide(currentArchIndex - 1);
+      } else if (diffX < 0 && currentArchIndex < 1) {
+        // Swipe hacia la izquierda, ir a la tarjeta siguiente
+        goToArchSlide(currentArchIndex + 1);
+      } else {
+        // Restablecer a la posición actual
+        goToArchSlide(currentArchIndex);
+      }
+    } else {
+      goToArchSlide(currentArchIndex);
+    }
+  }
+
+  // LISTENERS
+
+  // Botones de navegación
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => goToArchSlide(currentArchIndex - 1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => goToArchSlide(currentArchIndex + 1));
+  }
+
+  // Puntos de indicador
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => goToArchSlide(index));
+  });
+
+  // Botones de arquitectura
+  if (currentArchBtn) {
+    currentArchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showArchitectureModal("current");
+    });
+
+    // Prevenir eventos de toque que interfieran con los clics de los botones
+    currentArchBtn.addEventListener("touchstart", (e) => e.stopPropagation());
+    currentArchBtn.addEventListener("touchmove", (e) => e.stopPropagation());
+    currentArchBtn.addEventListener("touchend", (e) => e.stopPropagation());
+  }
+
+  if (targetArchBtn) {
+    targetArchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showArchitectureModal("target");
+    });
+
+    // Prevenir eventos de toque que interfieran con los clics de los botones
+    targetArchBtn.addEventListener("touchstart", (e) => e.stopPropagation());
+    targetArchBtn.addEventListener("touchmove", (e) => e.stopPropagation());
+    targetArchBtn.addEventListener("touchend", (e) => e.stopPropagation());
+  }
+
+  if (currentArchBtnDesktop) {
+    currentArchBtnDesktop.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showArchitectureModal("current");
+    });
+  }
+
+  if (targetArchBtnDesktop) {
+    targetArchBtnDesktop.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      showArchitectureModal("target");
+    });
+  }
+
+  // Botones de cierre del modal
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", hideModal);
+  }
+
+  if (closeModalBtnFooter) {
+    closeModalBtnFooter.addEventListener("click", hideModal);
+  }
+
+  // Cerrar modal al hacer clic fuera
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) {
+        hideModal();
+      }
+    });
+  }
+
+  // Cerrar modal con la tecla Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
+      hideModal();
+    }
+  });
+
+  // Eventos de toque para el swipe en móvil
+  if (slider) {
+    slider.addEventListener("touchstart", handleTouchStart, { passive: true });
+    slider.addEventListener("touchmove", handleTouchMove, { passive: true });
+    slider.addEventListener("touchend", handleTouchEnd, { passive: true });
+  }
+
+  // Inicializar estado
+  goToArchSlide(0);
+
+  // Inicializar estilos y estados de los botones
+  setupButtonStyles();
 }

@@ -14,6 +14,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link href="css/tailwind.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
     <!-- Cosas pa q cargue bien en lectores de pantalla -->
     <script>
       // truco para que no rompa todo
@@ -233,21 +236,7 @@
                   </div>
                 </div>
 
-                <!-- Hito 3: Expansión -->
-                <div class="timeline-item mb-8 pl-12 relative">
-                  <div class="absolute left-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center z-10 timeline-dot">
-                    <i class="fas fa-users text-white text-sm"></i>
-                  </div>
-                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
-                    <div class="flex justify-between items-center mb-2">
-                      <h4 class="font-semibold text-base">2025</h4>
-                      <span class="text-xs font-medium bg-green-100 text-green-700 py-1 px-2 rounded-full">Expansión</span>
-                    </div>
-                    <p class="text-sm text-gray-600">Expansión del equipo y desarrollo de metodologías propias de transformación digital.</p>
-                  </div>
-                </div>
-
-                <!-- Hito 4: Alianzas -->
+                <!-- Hito 3: Alianzas -->
                 <div class="timeline-item mb-8 pl-12 relative">
                   <div class="absolute left-0 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center z-10 timeline-dot">
                     <i class="fas fa-handshake text-white text-sm"></i>
@@ -258,6 +247,20 @@
                       <span class="text-xs font-medium bg-yellow-100 text-yellow-700 py-1 px-2 rounded-full">Alianzas</span>
                     </div>
                     <p class="text-sm text-gray-600">Alianzas estratégicas con proveedores tecnológicos líderes en el mercado.</p>
+                  </div>
+                </div>
+
+                <!-- Hito 4: Expansión -->
+                <div class="timeline-item mb-8 pl-12 relative">
+                  <div class="absolute left-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center z-10 timeline-dot">
+                    <i class="fas fa-users text-white text-sm"></i>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-semibold text-base">2025</h4>
+                      <span class="text-xs font-medium bg-green-100 text-green-700 py-1 px-2 rounded-full">Expansión</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Expansión del equipo y desarrollo de metodologías propias de transformación digital.</p>
                   </div>
                 </div>
 
@@ -522,6 +525,111 @@
         </div>
       </section>
 
+      <!-- Enfoque consultoría - Optimizados para móvil -->
+      <!-- TODO: Armar seccion de enfoque de consultoría -->
+      <div class="container mx-auto px-4">
+        <div class="mb-12 md:mb-16">
+        <h3 class="text-xl md:text-2xl font-semibold text-center py-12 mb-6 md:mb-8 relative">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Enfoque de Nuestra Consultoría</span>
+          <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-2"></div>
+        </h3>
+
+        <!-- Versión móvil - Tarjetas horizontales para mejor UX -->
+        <div class="flex flex-col space-y-3 md:hidden">
+          <div class="enfoque-card bg-blue-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+            <div class="flex items-center p-3">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                <i class="fas fa-search text-xl text-blue-600"></i>
+              </div>
+              <div class="flex-grow">
+                <h4 class="font-semibold text-blue-800 text-base">Diagnóstico</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Análisis integral del negocio para identificar cuellos de botella y oportunidades</p>
+              </div>
+              <!-- <div class="flex-shrink-0 text-blue-400">
+                <i class="fas fa-chevron-right"></i>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="enfoque-card bg-green-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+            <div class="flex items-center p-3">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                <i class="fas fa-sitemap text-xl text-green-600"></i>
+              </div>
+              <div class="flex-grow">
+                <h4 class="font-semibold text-green-800 text-base">Mapeo de Procesos</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Documentación y comprensión de los procesos clave del negocio</p>
+              </div>
+              <!-- <div class="flex-shrink-0 text-green-400">
+                <i class="fas fa-chevron-right"></i>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="enfoque-card bg-purple-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+            <div class="flex items-center p-3">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                <i class="fas fa-lightbulb text-xl text-purple-600"></i>
+              </div>
+              <div class="flex-grow">
+                <h4 class="font-semibold text-purple-800 text-base">Soluciones TI</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Recomendaciones tecnológicas personalizadas para resolver problemas específicos</p>
+              </div>
+              <!-- <div class="flex-shrink-0 text-purple-400">
+                <i class="fas fa-chevron-right"></i>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="enfoque-card bg-orange-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
+            <div class="flex items-center p-3">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
+                <i class="fas fa-handshake text-xl text-orange-600"></i>
+              </div>
+              <div class="flex-grow">
+                <h4 class="font-semibold text-orange-800 text-base">Acompañamiento</h4>
+                <p class="text-xs text-gray-600 leading-relaxed">Soporte en la selección de proveedores y supervisión de implementaciones</p>
+              </div>
+              <!-- <div class="flex-shrink-0 text-orange-400">
+                <i class="fas fa-chevron-right"></i>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Versión desktop - Mantener el grid original -->
+        <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="enfoque-card bg-blue-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+            <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+              <i class="fas fa-search text-3xl text-blue-600 transition-transform duration-300"></i>
+            </div>
+            <h4 class="font-semibold mb-2 text-blue-800">Diagnóstico</h4>
+            <p class="text-sm text-gray-600">Análisis integral del negocio para identificar cuellos de botella y oportunidades</p>
+          </div>
+          <div class="enfoque-card bg-green-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+            <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+              <i class="fas fa-sitemap text-3xl text-green-600 transition-transform duration-300"></i>
+            </div>
+            <h4 class="font-semibold mb-2 text-green-800">Mapeo de Procesos</h4>
+            <p class="text-sm text-gray-600">Documentación y comprensión de los procesos clave del negocio</p>
+          </div>
+          <div class="enfoque-card bg-purple-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+            <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+              <i class="fas fa-lightbulb text-3xl text-purple-600 transition-transform duration-300"></i>
+            </div>
+            <h4 class="font-semibold mb-2 text-purple-800">Soluciones TI</h4>
+            <p class="text-sm text-gray-600">Recomendaciones tecnológicas personalizadas para resolver problemas específicos</p>
+          </div>
+          <div class="enfoque-card bg-orange-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+            <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
+              <i class="fas fa-handshake text-3xl text-orange-600 transition-transform duration-300"></i>
+            </div>
+            <h4 class="font-semibold mb-2 text-orange-800">Acompañamiento</h4>
+            <p class="text-sm text-gray-600">Soporte en la selección de proveedores y supervisión de implementaciones</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Sección Proyecto Actual - Optimizada para móvil -->
       <section id="proyecto" class="py-12 md:py-20 bg-white">
         <div class="container mx-auto px-4">
@@ -640,109 +748,6 @@
             </div>
           </div>
 
-          <!-- Objetivos del proyecto - Optimizados para móvil -->
-          <div class="mb-12 md:mb-16">
-            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Enfoque de Nuestra Consultoría</span>
-              <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-2"></div>
-            </h3>
-
-            <!-- Versión móvil - Tarjetas horizontales para mejor UX -->
-            <div class="flex flex-col space-y-3 md:hidden">
-              <div class="enfoque-card bg-blue-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
-                <div class="flex items-center p-3">
-                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
-                    <i class="fas fa-search text-xl text-blue-600"></i>
-                  </div>
-                  <div class="flex-grow">
-                    <h4 class="font-semibold text-blue-800 text-base">Diagnóstico</h4>
-                    <p class="text-xs text-gray-600 leading-relaxed">Análisis integral del negocio para identificar cuellos de botella y oportunidades</p>
-                  </div>
-                  <!-- <div class="flex-shrink-0 text-blue-400">
-                    <i class="fas fa-chevron-right"></i>
-                  </div> -->
-                </div>
-              </div>
-
-              <div class="enfoque-card bg-green-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
-                <div class="flex items-center p-3">
-                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
-                    <i class="fas fa-sitemap text-xl text-green-600"></i>
-                  </div>
-                  <div class="flex-grow">
-                    <h4 class="font-semibold text-green-800 text-base">Mapeo de Procesos</h4>
-                    <p class="text-xs text-gray-600 leading-relaxed">Documentación y comprensión de los procesos clave del negocio</p>
-                  </div>
-                  <!-- <div class="flex-shrink-0 text-green-400">
-                    <i class="fas fa-chevron-right"></i>
-                  </div> -->
-                </div>
-              </div>
-
-              <div class="enfoque-card bg-purple-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
-                <div class="flex items-center p-3">
-                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
-                    <i class="fas fa-lightbulb text-xl text-purple-600"></i>
-                  </div>
-                  <div class="flex-grow">
-                    <h4 class="font-semibold text-purple-800 text-base">Soluciones TI</h4>
-                    <p class="text-xs text-gray-600 leading-relaxed">Recomendaciones tecnológicas personalizadas para resolver problemas específicos</p>
-                  </div>
-                  <!-- <div class="flex-shrink-0 text-purple-400">
-                    <i class="fas fa-chevron-right"></i>
-                  </div> -->
-                </div>
-              </div>
-
-              <div class="enfoque-card bg-orange-50 rounded-lg shadow-sm transition-all duration-300 touch-feedback">
-                <div class="flex items-center p-3">
-                  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md mr-4">
-                    <i class="fas fa-handshake text-xl text-orange-600"></i>
-                  </div>
-                  <div class="flex-grow">
-                    <h4 class="font-semibold text-orange-800 text-base">Acompañamiento</h4>
-                    <p class="text-xs text-gray-600 leading-relaxed">Soporte en la selección de proveedores y supervisión de implementaciones</p>
-                  </div>
-                  <!-- <div class="flex-shrink-0 text-orange-400">
-                    <i class="fas fa-chevron-right"></i>
-                  </div> -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Versión desktop - Mantener el grid original -->
-            <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div class="enfoque-card bg-blue-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
-                  <i class="fas fa-search text-3xl text-blue-600 transition-transform duration-300"></i>
-                </div>
-                <h4 class="font-semibold mb-2 text-blue-800">Diagnóstico</h4>
-                <p class="text-sm text-gray-600">Análisis integral del negocio para identificar cuellos de botella y oportunidades</p>
-              </div>
-              <div class="enfoque-card bg-green-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
-                  <i class="fas fa-sitemap text-3xl text-green-600 transition-transform duration-300"></i>
-                </div>
-                <h4 class="font-semibold mb-2 text-green-800">Mapeo de Procesos</h4>
-                <p class="text-sm text-gray-600">Documentación y comprensión de los procesos clave del negocio</p>
-              </div>
-              <div class="enfoque-card bg-purple-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
-                  <i class="fas fa-lightbulb text-3xl text-purple-600 transition-transform duration-300"></i>
-                </div>
-                <h4 class="font-semibold mb-2 text-purple-800">Soluciones TI</h4>
-                <p class="text-sm text-gray-600">Recomendaciones tecnológicas personalizadas para resolver problemas específicos</p>
-              </div>
-              <div class="enfoque-card bg-orange-50 rounded-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="icon-container inline-block rounded-full bg-white p-4 shadow-md mb-4 transition-all duration-300">
-                  <i class="fas fa-handshake text-3xl text-orange-600 transition-transform duration-300"></i>
-                </div>
-                <h4 class="font-semibold mb-2 text-orange-800">Acompañamiento</h4>
-                <p class="text-sm text-gray-600">Soporte en la selección de proveedores y supervisión de implementaciones</p>
-              </div>
-            </div>
-          </div>
-
           <!-- Problemas actuales - Optimizados para móvil -->
           <div class="mb-12 md:mb-16">
             <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
@@ -846,6 +851,404 @@
             </div>
           </div>
 
+          <!-- Objetivos Estratégicos - Optimizados para móvil -->
+          <div class="mb-12 md:mb-16">
+            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-blue-600">Objetivos Estratégicos</span>
+              <div class="absolute w-16 h-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
+            </h3>
+
+            <!-- Versión móvil - Tarjetas horizontales -->
+            <div class="flex flex-col space-y-3 md:hidden">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden objetivo-card hover:shadow-lg transform transition-all duration-500 hover:translate-x-1">
+                <div class="w-full bg-green-600 px-4 py-3 flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 animate-pulse-slow">
+                    <i class="fas fa-chart-line text-green-600 text-sm"></i>
+                  </div>
+                  <h4 class="font-semibold text-white ml-3 text-sm">Crecimiento del Mercado</h4>
+                </div>
+                <div class="p-4">
+                  <p class="text-gray-700 text-sm leading-relaxed">Aumentar la participación en el mercado ganadero en un <span class="font-semibold text-green-600">15% en 5 años</span>, multiplicando por cinco el volumen actual de operaciones.</p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden objetivo-card hover:shadow-lg transform transition-all duration-500 hover:translate-x-1">
+                <div class="w-full bg-blue-600 px-4 py-3 flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 animate-pulse-slow">
+                    <i class="fas fa-trophy text-blue-600 text-sm"></i>
+                  </div>
+                  <h4 class="font-semibold text-white ml-3 text-sm">Liderazgo del Sector</h4>
+                </div>
+                <div class="p-4">
+                  <p class="text-gray-700 text-sm leading-relaxed">Superar al Mercado de Liniers como principal referente ganadero, impulsando un cambio cultural en el sector mediante la propuesta digital.</p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden objetivo-card hover:shadow-lg transform transition-all duration-500 hover:translate-x-1">
+                <div class="w-full bg-indigo-600 px-4 py-3 flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 animate-pulse-slow">
+                    <i class="fas fa-globe-americas text-indigo-600 text-sm"></i>
+                  </div>
+                  <h4 class="font-semibold text-white ml-3 text-sm">Expansión Internacional</h4>
+                </div>
+                <div class="p-4">
+                  <p class="text-gray-700 text-sm leading-relaxed">Regionalizar los servicios digitales para ganar participación en mercados internacionales y facilitar negociaciones transfronterizas.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Versión desktop - Grid de 3 columnas -->
+            <div class="hidden md:grid md:grid-cols-3 gap-8">
+              <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-500 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 objetivo-card-desktop">
+                <div class="text-center mb-4">
+                  <div class="inline-block p-3 bg-green-100 rounded-full objetivo-icon-container">
+                    <i class="fas fa-chart-line text-2xl text-green-600 objetivo-icon"></i>
+                  </div>
+                  <h4 class="text-xl font-semibold mt-3 mb-3">Crecimiento del Mercado</h4>
+                </div>
+                <p class="text-gray-700">Aumentar la participación en el mercado ganadero en un <span class="font-semibold text-green-600">15% en 5 años</span>, multiplicando por cinco el volumen actual de operaciones y consolidándose como actor relevante en el sector.</p>
+              </div>
+              
+              <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-blue-500 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 objetivo-card-desktop">
+                <div class="text-center mb-4">
+                  <div class="inline-block p-3 bg-blue-100 rounded-full objetivo-icon-container">
+                    <i class="fas fa-trophy text-2xl text-blue-600 objetivo-icon"></i>
+                  </div>
+                  <h4 class="text-xl font-semibold mt-3 mb-3">Liderazgo del Sector</h4>
+                </div>
+                <p class="text-gray-700">Superar al histórico Mercado de Liniers como principal referente de comercialización ganadera, impulsando un cambio cultural mediante una propuesta digital moderna, eficiente y de alcance federal.</p>
+              </div>
+              
+              <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-indigo-500 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 objetivo-card-desktop">
+                <div class="text-center mb-4">
+                  <div class="inline-block p-3 bg-indigo-100 rounded-full objetivo-icon-container">
+                    <i class="fas fa-globe-americas text-2xl text-indigo-600 objetivo-icon"></i>
+                  </div>
+                  <h4 class="text-xl font-semibold mt-3 mb-3">Expansión Internacional</h4>
+                </div>
+                <p class="text-gray-700">Regionalizar los servicios digitales expandiéndose más allá de las fronteras nacionales para ganar participación en mercados internacionales y facilitar negociaciones transfronterizas.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arquitectura Actual vs Destino - Mobile First Design -->
+          <div class="mb-12 md:mb-16">
+            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Arquitectura del Sistema</span>
+              <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
+            </h3>
+
+            <!-- Mobile View: Swipeable Cards -->
+            <div class="md:hidden">
+              <div class="relative bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg p-6 border border-gray-100">
+                <div class="absolute inset-0 overflow-hidden rounded-xl opacity-30 pointer-events-none">
+                  <div class="absolute top-[20%] left-[10%] w-[40%] h-[30%] rounded-full bg-blue-400 mix-blend-multiply filter blur-3xl"></div>
+                  <div class="absolute bottom-[30%] right-[10%] w-[35%] h-[30%] rounded-full bg-purple-400 mix-blend-multiply filter blur-3xl"></div>
+                  <div class="absolute top-[50%] right-[20%] w-[30%] h-[25%] rounded-full bg-indigo-300 mix-blend-multiply filter blur-3xl"></div>
+                </div>
+                
+                <!-- Barra progreso para swipe -->
+                <div class="flex items-center justify-between mb-6 relative z-10">
+                  <div class="flex-1 h-1 bg-gray-200 rounded-full mx-2 overflow-hidden shadow-sm">
+                    <div id="architecture-progress" class="h-full rounded-full transition-all duration-500 glow-effect" style="width: 50%; background: linear-gradient(to right, #2563eb, #4f46e5);"></div>
+                  </div>
+                </div>
+
+                <!-- Indicador de Fase -->
+                <div class="text-center mb-6 relative z-10">
+                  <span class="text-sm font-semibold px-4 py-1.5 rounded-full shadow-sm backdrop-blur-sm border transition-colors duration-300" id="architecture-indicator" style="background-color: rgba(37, 99, 235, 0.1); color: #2563eb; border-color: #dbeafe;">Actual</span>
+                </div>
+
+                <!-- Contenedor de Cards -->
+                <div id="architecture-slider" class="overflow-hidden relative z-10">
+                  <div class="flex transition-transform duration-300" style="transform: translateX(0%)">
+                    <!-- Arquitectura Actual -->
+                    <div class="w-full flex-shrink-0">
+                      <div class="text-center architecture-container flex flex-col h-full">
+                        <div class="flex justify-center w-full mb-4">
+                          <div class="inline-block bg-blue-100 p-3 rounded-lg shadow-sm">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                              <i class="fas fa-database text-xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500">Arquitectura Actual</h4>
+                        <div class="space-y-4 text-left architecture-content flex flex-col flex-grow">
+                          <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-gray-100 architecture-description flex-grow flex items-center">
+                            <div class="space-y-3 w-full">
+                              <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 bg-blue-100 p-1.5 rounded-md text-blue-600">
+                                  <i class="fas fa-database text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed"><span class="font-medium text-blue-700">Arquitectura monolítica</span> donde procesos operativos, estratégicos y de apoyo comparten la misma capa tecnológica.</p>
+                              </div>
+                              
+                              <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 bg-red-100 p-1.5 rounded-md text-red-600">
+                                  <i class="fas fa-exclamation-triangle text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed">El sistema <span class="bg-red-50 px-1 font-medium">Physis</span> presenta <span class="font-medium text-red-600">limitaciones críticas</span>: falta de escalabilidad para crecimiento del 15%, módulos insuficientes e infraestructura inadecuada para deCampoaPagos.</p>
+                              </div>
+                              
+                              <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 bg-amber-100 p-1.5 rounded-md text-amber-600">
+                                  <i class="fas fa-chart-bar text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed">Esta arquitectura <span class="border-b border-amber-400">dificulta la integración de procesos</span> y el análisis de datos necesarios para la toma de decisiones estratégicas.</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-100 shadow-inner mt-auto">
+                            <button id="btn-show-current-arch" class="architecture-btn w-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
+                              <i class="fas fa-diagram-project mr-2"></i>
+                              <span>Explorar arquitectura actual</span>
+                              <i class="fas fa-external-link-alt ml-2 text-xs opacity-80"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Arquitectura Destino -->
+                    <div class="w-full flex-shrink-0">
+                      <div class="text-center architecture-container flex flex-col h-full">
+                        <div class="flex justify-center w-full mb-4">
+                          <div class="inline-block bg-green-100 p-3 rounded-lg shadow-sm">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white shadow-md">
+                              <i class="fas fa-layer-group text-xl"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-teal-500">Arquitectura Destino</h4>
+                        <div class="space-y-4 text-left architecture-content flex flex-col flex-grow">
+                          <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-lg p-4 shadow-sm border border-gray-100 architecture-description flex-grow flex items-center">
+                            <div class="space-y-3 w-full">
+                              <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 bg-green-100 p-1.5 rounded-md text-green-600">
+                                  <i class="fas fa-layer-group text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed">Implementación de <span class="font-medium text-green-700">Odoo ERP</span>, un sistema integral que reemplazará a Physis, ofreciendo <span class="bg-green-50 px-1 font-medium">escalabilidad</span>, múltiples módulos y adaptabilidad.</p>
+                              </div>
+                              
+                              <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 bg-indigo-100 p-1.5 rounded-md text-indigo-600">
+                                  <i class="fas fa-robot text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed">Complemento con <span class="font-medium text-indigo-600">chatbot</span> para automatizar consultas rutinarias, reduciendo la carga del equipo de soporte.</p>
+                              </div>
+                              
+                              <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 bg-teal-100 p-1.5 rounded-md text-teal-600">
+                                  <i class="fas fa-users-cog text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed">Sistema especializado de <span class="border-b border-teal-400">RRHH</span> para gestión de talento. Esta solución garantiza conectividad en tiempo real e integra todos los procesos.</p>
+                              </div>
+
+                              <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 bg-amber-100 p-1.5 rounded-md text-amber-600">
+                                  <i class="fas fa-book text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed">Sistema de <span class="font-medium text-amber-700">Gestión del Conocimiento</span> para documentar procesos críticos y <span class="border-b border-amber-400">mantener el know-how</span> de la organización, facilitando la capacitación y el acceso a la información.</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="bg-gradient-to-br from-green-50 to-teal-50 p-4 rounded-lg border border-green-100 shadow-inner mt-auto">
+                            <button id="btn-show-target-arch" class="architecture-btn w-full flex items-center justify-center bg-gradient-to-r from-green-500 to-teal-600 text-white py-3 px-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
+                              <i class="fas fa-sitemap mr-2"></i>
+                              <span>Explorar arquitectura propuesta</span>
+                              <i class="fas fa-external-link-alt ml-2 text-xs opacity-80"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botones de navegación -->
+                <button id="prev-arch" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 disabled:opacity-50 disabled:cursor-not-allowed" title="Arquitectura anterior" aria-label="Arquitectura anterior">
+                  <i class="fas fa-chevron-left text-lg"></i>
+                </button>
+                <button id="next-arch" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 disabled:opacity-50 disabled:cursor-not-allowed" title="Arquitectura siguiente" aria-label="Arquitectura siguiente">
+                  <i class="fas fa-chevron-right text-lg"></i>
+                </button>
+
+                <!-- Indicadores tipo dots -->
+                <div class="flex justify-center space-x-2 mt-6">
+                  <button class="w-2 h-2 rounded-full bg-primary transition-all duration-300 architecture-dot active" data-arch="0" title="Arquitectura Actual" aria-label="Arquitectura Actual"></button>
+                  <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 architecture-dot" data-arch="1" title="Arquitectura Destino" aria-label="Arquitectura Destino"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop View: Comparación de Arquitectura -->
+            <div class="hidden md:grid md:grid-cols-2 gap-8">
+              <!-- Arquitectura Actual -->
+              <div class="bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 relative overflow-hidden flex flex-col h-full">
+                <!-- Bolas de colores en el fondo -->
+                <div class="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+                  <div class="absolute top-[10%] left-[20%] w-[40%] h-[30%] rounded-full bg-blue-400 mix-blend-multiply filter blur-3xl"></div>
+                  <div class="absolute bottom-[30%] right-[5%] w-[35%] h-[30%] rounded-full bg-indigo-400 mix-blend-multiply filter blur-3xl"></div>
+                </div>
+                
+                <div class="flex items-center justify-center mb-6">
+                  <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
+                    <i class="fas fa-database text-2xl"></i>
+                  </div>
+                </div>
+                <h4 class="text-xl md:text-2xl font-semibold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-500">Arquitectura Actual</h4>
+                <div class="prose prose-sm max-w-none mb-6 bg-white bg-opacity-80 backdrop-blur-sm rounded-lg p-5 shadow-sm border border-gray-100 architecture-description flex-grow flex items-center">
+                  <div class="space-y-4 w-full">
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-blue-100 p-2 rounded-md text-blue-600">
+                        <i class="fas fa-database text-lg"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-medium text-blue-700 mb-1">Arquitectura monolítica</h5>
+                        <p class="text-gray-700">Procesos operativos, estratégicos y de apoyo comparten la misma capa tecnológica.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-red-100 p-2 rounded-md text-red-600">
+                        <i class="fas fa-exclamation-triangle text-lg"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-medium text-red-700 mb-1">Limitaciones del sistema Physis</h5>
+                        <p class="text-gray-700">Carece de <span class="bg-red-50 px-1 font-medium">escalabilidad</span> para soportar el crecimiento del 15%, ofrece <span class="bg-red-50 px-1 font-medium">módulos insuficientes</span> y su infraestructura no cumple con los estándares para implementar deCampoaPagos.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-amber-100 p-2 rounded-md text-amber-600">
+                        <i class="fas fa-chart-bar text-lg"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-medium text-amber-700 mb-1">Dificultades para la integración</h5>
+                        <p class="text-gray-700">Integración de procesos limitada y análisis de datos insuficiente para la toma de decisiones estratégicas.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-5 rounded-lg border border-blue-100 shadow-inner mt-auto">
+                  <button id="btn-show-current-arch-desktop" class="architecture-btn w-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-4 px-6 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1 duration-300 active:translate-y-0 active:shadow-sm">
+                    <i class="fas fa-diagram-project mr-2 text-lg"></i>
+                    <span class="font-medium">Explorar arquitectura actual</span>
+                    <i class="fas fa-external-link-alt ml-2 text-sm opacity-80"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Arquitectura Destino -->
+              <div class="bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 relative overflow-hidden flex flex-col h-full">
+                <!-- Bolas de colores en el fondo -->
+                <div class="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+                  <div class="absolute top-[10%] right-[20%] w-[40%] h-[30%] rounded-full bg-green-400 mix-blend-multiply filter blur-3xl"></div>
+                  <div class="absolute bottom-[30%] left-[5%] w-[35%] h-[30%] rounded-full bg-teal-400 mix-blend-multiply filter blur-3xl"></div>
+                </div>
+                
+                <div class="flex items-center justify-center mb-6">
+                  <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white shadow-md">
+                    <i class="fas fa-layer-group text-2xl"></i>
+                  </div>
+                </div>
+                <h4 class="text-xl md:text-2xl font-semibold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-teal-500">Arquitectura Destino</h4>
+                <div class="prose prose-sm max-w-none mb-6 bg-white bg-opacity-80 backdrop-blur-sm rounded-lg p-5 shadow-sm border border-gray-100 architecture-description flex-grow flex items-center">
+                  <div class="space-y-4 w-full">
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-green-100 p-2 rounded-md text-green-600">
+                        <i class="fas fa-layer-group text-lg"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-medium text-green-700 mb-1">Implementación de Odoo ERP</h5>
+                        <p class="text-gray-700">Sistema integral que reemplazará a Physis, ofreciendo <span class="bg-green-50 px-1 font-medium">escalabilidad</span>, múltiples módulos y mayor adaptabilidad a las necesidades del negocio.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-indigo-100 p-2 rounded-md text-indigo-600">
+                        <i class="fas fa-robot text-lg"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-medium text-indigo-700 mb-1">Chatbot para automatización</h5>
+                        <p class="text-gray-700">Automatización de consultas rutinarias, reduciendo significativamente la carga de trabajo del equipo de soporte.</p>
+                      </div>
+                    </div>
+
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-teal-100 p-2 rounded-md text-teal-600">
+                        <i class="fas fa-users-cog text-lg"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-medium text-teal-700 mb-1">Sistema especializado de RRHH</h5>
+                        <p class="text-gray-700">Mejora en la gestión del talento con <span class="border-b border-teal-400">conectividad en tiempo real</span> e integración completa de todos los procesos del negocio.</p>
+                      </div>
+                    </div>
+
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 mt-1 mr-3 bg-amber-100 p-2 rounded-md text-amber-600">
+                        <i class="fas fa-book text-lg"></i>
+                      </div>
+                      <div>
+                        <h5 class="font-medium text-amber-700 mb-1">Gestión del Conocimiento (KM)</h5>
+                        <p class="text-gray-700 text-sm leading-relaxed">Sistema de <span class="font-medium text-amber-700">Gestión del Conocimiento</span> para documentar procesos críticos y <span class="border-b border-amber-400">mantener el know-how</span> de la organización, facilitando la capacitación y el acceso a la información.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 p-5 rounded-lg border border-green-100 shadow-inner mt-auto">
+                  <button id="btn-show-target-arch-desktop" class="architecture-btn w-full flex items-center justify-center bg-gradient-to-r from-green-500 to-teal-600 text-white py-4 px-6 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1 duration-300 active:translate-y-0 active:shadow-sm">
+                    <i class="fas fa-sitemap mr-2 text-lg"></i>
+                    <span class="font-medium">Explorar arquitectura propuesta</span>
+                    <i class="fas fa-external-link-alt ml-2 text-sm opacity-80"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal para imágenes de arquitectura -->
+            <div id="architecture-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+              <div class="absolute inset-0 bg-gray-900 bg-opacity-75 backdrop-blur-md transition-opacity" id="modal-backdrop"></div>
+              <div class="relative bg-white rounded-xl max-w-4xl mx-auto max-h-[90vh] w-[90%] shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 border border-gray-200">
+                <!-- Bolas de colores en el fondo -->
+                <div class="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
+                  <div class="absolute top-[10%] left-[10%] w-[40%] h-[30%] rounded-full bg-blue-500 mix-blend-multiply filter blur-3xl"></div>
+                  <div class="absolute bottom-[20%] right-[10%] w-[35%] h-[30%] rounded-full bg-purple-500 mix-blend-multiply filter blur-3xl"></div>
+                  <div class="absolute top-[40%] right-[20%] w-[30%] h-[25%] rounded-full bg-indigo-500 mix-blend-multiply filter blur-3xl"></div>
+                </div>
+                
+                <div class="flex justify-between items-center p-4 md:p-5 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
+                  <h3 class="text-lg md:text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600" id="modal-title">Arquitectura</h3>
+                  <button id="close-modal" class="text-gray-500 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100 focus:outline-none transition-colors" title="Cerrar" aria-label="Cerrar">
+                    <i class="fas fa-times text-xl"></i>
+                  </button>
+                </div>
+                
+                <div class="p-2 md:p-6 overflow-auto max-h-[70vh] bg-gradient-to-br from-white to-gray-50">
+                  <div class="relative rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                    <img id="architecture-image" src="img/AE.webp" alt="Diagrama de arquitectura" class="w-full h-auto object-contain">
+                    <div class="absolute inset-0 bg-gradient-to-t from-transparent to-white opacity-20 pointer-events-none"></div>
+                  </div>
+                </div>
+                
+                <div class="p-4 md:p-5 border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white">
+                  <div class="flex flex-col sm:flex-row justify-between gap-3">
+                    <button id="download-architecture" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 px-4 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center">
+                      <i class="fas fa-download mr-2"></i>
+                      <span class="font-medium">Descargar diagrama</span>
+                    </button>
+                    <button id="close-modal-btn" class="bg-white text-gray-700 py-2 px-4 rounded-lg border border-gray-300 hover:border-gray-400 hover:shadow-md transition-all duration-300 flex items-center justify-center">
+                      <i class="fas fa-times mr-2"></i>
+                      <span class="font-medium">Cerrar ventana</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Nuestra propuesta de solución -->
           <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white p-8">
             <h3 class="text-2xl font-semibold text-center mb-8 relative">
@@ -857,7 +1260,7 @@
                 <h4 class="text-xl font-semibold mb-4"> <i class="fas fa-exchange-alt mr-2"></i>Optimización y Escalabilidad ERP </h4>
                 <ul class="space-y-2 text-sm">
                   <li><i class="fas fa-check mr-2"></i>Análisis de escalabilidad de Physis para crecimiento del 15%</li>
-                  <li><i class="fas fa-check mr-2"></i>Evaluación de SAP Business One con módulo ganadero</li>
+                  <li><i class="fas fa-check mr-2"></i>Evaluación de Odoo con módulo ganadero</li>
                   <li><i class="fas fa-check mr-2"></i>Evaluación de Microsoft Dynamics 365 Business Central</li>
                   <li><i class="fas fa-check mr-2"></i>Integración con deCampoaPagos</li>
                   <li><i class="fas fa-check mr-2"></i>Recomendación de proveedores certificados para implementación</li>
@@ -934,7 +1337,7 @@
                   <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
                     <div class="flex justify-between items-center mb-2">
                       <h4 class="font-semibold text-base">Inicio</h4>
-                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">15 Ene, 2025</span>
+                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">15 Mar, 2025</span>
                     </div>
                     <p class="text-sm text-gray-600">Análisis inicial y evaluación de necesidades</p>
                   </div>
@@ -948,7 +1351,7 @@
                   <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
                     <div class="flex justify-between items-center mb-2">
                       <h4 class="font-semibold text-base">Análisis ERP</h4>
-                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">15 Feb, 2025</span>
+                      <span class="text-xs font-medium bg-blue-100 text-blue-700 py-1 px-2 rounded-full">15 Abr, 2025</span>
                     </div>
                     <p class="text-sm text-gray-600">Evaluación de opciones de ERP para reemplazar Physis</p>
                   </div>
@@ -962,7 +1365,7 @@
                   <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
                     <div class="flex justify-between items-center mb-2">
                       <h4 class="font-semibold text-base">Selección</h4>
-                      <span class="text-xs font-medium bg-green-100 text-green-700 py-1 px-2 rounded-full">15 Mar, 2025</span>
+                      <span class="text-xs font-medium bg-green-100 text-green-700 py-1 px-2 rounded-full">15 May, 2025</span>
                     </div>
                     <p class="text-sm text-gray-600">Recomendación de proveedores y soluciones</p>
                   </div>
@@ -976,7 +1379,7 @@
                   <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
                     <div class="flex justify-between items-center mb-2">
                       <h4 class="font-semibold text-base">Plan</h4>
-                      <span class="text-xs font-medium bg-yellow-100 text-yellow-700 py-1 px-2 rounded-full">15 Abr, 2025</span>
+                      <span class="text-xs font-medium bg-yellow-100 text-yellow-700 py-1 px-2 rounded-full">15 Jun, 2025</span>
                     </div>
                     <p class="text-sm text-gray-600">Estrategia de migración y capacitación</p>
                   </div>
@@ -990,7 +1393,7 @@
                   <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-purple-500 transform transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
                     <div class="flex justify-between items-center mb-2">
                       <h4 class="font-semibold text-base">Cierre</h4>
-                      <span class="text-xs font-medium bg-purple-100 text-purple-700 py-1 px-2 rounded-full">15 May, 2025</span>
+                      <span class="text-xs font-medium bg-purple-100 text-purple-700 py-1 px-2 rounded-full">15 Jul, 2025</span>
                     </div>
                     <p class="text-sm text-gray-600">Entrega de documentación y recomendaciones finales</p>
                   </div>
@@ -1014,7 +1417,7 @@
                       </div>
                       <div class="bg-blue-50 p-4 rounded-lg shadow">
                         <h4 class="font-semibold">Inicio</h4>
-                        <p class="text-sm text-gray-600">15 Ene, 2025</p>
+                        <p class="text-sm text-gray-600">15 Mar, 2025</p>
                         <p class="text-xs mt-2">Análisis inicial y evaluación de necesidades</p>
                       </div>
                     </div>
@@ -1026,7 +1429,7 @@
                       </div>
                       <div class="bg-blue-50 p-4 rounded-lg shadow">
                         <h4 class="font-semibold">Análisis ERP</h4>
-                        <p class="text-sm text-gray-600">15 Feb, 2025</p>
+                        <p class="text-sm text-gray-600">15 Abr, 2025</p>
                         <p class="text-xs mt-2">Evaluación de opciones de ERP para reemplazar Physis</p>
                       </div>
                     </div>
@@ -1038,7 +1441,7 @@
                       </div>
                       <div class="bg-green-50 p-4 rounded-lg shadow">
                         <h4 class="font-semibold">Selección</h4>
-                        <p class="text-sm text-gray-600">15 Mar, 2025</p>
+                        <p class="text-sm text-gray-600">15 May, 2025</p>
                         <p class="text-xs mt-2">Recomendación de proveedores y soluciones</p>
                       </div>
                     </div>
@@ -1050,7 +1453,7 @@
                       </div>
                       <div class="bg-yellow-50 p-4 rounded-lg shadow">
                         <h4 class="font-semibold">Plan</h4>
-                        <p class="text-sm text-gray-600">15 Abr, 2025</p>
+                        <p class="text-sm text-gray-600">15 Jun, 2025</p>
                         <p class="text-xs mt-2">Estrategia de migración y capacitación</p>
                       </div>
                     </div>
@@ -1062,7 +1465,7 @@
                       </div>
                       <div class="bg-purple-50 p-4 rounded-lg shadow">
                         <h4 class="font-semibold">Cierre</h4>
-                        <p class="text-sm text-gray-600">15 May, 2025</p>
+                        <p class="text-sm text-gray-600">15 Jul, 2025</p>
                         <p class="text-xs mt-2">Entrega de documentación y recomendaciones finales</p>
                       </div>
                     </div>
