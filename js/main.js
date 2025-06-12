@@ -1337,10 +1337,10 @@ function initBudgetChart() {
       displayName: "Análisis y Evaluación de ERP",
       color: "#2563eb", // blue-500
       items: [
-        { name: "Diagnóstico de situación actual", value: 25000 },
-        { name: "Evaluación comparativa de soluciones", value: 35000 },
-        { name: "Selección de proveedores", value: 20000 },
-        { name: "Informe técnico detallado", value: 15000 },
+        { name: "Diagnóstico de situación actual", value: 150000 },
+        { name: "Evaluación comparativa de soluciones", value: 200000 },
+        { name: "Selección de proveedores", value: 120000 },
+        { name: "Informe técnico detallado", value: 95000 },
       ],
     },
     gestion: {
@@ -1348,10 +1348,10 @@ function initBudgetChart() {
       displayName: "Gestión del Cambio",
       color: "#10b981", // green-500
       items: [
-        { name: "Mapeo de procesos actuales", value: 20000 },
-        { name: "Diseño de procesos optimizados", value: 25000 },
-        { name: "Plan de comunicación interna", value: 10000 },
-        { name: "Gestión de resistencia al cambio", value: 10000 },
+        { name: "Mapeo de procesos actuales", value: 180000 },
+        { name: "Diseño de procesos optimizados", value: 220000 },
+        { name: "Plan de comunicación interna", value: 85000 },
+        { name: "Gestión de resistencia al cambio", value: 90000 },
       ],
     },
     supervision: {
@@ -1359,10 +1359,10 @@ function initBudgetChart() {
       displayName: "Supervisión de Implementación",
       color: "#8b5cf6", // purple-500
       items: [
-        { name: "Control de calidad del proveedor", value: 15000 },
-        { name: "Seguimiento de hitos del proyecto", value: 12000 },
-        { name: "Validación de entregables", value: 10000 },
-        { name: "Informes de avance periódicos", value: 8000 },
+        { name: "Control de calidad del proveedor", value: 175000 },
+        { name: "Seguimiento de hitos del proyecto", value: 145000 },
+        { name: "Validación de entregables", value: 120000 },
+        { name: "Informes de avance periódicos", value: 95000 },
       ],
     },
     capacitacion: {
@@ -1370,10 +1370,10 @@ function initBudgetChart() {
       displayName: "Capacitación y Documentación",
       color: "#f59e0b", // yellow-500
       items: [
-        { name: "Plan de capacitación personalizado", value: 12000 },
-        { name: "Materiales de capacitación", value: 8000 },
-        { name: "Documentación de procesos", value: 12000 },
-        { name: "Evaluación post-implementación", value: 8000 },
+        { name: "Plan de capacitación personalizado", value: 135000 },
+        { name: "Materiales de capacitación", value: 85000 },
+        { name: "Documentación de procesos", value: 110000 },
+        { name: "Evaluación post-implementación", value: 95000 },
       ],
     },
   };
@@ -1426,6 +1426,12 @@ function initBudgetChart() {
   const totalDisplay = document.getElementById("total-budget");
   if (totalDisplay) {
     totalDisplay.textContent = formatCurrency(totalBudget);
+  }
+
+  // Actualizar el total de la consultoría en el encabezado
+  const consultancyTotalDisplay = document.getElementById("consultancy-total");
+  if (consultancyTotalDisplay) {
+    consultancyTotalDisplay.textContent = `$${totalBudget.toLocaleString()}`;
   }
 
   // Leyenda con porcentajes
@@ -2164,14 +2170,6 @@ function initProveedoresSection() {
       }, 250)
     );
 
-    // Actualizar totales
-    const { totalScores } = COMPARISON_DATA.rfp;
-    const dynamicsTotal = document.getElementById("dynamics-rfp-total");
-    const odooTotal = document.getElementById("odoo-rfp-total");
-
-    if (dynamicsTotal) dynamicsTotal.textContent = totalScores.dynamics.toFixed(2);
-    if (odooTotal) odooTotal.textContent = totalScores.odoo.toFixed(2);
-
     console.log("Componentes de gráficos de barras inicializados");
   }
 
@@ -2182,7 +2180,10 @@ function initProveedoresSection() {
       return;
     }
 
-    const { categories, providers } = COMPARISON_DATA.rfi;
+    const { categories } = COMPARISON_DATA.rfi;
+
+    // Verificar si tenemos datos de RFP
+    const hasRfpData = window.COMPARISON_DATA && window.COMPARISON_DATA.rfp && window.COMPARISON_DATA.rfp.categories;
 
     let dynamicsTotal = 0;
     let odooTotal = 0;
@@ -2190,8 +2191,19 @@ function initProveedoresSection() {
     Object.keys(categories).forEach((categoryKey) => {
       const category = categories[categoryKey];
       const categoryWeight = category.weight;
-      const dynamicsScore = providers.dynamics.scores[categoryKey];
-      const odooScore = providers.odoo.scores[categoryKey];
+
+      // Usar los datos de RFP si están disponibles, de lo contrario usar los de RFI
+      let dynamicsScore, odooScore;
+
+      if (hasRfpData && window.COMPARISON_DATA.rfp.categories[categoryKey + "RFP"]) {
+        const rfpCategory = window.COMPARISON_DATA.rfp.categories[categoryKey + "RFP"];
+        dynamicsScore = rfpCategory.dynamics;
+        odooScore = rfpCategory.odoo;
+      } else {
+        // Usar datos de RFI como respaldo
+        dynamicsScore = COMPARISON_DATA.rfi.providers.dynamics.scores[categoryKey];
+        odooScore = COMPARISON_DATA.rfi.providers.odoo.scores[categoryKey];
+      }
 
       const dynamicsWeightedScore = dynamicsScore * categoryWeight * 100;
       const odooWeightedScore = odooScore * categoryWeight * 100;
@@ -2259,12 +2271,6 @@ function initProveedoresSection() {
 
       createSubitems(categoryContainer, categoryData);
     });
-
-    const dynamicsTotal = document.getElementById("dynamics-rfp-total");
-    const odooTotal = document.getElementById("odoo-rfp-total");
-
-    if (dynamicsTotal) dynamicsTotal.textContent = totalScores.dynamics.toFixed(2);
-    if (odooTotal) odooTotal.textContent = totalScores.odoo.toFixed(2);
 
     console.log("Gráficos RFP inicializados");
   }
@@ -2359,12 +2365,15 @@ function initProveedoresSection() {
       return;
     }
 
-    const { years, costs } = COMPARISON_DATA.cashflow;
+    // Usar datos específicos para la tabla
+    const tableData = window.COMPARISON_DATA.cashflowTable || window.COMPARISON_DATA.cashflow;
+    const { years, costs: tableCosts } = tableData;
 
+    // Actualizar la tabla con los datos de licencia y mantenimiento
     for (let i = 0; i < years; i++) {
       const year = i + 1;
-      const odooAmount = costs.odoo[i];
-      const dynamicsAmount = costs.dynamics[i];
+      const odooAmount = tableCosts.odoo[i];
+      const dynamicsAmount = tableCosts.dynamics[i];
 
       const odooCell = document.getElementById(`odoo-year${year}`);
       const dynamicsCell = document.getElementById(`dynamics-year${year}`);
@@ -2372,6 +2381,16 @@ function initProveedoresSection() {
       if (odooCell) odooCell.textContent = ChartUtils.formatCurrency(odooAmount);
       if (dynamicsCell) dynamicsCell.textContent = ChartUtils.formatCurrency(dynamicsAmount);
     }
+
+    // Actualizar el total
+    const odooTotal = document.getElementById("odoo-total-3y");
+    const dynamicsTotal = document.getElementById("dynamics-total-3y");
+
+    const odooTotalValue = tableCosts.odoo.reduce((sum, cost) => sum + cost, 0);
+    const dynamicsTotalValue = tableCosts.dynamics.reduce((sum, cost) => sum + cost, 0);
+
+    if (odooTotal) odooTotal.textContent = ChartUtils.formatCurrency(odooTotalValue);
+    if (dynamicsTotal) dynamicsTotal.textContent = ChartUtils.formatCurrency(dynamicsTotalValue);
 
     createCashflowChart();
 
@@ -2394,7 +2413,7 @@ function initProveedoresSection() {
       return;
     }
 
-    const { years, costs, savings } = COMPARISON_DATA.cashflow;
+    const { years, costs } = COMPARISON_DATA.cashflow;
 
     // Limpiar el contenedor antes de crear el nuevo gráfico
     chartContainer.innerHTML = "";
@@ -2644,69 +2663,27 @@ function initProveedoresSection() {
       }
     }
 
-    // Leyenda - Posicionada según el tamaño de pantalla
-    if (!isMobile) {
-      const legendGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      const legendX = containerWidth - (isTablet ? 120 : 150);
-      const legendY = paddingY + 10;
-      legendGroup.setAttribute("transform", `translate(${legendX}, ${legendY})`);
-
-      // Leyenda para Odoo
-      const odooLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      odooLegendLine.setAttribute("x1", 0);
-      odooLegendLine.setAttribute("y1", 5);
-      odooLegendLine.setAttribute("x2", isTablet ? 20 : 25);
-      odooLegendLine.setAttribute("y2", 5);
-      odooLegendLine.setAttribute("stroke", "#8b5cf6");
-      odooLegendLine.setAttribute("stroke-width", isTablet ? "2" : "3");
-      legendGroup.appendChild(odooLegendLine);
-
-      const odooLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      odooLegendText.setAttribute("x", isTablet ? 25 : 30);
-      odooLegendText.setAttribute("y", 9);
-      odooLegendText.setAttribute("font-size", isTablet ? "10" : "12");
-      odooLegendText.setAttribute("fill", "#4b5563");
-      odooLegendText.textContent = "Odoo";
-      legendGroup.appendChild(odooLegendText);
-
-      // Leyenda para Dynamics
-      const dynamicsLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      dynamicsLegendLine.setAttribute("x1", 0);
-      dynamicsLegendLine.setAttribute("y1", 25);
-      dynamicsLegendLine.setAttribute("x2", isTablet ? 20 : 25);
-      dynamicsLegendLine.setAttribute("y2", 25);
-      dynamicsLegendLine.setAttribute("stroke", "#3b82f6");
-      dynamicsLegendLine.setAttribute("stroke-width", isTablet ? "2" : "3");
-      legendGroup.appendChild(dynamicsLegendLine);
-
-      const dynamicsLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      dynamicsLegendText.setAttribute("x", isTablet ? 25 : 30);
-      dynamicsLegendText.setAttribute("y", 29);
-      dynamicsLegendText.setAttribute("font-size", isTablet ? "10" : "12");
-      dynamicsLegendText.setAttribute("fill", "#4b5563");
-      dynamicsLegendText.textContent = "Dynamics 365";
-      legendGroup.appendChild(dynamicsLegendText);
-
-      svgElement.appendChild(legendGroup);
-    }
+    // Removed top-right legend identifiers as requested
 
     // Agregar el SVG al contenedor
     chartContainer.appendChild(svgElement);
 
     // Calcular y mostrar ahorros
-    const odooTotal = costs.odoo.reduce((sum, cost) => sum + cost, 0);
-    const dynamicsTotal = costs.dynamics.reduce((sum, cost) => sum + cost, 0);
-    const savingsAmount = dynamicsTotal - odooTotal;
-    const savingsPercentage = (((dynamicsTotal - odooTotal) / dynamicsTotal) * 100).toFixed(0);
+    // const odooTotalChart = costs.odoo.reduce((sum, cost) => sum + cost, 0);
+    // const dynamicsTotalChart = costs.dynamics.reduce((sum, cost) => sum + cost, 0);
+    // const savingsAmount = dynamicsTotalChart - odooTotalChart;
+    // const savingsPercentage = (((dynamicsTotalChart - odooTotalChart) / dynamicsTotalChart) * 100).toFixed(0);
+    const savingsAmount = costs.dynamics[2] - costs.odoo[2];
+    const savingsPercentage = (((costs.dynamics[2] - costs.odoo[2]) / costs.dynamics[2]) * 100).toFixed(0);
 
-    const totalOdooElement = document.getElementById("odoo-total-3y");
-    const totalDynamicsElement = document.getElementById("dynamics-total-3y");
+    // const totalOdooElement = document.getElementById("odoo-total-3y");
+    // const totalDynamicsElement = document.getElementById("dynamics-total-3y");
     const savingsElement = document.getElementById("cost-savings");
     const percentageElement = document.getElementById("cost-difference-percentage");
 
     // Actualizar elementos con los valores calculados
-    if (totalOdooElement) totalOdooElement.textContent = ChartUtils.formatCurrency(odooTotal, false);
-    if (totalDynamicsElement) totalDynamicsElement.textContent = ChartUtils.formatCurrency(dynamicsTotal, false);
+    // if (totalOdooElement) totalOdooElement.textContent = ChartUtils.formatCurrency(odooTotal, false);
+    // if (totalDynamicsElement) totalDynamicsElement.textContent = ChartUtils.formatCurrency(dynamicsTotal, false);
     if (savingsElement) savingsElement.textContent = ChartUtils.formatCurrency(savingsAmount, false);
     if (percentageElement) percentageElement.textContent = `${savingsPercentage}%`;
   }
@@ -2715,6 +2692,61 @@ function initProveedoresSection() {
   function initTabNavigation() {
     const tabButtons = document.querySelectorAll(".rfp-tab-btn");
     const tabContents = document.querySelectorAll(".rfp-content");
+    const dynamicsTotal = document.getElementById("dynamics-rfp-total");
+    const odooTotal = document.getElementById("odoo-rfp-total");
+
+    // Función para actualizar los totales según la categoría seleccionada
+    function updateTotalScores(categoryKey) {
+      if (!window.COMPARISON_DATA || !window.COMPARISON_DATA.rfp || !window.COMPARISON_DATA.rfp.categories) {
+        console.error("No se encontraron los datos de categorías RFP");
+        return;
+      }
+
+      const categoryData = window.COMPARISON_DATA.rfp.categories[categoryKey];
+
+      if (!categoryData) {
+        console.error(`No se encontraron datos para la categoría: ${categoryKey}`);
+        return;
+      }
+
+      // Obtener el peso de la categoría desde los datos RFI
+      let categoryWeight = 0.25; // Valor por defecto en caso de error
+
+      // Mapear las categorías RFP a las categorías RFI (quitando el sufijo "RFP")
+      const rfiCategoryKey = categoryKey.replace("RFP", "");
+
+      if (window.COMPARISON_DATA.rfi && window.COMPARISON_DATA.rfi.categories && window.COMPARISON_DATA.rfi.categories[rfiCategoryKey]) {
+        categoryWeight = window.COMPARISON_DATA.rfi.categories[rfiCategoryKey].weight;
+      }
+
+      const maxPoints = Math.round(100 * categoryWeight);
+
+      if (dynamicsTotal) {
+        const dynamicsScore = (categoryData.dynamics * maxPoints).toFixed(2);
+        dynamicsTotal.textContent = dynamicsScore;
+      }
+
+      if (odooTotal) {
+        const odooScore = (categoryData.odoo * maxPoints).toFixed(2);
+        odooTotal.textContent = odooScore;
+      }
+
+      const dynamicsMaxPoints = document.getElementById("dynamics-max-points");
+      const odooMaxPoints = document.getElementById("odoo-max-points");
+
+      if (dynamicsMaxPoints) {
+        dynamicsMaxPoints.textContent = `sobre ${maxPoints} puntos`;
+      }
+
+      if (odooMaxPoints) {
+        odooMaxPoints.textContent = `sobre ${maxPoints} puntos`;
+      }
+
+      const categoryIndicator = document.getElementById("category-indicator");
+      if (categoryIndicator) {
+        categoryIndicator.textContent = `Categoría: ${categoryData.title} (${(categoryWeight * 100).toFixed(0)}%)`;
+      }
+    }
 
     tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
@@ -2739,8 +2771,16 @@ function initProveedoresSection() {
         if (activeContent) {
           activeContent.classList.remove("hidden");
         }
+
+        // Actualizar los totales según la categoría seleccionada
+        updateTotalScores(category);
       });
     });
+
+    const firstCategory = tabButtons[0]?.getAttribute("data-category");
+    if (firstCategory) {
+      updateTotalScores(firstCategory);
+    }
   }
 
   // Agregar listener para redimensionar el gráfico cuando cambia el tamaño de la ventana

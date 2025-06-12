@@ -64,55 +64,56 @@ const COMPARISON_DATA = {
   // Datos para RFP (Request for Proposal)
   rfp: {
     categories: {
-      arquitectura: {
-        id: "arquitectura",
-        title: "Arquitectura Tecnológica y Robustez",
-        odoo: 0.75,
-        dynamics: 0.9,
-        subitems: [
-          { name: "Robustez de la plataforma", odoo: 0.7, dynamics: 0.9 },
-          { name: "Seguridad y conformidad", odoo: 0.75, dynamics: 0.85 },
-          { name: "Escalabilidad técnica", odoo: 0.8, dynamics: 0.95 },
-        ],
-      },
-      adaptabilidad: {
-        id: "adaptabilidad",
-        title: "Adaptabilidad y evolución (Integración)",
-        odoo: 0.9,
-        dynamics: 0.8,
-        subitems: [
-          { name: "Facilidad de personalización", odoo: 0.95, dynamics: 0.75 },
-          { name: "Integraciones con otros sistemas", odoo: 0.85, dynamics: 0.85 },
-          { name: "Extensibilidad del código", odoo: 0.9, dynamics: 0.8 },
-        ],
-      },
-      escalabilidad: {
-        id: "escalabilidad",
-        title: "Escalabilidad y Evolución Futura",
-        odoo: 0.75,
-        dynamics: 0.85,
-        subitems: [
-          { name: "Crecimiento de usuarios", odoo: 0.7, dynamics: 0.9 },
-          { name: "Rendimiento con grandes volúmenes", odoo: 0.75, dynamics: 0.85 },
-          { name: "Roadmap de desarrollo", odoo: 0.8, dynamics: 0.8 },
-        ],
-      },
-      usabilidad: {
-        id: "usabilidad",
-        title: "Usabilidad",
-        odoo: 0.85,
+      funcionalRFP: {
+        id: "funcionalRFP",
+        title: "Funcional",
+        odoo: 0.92,
         dynamics: 0.75,
         subitems: [
-          { name: "Interfaz de usuario", odoo: 0.9, dynamics: 0.7 },
-          { name: "Curva de aprendizaje", odoo: 0.85, dynamics: 0.75 },
-          { name: "Experiencia móvil", odoo: 0.8, dynamics: 0.8 },
+          { name: "Módulo de Finanzas y contabilidad", odoo: 0.95, dynamics: 0.85 },
+          { name: "Gestión de intermediación", odoo: 0.9, dynamics: 0.75 },
+          { name: "Integraciones", odoo: 0.95, dynamics: 0.7 },
+          { name: "Analisis de negocio", odoo: 0.9, dynamics: 0.8 },
+          { name: "Módulo de Gestion del Personal", odoo: 0.9, dynamics: 0.65 },
         ],
       },
-    },
-    totalScores: {
-      odoo: 19.94,
-      dynamics: 21.06,
-      maxScore: 25,
+      economicoRFP: {
+        id: "economicoRFP",
+        title: "Económico",
+        odoo: 0.95,
+        dynamics: 0.65,
+        subitems: [
+          { name: "Costo inicial del producto", odoo: 0.98, dynamics: 0.6 },
+          { name: "Modelo de licenciamiento", odoo: 0.95, dynamics: 0.65 },
+          { name: "Financiamiento", odoo: 0.92, dynamics: 0.7 },
+        ],
+      },
+      tecnicoRFP: {
+        id: "tecnicoRFP",
+        title: "Técnico",
+        odoo: 0.88,
+        dynamics: 0.82,
+        subitems: [
+          { name: "Arquitectura del sistema", odoo: 0.85, dynamics: 0.88 },
+          { name: "Integración con aplicaciones", odoo: 0.92, dynamics: 0.85 },
+          { name: "Gesión de datos y usuarios", odoo: 0.88, dynamics: 0.8 },
+          { name: "Mantenibilidad y Soporte Técnico", odoo: 0.85, dynamics: 0.8 },
+          { name: "Capacidades Analíticas y de Reportes Técnicos", odoo: 0.9, dynamics: 0.78 },
+        ],
+      },
+      proveedorRFP: {
+        id: "proveedorRFP",
+        title: "Proveedor",
+        odoo: 0.9,
+        dynamics: 0.78,
+        subitems: [
+          { name: "Soporte", odoo: 0.88, dynamics: 0.82 },
+          { name: "Plan de capacitación", odoo: 0.92, dynamics: 0.75 },
+          { name: "Plan de migración", odoo: 0.9, dynamics: 0.8 },
+          { name: "Certificaciones", odoo: 0.85, dynamics: 0.85 },
+          { name: "Trayectoria", odoo: 0.95, dynamics: 0.7 },
+        ],
+      },
     },
   },
 
@@ -127,6 +128,16 @@ const COMPARISON_DATA = {
       odoo: [50000, 75000, 100000],
       dynamics: [45000, 80000, 115000],
     },
+  },
+
+  // Datos para la tabla de costos por año (licencia y mantenimiento)
+  cashflowTable: {
+    years: 3,
+    costs: {
+      odoo: [32080, 22440, 22440], // Año 1: implementación + licencia, Año 2-3: solo licencia y mantenimiento
+      dynamics: [65600, 42000, 42000], // Año 1: implementación + licencia, Año 2-3: solo licencia y mantenimiento
+    },
+    notes: "Costos para un paquete de 50 usuarios. Años 2 y 3 muestran solo licencia y mantenimiento.",
   },
 };
 

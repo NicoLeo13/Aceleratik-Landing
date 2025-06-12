@@ -1769,6 +1769,7 @@
                 <!-- Tabla de resultados RFI -->
                 <div class="w-full overflow-x-hidden bg-white rounded-lg p-4 md:p-6 shadow-md transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                   <h4 class="text-lg font-semibold text-center mb-4 text-gray-800">Resultados por Proveedor</h4>
+                  <p class="text-xs text-center text-gray-500 mb-4 italic">Los valores reflejan el puntaje de cada categoria en base a la ponderación de la categoría</p>
                   
                   <!-- Tabla de resultados -->
                   <div class="overflow-x-auto">
@@ -1787,7 +1788,7 @@
                         </tr>
                       </thead>
                       <tbody id="rfi-results" class="divide-y divide-gray-200">
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        <tr class="hover:bg-gray-50 transition-colors" data-category="funcional">
                           <td class="py-3 px-4 border-b border-gray-200">
                             <div class="flex items-center">
                               <div class="w-3 h-3 md:w-4 md:h-4 bg-blue-500 rounded-full mr-2 flex-shrink-0"></div>
@@ -1797,7 +1798,7 @@
                           <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="dynamics-funcional">0%</td>
                           <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="odoo-funcional">0%</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        <tr class="hover:bg-gray-50 transition-colors" data-category="economico">
                           <td class="py-3 px-4 border-b border-gray-200">
                             <div class="flex items-center">
                               <div class="w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
@@ -1807,7 +1808,7 @@
                           <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="dynamics-economico">0%</td>
                           <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="odoo-economico">0%</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        <tr class="hover:bg-gray-50 transition-colors" data-category="tecnico">
                           <td class="py-3 px-4 border-b border-gray-200">
                             <div class="flex items-center">
                               <div class="w-3 h-3 md:w-4 md:h-4 bg-purple-500 rounded-full mr-2 flex-shrink-0"></div>
@@ -1817,7 +1818,7 @@
                           <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="dynamics-tecnico">0%</td>
                           <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="odoo-tecnico">0%</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        <tr class="hover:bg-gray-50 transition-colors" data-category="proveedor">
                           <td class="py-3 px-4 border-b border-gray-200">
                             <div class="flex items-center">
                               <div class="w-3 h-3 md:w-4 md:h-4 bg-yellow-500 rounded-full mr-2 flex-shrink-0"></div>
@@ -1859,17 +1860,17 @@
               
               <!-- Navegación por pestañas para categorías -->
               <div class="flex justify-starts sm:justify-center mb-6 overflow-x-auto py-2 no-scrollbar">
-                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-indigo-600 text-white mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="arquitectura">
-                  <i class="fas fa-server mr-1"></i>Arquitectura
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-indigo-600 text-white mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="funcionalRFP">
+                  <i class="fas fa-server mr-1"></i>Funcional
                 </button>
-                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="adaptabilidad">
-                  <i class="fas fa-cogs mr-1"></i>Adaptabilidad
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="economicoRFP">
+                  <i class="fas fa-cogs mr-1"></i>Económico
                 </button>
-                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="escalabilidad">
-                  <i class="fas fa-chart-line mr-1"></i>Escalabilidad
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="tecnicoRFP">
+                  <i class="fas fa-chart-line mr-1"></i>Técnico
                 </button>
-                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="usabilidad">
-                  <i class="fas fa-users mr-1"></i>Usabilidad
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="proveedorRFP">
+                  <i class="fas fa-users mr-1"></i>Proveedor
                 </button>
               </div>
               
@@ -1926,13 +1927,13 @@
               <!-- Contenedores para cada categoría -->
               <div class="rfp-content-container">
                 <!-- 1. Arquitectura Tecnológica y Robustez -->
-                <div class="rfp-content block" data-category="arquitectura">
+                <div class="rfp-content block" data-category="funcionalRFP">
                   <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
-                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Arquitectura Tecnológica y Robustez</h4>
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Funcional</h4>
                     
                     <!-- Gráfico de barras para Arquitectura -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-arquitectura"></div>
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-funcionalRFP"></div>
                       
                       <!-- Comparativas detalladas por subitems -->
                       <div>
@@ -1944,14 +1945,14 @@
                   </div>
                 </div>
                 
-                <!-- 2. Adaptabilidad y evolución (Integración) -->
-                <div class="rfp-content hidden" data-category="adaptabilidad">
+                <!-- 2. Económico -->
+                <div class="rfp-content hidden" data-category="economicoRFP">
                   <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
-                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Adaptabilidad y evolución (Integración)</h4>
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Económico</h4>
                     
                     <!-- Gráfico de barras para Adaptabilidad -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-adaptabilidad"></div>
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-economicoRFP"></div>
                       
                       <!-- Comparativas detalladas por subitems -->
                       <div>
@@ -1963,14 +1964,14 @@
                   </div>
                 </div>
                 
-                <!-- 3. Escalabilidad y Evolución Futura -->
-                <div class="rfp-content hidden" data-category="escalabilidad">
+                <!-- 3. Técnico -->
+                <div class="rfp-content hidden" data-category="tecnicoRFP">
                   <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
-                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Escalabilidad y Evolución Futura</h4>
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Técnico</h4>
                     
                     <!-- Gráfico de barras para Escalabilidad -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-escalabilidad"></div>
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-tecnicoRFP"></div>
                       
                       <!-- Comparativas detalladas por subitems -->
                       <div>
@@ -1982,14 +1983,14 @@
                   </div>
                 </div>
                 
-                <!-- 4. Usabilidad -->
-                <div class="rfp-content hidden" data-category="usabilidad">
+                <!-- 4. Proveedor -->
+                <div class="rfp-content hidden" data-category="proveedorRFP">
                   <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
-                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Usabilidad</h4>
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Proveedor</h4>
                     
                     <!-- Gráfico de barras para Usabilidad -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-usabilidad"></div>
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-proveedorRFP"></div>
                       
                       <!-- Comparativas detalladas por subitems -->
                       <div>
@@ -2005,18 +2006,22 @@
               <!-- Puntaje Total RFP -->
               <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mt-6 md:mt-8">
                 <div class="bg-white rounded-lg p-4 shadow-md w-full md:w-auto md:min-w-[200px] text-center">
-                  <img src="img/logos/dynamics365.webp" alt="Dynamics 365" class="w-16 h-12 mx-auto mb-3 object-contain">
-                  <h5 class="text-sm md:text-base font-semibold text-gray-700">Dynamics 365</h5>
-                  <div class="text-2xl md:text-3xl font-bold text-blue-600" id="dynamics-rfp-total">21,06</div>
-                  <div class="text-xs text-gray-500">sobre 25 puntos</div>
-                </div>
-                
-                <div class="bg-white rounded-lg p-4 shadow-md w-full md:w-auto md:min-w-[200px] text-center">
                   <img src="img/logos/odoo.webp" alt="Odoo" class="w-16 h-12 mx-auto mb-3 object-contain">
                   <h5 class="text-sm md:text-base font-semibold text-gray-700">Odoo</h5>
-                  <div class="text-2xl md:text-3xl font-bold text-purple-600" id="odoo-rfp-total">19,94</div>
-                  <div class="text-xs text-gray-500">sobre 25 puntos</div>
+                  <div class="text-2xl md:text-3xl font-bold text-purple-600" id="odoo-rfp-total">27.60</div>
+                  <div class="text-xs text-gray-500" id="odoo-max-points">sobre 30 puntos</div>
                 </div>
+
+                <div class="bg-white rounded-lg p-4 shadow-md w-full md:w-auto md:min-w-[200px] text-center">
+                  <img src="img/logos/dynamics365.webp" alt="Dynamics 365" class="w-16 h-12 mx-auto mb-3 object-contain">
+                  <h5 class="text-sm md:text-base font-semibold text-gray-700">Dynamics 365</h5>
+                  <div class="text-2xl md:text-3xl font-bold text-blue-600" id="dynamics-rfp-total">22.50</div>
+                  <div class="text-xs text-gray-500" id="dynamics-max-points">sobre 30 puntos</div>
+                </div>
+              </div>
+              <div class="text-center mt-2 text-xs text-gray-500 italic">
+                <span id="category-indicator">Categoría: Funcional (30%)</span> - 
+                Los puntajes se actualizan según la categoría seleccionada
               </div>
             </div>
 
@@ -2058,18 +2063,21 @@
                       <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="odoo-year3">$76.080,00</td>
                       <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="dynamics-year3">$149.600,00</td>
                     </tr>
-                    <tr class="bg-gray-50">
-                      <td class="py-3 px-4 border-b border-gray-200 text-sm font-bold">TOTAL 3 AÑOS</td>
-                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-bold text-green-600" id="odoo-total-3y">$162.240,00</td>
-                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-bold text-green-600" id="dynamics-total-3y">$322.800,00</td>
+                    <tr class="bg-gray-50 transition-all duration-500 animate-pulse-subtle">
+                      <td class="py-4 px-6 whitespace-nowrap text-sm font-bold text-gray-900 bg-gray-50 rounded-bl-xl">TOTAL</td>
+                      <td class="py-4 px-6 whitespace-nowrap text-center font-bold text-green-600 bg-gray-50" id="odoo-total-3y">$76.080,00</td>
+                      <td class="py-4 px-6 whitespace-nowrap text-center font-bold text-blue-600 bg-gray-50 rounded-br-xl" id="dynamics-total-3y">$149.600,00</td>
                     </tr>
                   </tbody>
+                  <caption class="caption-bottom mt-2 text-xs text-gray-500 text-center italic">
+                    Costos para un paquete de 50 usuarios. Años 2 y 3 muestran solo licencia y mantenimiento.
+                  </caption>
                 </table>
               </div>
               
               <!-- Gráfico de líneas para el flujo de caja -->
               <div class="bg-white rounded-lg p-3 md:p-4 lg:p-6 shadow-md">
-                <h4 class="text-base md:text-lg font-semibold text-center mb-3 md:mb-4 lg:mb-6 text-gray-800">Evolución de Costos</h4>
+                <h4 class="text-base md:text-lg font-semibold text-center mb-3 md:mb-4 lg:mb-6 text-gray-800">Evolución de Inversión</h4>
                 
                 <!-- Contenedor del gráfico SVG con altura responsive -->
                 <div class="relative w-full mb-4 md:mb-6">
@@ -2127,7 +2135,7 @@
               <div class="text-center mb-6 md:mb-8">
                 <h3 class="text-lg md:text-xl lg:text-2xl font-semibold mb-3 md:mb-4">Inversión en Consultoría</h3>
                 <div class="bg-white rounded-lg p-3 md:p-4 shadow-md inline-block">
-                  <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">$245,000</div>
+                  <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary" id="consultancy-total">$0</div>
                   <div class="text-gray-600 text-sm md:text-base">Pesos Argentinos</div>
                   <div class="text-xs text-gray-500 mt-1">*Precios válidos por 30 días</div>
                 </div>
