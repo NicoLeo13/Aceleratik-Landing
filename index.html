@@ -23,6 +23,8 @@
       document.documentElement.className = document.documentElement.className.replace("no-js", "js");
     </script>
     <script src="js/tailwind.config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
   </head>
   <body class="bg-white text-gray-900">
     <!-- Header con menu de navegacion y toda la movida -->
@@ -37,6 +39,7 @@
             <a href="#equipo" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Equipo</a>
             <a href="#proyecto" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Proyecto</a>
             <a href="#planificacion" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Planificación</a>
+            <a href="#proveedores" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Proveedores</a>
             <a href="#presupuesto" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Presupuesto</a>
             <a href="#contacto" class="nav-link text-gray-700 hover:text-primary transition-colors text-sm lg:text-base">Contacto</a>
           </div>
@@ -51,6 +54,7 @@
             <a href="#equipo" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Equipo</a>
             <a href="#proyecto" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Proyecto</a>
             <a href="#planificacion" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Planificación</a>
+            <a href="#proveedores" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Proveedores</a>
             <a href="#presupuesto" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Presupuesto</a>
             <a href="#contacto" class="nav-link block py-4 px-5 text-gray-700 hover:text-primary hover:bg-gray-50 border-b border-gray-100 transition-colors font-medium text-center">Contacto</a>
           </div>
@@ -750,7 +754,7 @@
 
           <!-- Problemas actuales - Optimizados para móvil -->
           <div class="mb-12 md:mb-16">
-            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
+            <h3 class="text-2xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
               <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-400">Problemas Actuales</span>
               <div class="absolute w-16 h-1 bg-gradient-to-r from-red-600 to-red-400 rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
             </h3>
@@ -853,7 +857,7 @@
 
           <!-- Objetivos Estratégicos - Optimizados para móvil -->
           <div class="mb-12 md:mb-16">
-            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
+            <h3 class="text-2xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
               <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-blue-600">Objetivos Estratégicos</span>
               <div class="absolute w-16 h-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
             </h3>
@@ -933,20 +937,14 @@
 
           <!-- Arquitectura Actual vs Destino - Mobile First Design -->
           <div class="mb-12 md:mb-16">
-            <h3 class="text-xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Arquitectura del Sistema</span>
+            <h3 class="text-2xl md:text-2xl font-semibold text-center mb-6 md:mb-8 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Arquitectura Empresarial</span>
               <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
             </h3>
 
             <!-- Mobile View: Swipeable Cards -->
             <div class="md:hidden">
               <div class="relative bg-gradient-to-br from-gray-50 to-white rounded-xl shadow-lg p-6 border border-gray-100">
-                <div class="absolute inset-0 overflow-hidden rounded-xl opacity-30 pointer-events-none">
-                  <div class="absolute top-[20%] left-[10%] w-[40%] h-[30%] rounded-full bg-blue-400 mix-blend-multiply filter blur-3xl"></div>
-                  <div class="absolute bottom-[30%] right-[10%] w-[35%] h-[30%] rounded-full bg-purple-400 mix-blend-multiply filter blur-3xl"></div>
-                  <div class="absolute top-[50%] right-[20%] w-[30%] h-[25%] rounded-full bg-indigo-300 mix-blend-multiply filter blur-3xl"></div>
-                </div>
-                
                 <!-- Barra progreso para swipe -->
                 <div class="flex items-center justify-between mb-6 relative z-10">
                   <div class="flex-1 h-1 bg-gray-200 rounded-full mx-2 overflow-hidden shadow-sm">
@@ -964,7 +962,13 @@
                   <div class="flex transition-transform duration-300" style="transform: translateX(0%)">
                     <!-- Arquitectura Actual -->
                     <div class="w-full flex-shrink-0">
-                      <div class="text-center architecture-container flex flex-col h-full">
+                      <div class="text-center architecture-container flex flex-col h-full relative">
+                        <!-- Blobs para arquitectura actual -->
+                        <div class="absolute inset-0 overflow-hidden rounded-xl opacity-30 pointer-events-none">
+                          <div class="absolute top-[20%] left-[10%] w-[40%] h-[30%] rounded-full bg-blue-400 mix-blend-multiply filter blur-3xl"></div>
+                          <div class="absolute bottom-[30%] right-[10%] w-[35%] h-[30%] rounded-full bg-purple-400 mix-blend-multiply filter blur-3xl"></div>
+                          <div class="absolute top-[50%] right-[20%] w-[30%] h-[25%] rounded-full bg-indigo-300 mix-blend-multiply filter blur-3xl"></div>
+                        </div>
                         <div class="flex justify-center w-full mb-4">
                           <div class="inline-block bg-blue-100 p-3 rounded-lg shadow-sm">
                             <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
@@ -1012,7 +1016,13 @@
 
                     <!-- Arquitectura Destino -->
                     <div class="w-full flex-shrink-0">
-                      <div class="text-center architecture-container flex flex-col h-full">
+                      <div class="text-center architecture-container flex flex-col h-full relative">
+                        <!-- Blobs para arquitectura destino -->
+                        <div class="absolute inset-0 overflow-hidden rounded-xl opacity-30 pointer-events-none">
+                          <div class="absolute top-[20%] left-[10%] w-[40%] h-[30%] rounded-full bg-green-400 mix-blend-multiply filter blur-3xl"></div>
+                          <div class="absolute bottom-[30%] right-[10%] w-[35%] h-[30%] rounded-full bg-teal-400 mix-blend-multiply filter blur-3xl"></div>
+                          <div class="absolute top-[50%] right-[20%] w-[30%] h-[25%] rounded-full bg-emerald-300 mix-blend-multiply filter blur-3xl"></div>
+                        </div>
                         <div class="flex justify-center w-full mb-4">
                           <div class="inline-block bg-green-100 p-3 rounded-lg shadow-sm">
                             <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white shadow-md">
@@ -1385,6 +1395,112 @@
               </div>
             </div>
           </div>
+
+          <!-- Alcance del proyecto -->
+          <div class="mt-16">
+            <h3 class="text-2xl md:text-3xl font-semibold text-center mb-6 md:mb-8 relative">
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Alcance del Proyecto</span>
+              <div class="absolute w-16 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4"></div>
+            </h3>
+            
+            <!-- Contenedor para swipe en móvil y grid en desktop -->
+            <div class="alcance-swipe-container relative overflow-hidden max-w-5xl mx-auto">
+              <!-- Indicador de swipe (solo en móvil) -->
+              <div class="md:hidden absolute top-3 right-3 text-blue-500 animate-pulse z-10 swipe-hint">
+                <i class="fas fa-hand-point-right mr-1"></i>
+                <span class="text-xs font-medium">Desliza</span>
+              </div>
+              
+              <!-- Botones de navegación móvil -->
+              <div class="md:hidden absolute inset-y-0 left-0 flex items-center z-10">
+                <button id="prev-alcance" aria-label="Anterior tarjeta" class="bg-white/80 text-blue-600 p-2 rounded-r-lg shadow-md hover:bg-white focus:outline-none ml-0.5">
+                  <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+              </div>
+              <div class="md:hidden absolute inset-y-0 right-0 flex items-center z-10">
+                <button id="next-alcance" aria-label="Siguiente tarjeta" class="bg-white/80 text-blue-600 p-2 rounded-l-lg shadow-md hover:bg-white focus:outline-none mr-0.5">
+                  <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+              </div>
+              
+              <div class="alcance-swipe-wrapper flex md:grid md:grid-cols-2 md:gap-6 transition-transform duration-300 ease-in-out px-4 md:px-0">
+                <!-- Lo que incluye -->
+                <div class="alcance-card flex-shrink-0 w-full md:w-auto bg-gradient-to-br from-blue-50 to-blue-100 p-5 md:p-6 rounded-xl shadow-md h-[500px] md:h-full flex flex-col">
+                  <h4 class="font-bold text-xl text-blue-700 mb-4 flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-3 text-2xl"></i>
+                    Incluido en el Proyecto
+                  </h4>
+                  <ul class="space-y-3 flex-grow flex flex-col justify-between">
+                    <li class="flex items-start">
+                      <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                      <span>Análisis de sistemas ERP para reemplazar Physis</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                      <span>Migración de datos históricos y actuales</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                      <span>Integración con sistemas CRM existentes</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                      <span>Capacitación para usuarios clave y administradores</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                      <span>Implementación de dashboards comerciales</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                      <span>Soporte técnico durante los primeros 6 meses</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <!-- Lo que no incluye -->
+                <div class="alcance-card flex-shrink-0 w-full md:w-auto bg-gradient-to-br from-gray-50 to-gray-100 p-5 md:p-6 rounded-xl shadow-md h-[500px] md:h-full flex flex-col">
+                  <h4 class="font-bold text-xl text-gray-700 mb-4 flex items-center">
+                    <i class="fas fa-times-circle text-red-500 mr-3 text-2xl"></i>
+                    No Incluido en el Proyecto
+                  </h4>
+                  <ul class="space-y-3 flex-grow flex flex-col justify-between">
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                      <span>Desarrollo de aplicaciones personalizadas adicionales</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                      <span>Integración con sistemas de terceros fuera del alcance definido</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                      <span>Adquisición de hardware o infraestructura física</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                      <span>Capacitación continua después del período inicial</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                      <span>Migración de datos no estructurados o archivos externos</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                      <span>Cambios en procesos de negocio fuera del ámbito comercial</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Indicadores de página (solo en móvil) -->
+              <div class="md:hidden flex justify-center mt-4 alcance-indicators">
+                <button aria-label="Página 1" class="alcance-indicator w-3 h-3 mx-1 rounded-full bg-blue-600 opacity-100"></button>
+                <button aria-label="Página 2" class="alcance-indicator w-3 h-3 mx-1 rounded-full bg-blue-600 opacity-50"></button>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </section>
 
@@ -1571,221 +1687,415 @@
                 </div>
               </div>
             </div>
+          </div>       
+        </div>
+      </section>
+
+      <!-- Sección Proveedores -->
+      <section id="proveedores" class="py-12 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <!-- Título con diseño optimizado para móvil -->
+          <h2 class="relative text-center mb-10 md:mb-20">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate text-3xl md:text-4xl font-extrabold tracking-tight">Comparativa</span>
+            <span class="block text-3xl md:text-5xl font-black mt-2 text-gray-800 tracking-tighter">de Proveedores</span>
+            <div class="absolute w-20 md:w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 gradient-animate rounded-full mx-auto left-0 right-0 bottom-0 transform translate-y-4 md:translate-y-6 shadow-lg"></div>
+          </h2>
+
+          <!-- Navegación rápida para móvil -->
+          <div class="flex justify-center mb-6 md:hidden">
+            <a href="#rfi-comparacion" class="bg-primary text-white px-4 py-2 rounded-l-lg text-sm font-medium"> <i class="fas fa-info-circle mr-1"></i>RFI </a>
+            <a href="#rfp-comparacion" class="bg-gray-700 text-white px-4 py-2 border-l border-gray-500 text-sm font-medium"> <i class="fas fa-clipboard-check mr-1"></i>RFP </a>
+            <a href="#flujo-caja" class="bg-green-600 text-white px-4 py-2 rounded-r-lg text-sm font-medium"> <i class="fas fa-money-bill-wave mr-1"></i>Costos </a>
           </div>
 
-          <!-- Metodología Ágil -->
-          <div>
-            <h3 class="text-2xl font-semibold text-center mb-8">Metodología Ágil - Fases de la Consultoría</h3>
+          <!-- Contenedor principal para los gráficos de comparación -->
+          <div class="space-y-12 md:space-y-20">
+            <!-- 1. RFI (Request for Information) - Gráfico circular -->
+            <div id="rfi-comparacion" class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-4 md:p-6 lg:p-8 shadow-lg">
+              <h3 class="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-gray-800">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 gradient-animate">Request For Information (RFI)</span>
+              </h3>
+              
+              <!-- Grid para desktop / Stack para móvil -->
+              <div class="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+                <!-- Gráfico circular RFI -->
+                <div class="w-full overflow-x-hidden bg-white rounded-lg p-4 md:p-6 shadow-md transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <h4 class="text-lg font-semibold text-center mb-4 text-gray-800">Comparativa por Categorías</h4>
+                  
+                  <!-- Gráfico circular responsivo -->
+                  <div class="mb-6">
+                    <div class="relative w-full max-w-[220px] h-40 md:h-48 lg:h-64 mx-auto">
+                      <!-- SVG para gráfico circular -->
+                      <svg viewBox="0 0 100 100" class="w-full h-full" id="rfi-chart">
+                        <!-- Fondo gris del gráfico -->
+                        <circle cx="50" cy="50" r="45" fill="transparent" stroke="#f3f4f6" stroke-width="10" />
 
-            <!-- Versión Mobile: Swipeable Cards -->
-            <div class="md:hidden">
-              <div class="relative bg-white rounded-lg shadow-lg p-6">
-                <!-- Barra progreso (no tocar) -->
-                <div class="flex items-center justify-between mb-6">
-                  <div class="flex-1 h-1 bg-gray-200 rounded-full mx-2">
-                    <div id="mobile-progress" class="h-full bg-primary rounded-full transition-all duration-500" style="width: 25%"></div>
-                  </div>
-                </div>
+                        <!-- Círculos para cada categoría del RFI -->
+                        <circle id="chart-funcional" cx="50" cy="50" r="45" fill="transparent" stroke="#2563eb" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                        <circle id="chart-economico" cx="50" cy="50" r="45" fill="transparent" stroke="#10b981" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                        <circle id="chart-tecnico" cx="50" cy="50" r="45" fill="transparent" stroke="#8b5cf6" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                        <circle id="chart-proveedor" cx="50" cy="50" r="45" fill="transparent" stroke="#f59e0b" stroke-width="10" stroke-dasharray="0 283" stroke-dashoffset="0" transform="rotate(-90 50 50)" />
+                      </svg>
 
-                <!-- Indicador de Fase -->
-                <div class="text-center mb-6">
-                  <span class="bg-primary bg-opacity-10 text-primary text-sm font-semibold px-4 py-1 rounded-full" id="fase-indicator"> Fase 1 de 4 </span>
-                </div>
-
-                <!-- Contenedor de Cards -->
-                <div id="mobile-phases" class="overflow-hidden">
-                  <div class="flex transition-transform duration-300" style="transform: translateX(0%)">
-                    <!-- Fase 1: Diagnóstico -->
-                    <div class="w-full flex-shrink-0">
-                      <div class="text-center">
-                        <div class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6">
-                          <i class="fas fa-search text-3xl"></i>
-                        </div>
-                        <h4 class="text-xl font-semibold mb-4">Diagnóstico</h4>
-                        <div class="space-y-4">
-                          <p class="text-gray-600">Análisis de procesos actuales y evaluación de escalabilidad de Physis</p>
-                          <div class="grid grid-cols-2 gap-4 text-sm">
-                            <div class="bg-gray-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Duración</p>
-                              <p class="font-semibold text-gray-700">3 semanas</p>
-                            </div>
-                            <div class="bg-green-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Estado</p>
-                              <p class="font-semibold text-green-700">En progreso</p>
-                            </div>
-                          </div>
-                        </div>
+                      <!-- Texto central para total -->
+                      <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                        <span class="text-xs md:text-sm text-gray-500">Total</span>
+                        <span class="text-lg md:text-xl font-bold text-primary">100%</span>
                       </div>
                     </div>
 
-                    <!-- Fase 2: Evaluación -->
-                    <div class="w-full flex-shrink-0">
-                      <div class="text-center">
-                        <div class="w-20 h-20 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                          <i class="fas fa-balance-scale text-3xl"></i>
-                        </div>
-                        <h4 class="text-xl font-semibold mb-4">Evaluación</h4>
-                        <div class="space-y-4">
-                          <p class="text-gray-600">Análisis comparativo de ERPs y soluciones complementarias</p>
-                          <div class="grid grid-cols-2 gap-4 text-sm">
-                            <div class="bg-gray-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Duración</p>
-                              <p class="font-semibold text-gray-700">4 semanas</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Estado</p>
-                              <p class="font-semibold text-gray-700">Pendiente</p>
-                            </div>
-                          </div>
-                        </div>
+                    <!-- Leyenda del gráfico RFI -->
+                    <div class="grid grid-cols-2 gap-2 text-xs md:text-sm mt-4 max-w-xl mx-auto" id="rfi-legend">
+                      <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="funcional">
+                        <div class="w-3 h-3 md:w-4 md:h-4 bg-blue-500 rounded-full mr-2 flex-shrink-0"></div>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm truncate">Funcional (30%)</span>
                       </div>
-                    </div>
-
-                    <!-- Fase 3: Recomendación -->
-                    <div class="w-full flex-shrink-0">
-                      <div class="text-center">
-                        <div class="w-20 h-20 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                          <i class="fas fa-clipboard-check text-3xl"></i>
-                        </div>
-                        <h4 class="text-xl font-semibold mb-4">Recomendación</h4>
-                        <div class="space-y-4">
-                          <p class="text-gray-600">Propuesta detallada de soluciones y proveedores recomendados</p>
-                          <div class="grid grid-cols-2 gap-4 text-sm">
-                            <div class="bg-gray-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Duración</p>
-                              <p class="font-semibold text-gray-700">2 semanas</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Estado</p>
-                              <p class="font-semibold text-gray-700">Pendiente</p>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="economico">
+                        <div class="w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm truncate">Económico (30%)</span>
                       </div>
-                    </div>
-
-                    <!-- Fase 4: Acompañamiento -->
-                    <div class="w-full flex-shrink-0">
-                      <div class="text-center">
-                        <div class="w-20 h-20 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                          <i class="fas fa-handshake text-3xl"></i>
-                        </div>
-                        <h4 class="text-xl font-semibold mb-4">Acompañamiento</h4>
-                        <div class="space-y-4">
-                          <p class="text-gray-600">Asesoría durante selección de proveedores e implementación</p>
-                          <div class="grid grid-cols-2 gap-4 text-sm">
-                            <div class="bg-gray-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Duración</p>
-                              <p class="font-semibold text-gray-700">8 semanas</p>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-lg">
-                              <p class="text-gray-500">Estado</p>
-                              <p class="font-semibold text-gray-700">Pendiente</p>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="tecnico">
+                        <div class="w-3 h-3 md:w-4 md:h-4 bg-purple-500 rounded-full mr-2 flex-shrink-0"></div>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm truncate">Técnico (25%)</span>
+                      </div>
+                      <div class="bg-white bg-opacity-90 rounded-lg shadow-sm px-2 py-1 md:px-3 md:py-2 flex items-center justify-center md:justify-start hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5" data-category="proveedor">
+                        <div class="w-3 h-3 md:w-4 md:h-4 bg-yellow-500 rounded-full mr-2 flex-shrink-0"></div>
+                        <span class="text-gray-700 font-medium text-xs md:text-sm truncate">Proveedor (15%)</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Botones de navegación -->
-                <button id="prev-phase-mobile" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 disabled:opacity-50 disabled:cursor-not-allowed" title="Fase anterior" aria-label="Fase anterior">
-                  <i class="fas fa-chevron-left text-lg"></i>
-                </button>
-                <button id="next-phase-mobile" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg text-primary hover:bg-gray-100 focus:outline-none z-10 disabled:opacity-50 disabled:cursor-not-allowed" title="Fase siguiente" aria-label="Fase siguiente">
-                  <i class="fas fa-chevron-right text-lg"></i>
-                </button>
-
-                <!-- Indicadores de fase (dots) -->
-                <div class="flex justify-center space-x-2 mt-6">
-                  <button class="w-2 h-2 rounded-full bg-primary transition-all duration-300" data-phase="0" title="Fase 1" aria-label="Fase 1"></button>
-                  <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-phase="1" title="Fase 2" aria-label="Fase 2"></button>
-                  <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-phase="2" title="Fase 3" aria-label="Fase 3"></button>
-                  <button class="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-phase="3" title="Fase 4" aria-label="Fase 4"></button>
+                <!-- Tabla de resultados RFI -->
+                <div class="w-full overflow-x-hidden bg-white rounded-lg p-4 md:p-6 shadow-md transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                  <h4 class="text-lg font-semibold text-center mb-4 text-gray-800">Resultados por Proveedor</h4>
+                  
+                  <!-- Tabla de resultados -->
+                  <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                      <thead>
+                        <tr>
+                          <th class="py-3 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Categoría</th>
+                          <th class="py-3 px-4 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <img src="img/logos/dynamics365.webp" alt="Microsoft Dynamics 365" class="w-12 h-8 mx-auto object-contain">
+                            <span class="block mt-1">Dynamics 365</span>
+                          </th>
+                          <th class="py-3 px-4 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            <img src="img/logos/odoo.webp" alt="Odoo" class="w-12 h-8 mx-auto object-contain">
+                            <span class="block mt-1">Odoo</span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody id="rfi-results" class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50 transition-colors">
+                          <td class="py-3 px-4 border-b border-gray-200">
+                            <div class="flex items-center">
+                              <div class="w-3 h-3 md:w-4 md:h-4 bg-blue-500 rounded-full mr-2 flex-shrink-0"></div>
+                              <span class="text-sm font-medium text-gray-700">Funcional (30%)</span>
+                            </div>
+                          </td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="dynamics-funcional">0%</td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="odoo-funcional">0%</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                          <td class="py-3 px-4 border-b border-gray-200">
+                            <div class="flex items-center">
+                              <div class="w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
+                              <span class="text-sm font-medium text-gray-700">Económico (30%)</span>
+                            </div>
+                          </td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="dynamics-economico">0%</td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="odoo-economico">0%</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                          <td class="py-3 px-4 border-b border-gray-200">
+                            <div class="flex items-center">
+                              <div class="w-3 h-3 md:w-4 md:h-4 bg-purple-500 rounded-full mr-2 flex-shrink-0"></div>
+                              <span class="text-sm font-medium text-gray-700">Técnico (25%)</span>
+                            </div>
+                          </td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="dynamics-tecnico">0%</td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="odoo-tecnico">0%</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                          <td class="py-3 px-4 border-b border-gray-200">
+                            <div class="flex items-center">
+                              <div class="w-3 h-3 md:w-4 md:h-4 bg-yellow-500 rounded-full mr-2 flex-shrink-0"></div>
+                              <span class="text-sm font-medium text-gray-700">Proveedor (15%)</span>
+                            </div>
+                          </td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="dynamics-proveedor">0%</td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-medium" id="odoo-proveedor">0%</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                          <td class="py-3 px-4 border-b border-gray-200 font-bold text-sm">TOTAL</td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center font-bold text-blue-600 text-lg" id="dynamics-total">0%</td>
+                          <td class="py-3 px-4 border-b border-gray-200 text-center font-bold text-purple-600 text-lg" id="odoo-total">0%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- La versión desktop del cronograma ha sido unificada en la sección anterior -->
-            <div class="hidden md:block bg-white rounded-lg shadow-lg p-8">
-              <!-- Metodología Ágil en formato de grid para pantallas medianas y grandes -->
-              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-                <!-- Fase 1: Diagnóstico -->
-                <div class="text-center">
-                  <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-search text-2xl"></i>
+            <!-- 2. RFP (Request for Proposal) - Gráficos de barras -->
+            <div id="rfp-comparacion" class="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-lg p-4 md:p-6 lg:p-8 shadow-lg">
+              <h3 class="text-xl md:text-2xl font-bold text-center mb-4 md:mb-6 text-gray-800">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-500 to-blue-600 gradient-animate">Request For Proposal (RFP)</span>
+              </h3>
+              
+              <!-- Leyenda de colores para proveedores -->
+              <div class="flex justify-center items-center gap-4 md:gap-8 mb-6">
+                <div class="flex items-center">
+                  <div class="w-4 h-4 rounded-full bg-gradient-to-r from-purple-400 to-purple-600 mr-2"></div>
+                  <span class="text-sm font-medium">Odoo</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-4 h-4 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 mr-2"></div>
+                  <span class="text-sm font-medium">Dynamics 365</span>
+                </div>
+              </div>
+              
+              <!-- Navegación por pestañas para categorías -->
+              <div class="flex justify-starts sm:justify-center mb-6 overflow-x-auto py-2 no-scrollbar">
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-indigo-600 text-white mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="arquitectura">
+                  <i class="fas fa-server mr-1"></i>Arquitectura
+                </button>
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="adaptabilidad">
+                  <i class="fas fa-cogs mr-1"></i>Adaptabilidad
+                </button>
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="escalabilidad">
+                  <i class="fas fa-chart-line mr-1"></i>Escalabilidad
+                </button>
+                <button class="rfp-tab-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-200 text-gray-700 mx-1 md:mx-2 text-xs md:text-sm font-medium whitespace-nowrap shadow-sm" data-category="usabilidad">
+                  <i class="fas fa-users mr-1"></i>Usabilidad
+                </button>
+              </div>
+              
+              <!-- Plantilla para el componente de gráfico de barras comparativo -->
+              <template id="comparison-chart-template">
+                <div class="bg-gray-50 rounded-lg p-3 md:p-4 flex flex-col h-full">
+                  <h5 class="text-sm md:text-base font-medium text-center mb-3 text-gray-700">Comparación General</h5>
+                  <div class="relative flex-grow min-h-[200px] md:min-h-[250px] lg:min-h-[300px] mb-4">
+                    <div class="absolute inset-0 w-full h-full flex items-end">
+                      <div class="w-full h-full flex justify-around items-end">
+                        <!-- Barra Odoo -->
+                        <div class="flex flex-col items-center w-1/4 md:w-1/5" style="height: 100%; justify-content: flex-end; display: flex;">
+                          <div class="w-full bg-gradient-to-t from-purple-400 to-purple-600 rounded-t-md transition-all duration-1000 ease-out shadow-sm relative bar-odoo" style="height: 0%;">
+                            <span class="absolute -top-6 md:-top-7 left-0 right-0 text-center text-xs md:text-sm font-bold text-purple-700">0%</span>
+                          </div>
+                        </div>
+                        
+                        <!-- Barra Dynamics -->
+                        <div class="flex flex-col items-center w-1/4 md:w-1/5" style="height: 100%; justify-content: flex-end; display: flex;">
+                          <div class="w-full bg-gradient-to-t from-blue-400 to-blue-600 rounded-t-md transition-all duration-1000 ease-out shadow-sm relative bar-dynamics" style="height: 0%;">
+                            <span class="absolute -top-6 md:-top-7 left-0 right-0 text-center text-xs md:text-sm font-bold text-blue-700">0%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Indicadores de escala (solo textos, sin líneas) -->
+                    <div class="absolute left-0 bottom-0 h-full flex flex-col justify-between pointer-events-none text-right pr-2" style="width: 30px">
+                      <div class="text-[10px] md:text-xs text-gray-400">100%</div>
+                      <div class="text-[10px] md:text-xs text-gray-400">75%</div>
+                      <div class="text-[10px] md:text-xs text-gray-400">50%</div>
+                      <div class="text-[10px] md:text-xs text-gray-400">25%</div>
+                      <div class="text-[10px] md:text-xs text-gray-400">0%</div>
+                    </div>
                   </div>
-                  <h4 class="text-lg font-semibold mb-3">Diagnóstico</h4>
-                  <p class="text-sm text-gray-600 mb-3">Análisis de procesos actuales y evaluación de escalabilidad de Physis</p>
-                  <div class="grid grid-cols-2 gap-2 text-sm">
-                    <div class="bg-gray-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Duración</p>
-                      <p class="font-semibold text-gray-700">3 semanas</p>
+                  
+                  <!-- Información adicional de comparación -->
+                  <div class="mt-2 md:mt-4 pt-2 md:pt-3 border-t border-gray-200">
+                    <div class="flex justify-center text-[10px] md:text-sm mb-2 gap-3 md:gap-4">
+                      <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-purple-600 mr-1"></div>
+                        <span class="text-gray-700">Odoo</span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 mr-1"></div>
+                        <span class="text-gray-700">Dynamics 365</span>
+                      </div>
                     </div>
-                    <div class="bg-green-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Estado</p>
-                      <p class="font-semibold text-green-700">En progreso</p>
-                    </div>
+                    <p class="text-[10px] md:text-xs text-gray-500 mt-1 md:mt-2 text-center">Las barras muestran el rendimiento general en esta categoría</p>
                   </div>
                 </div>
+              </template>
 
-                <!-- Fase 2: Evaluación -->
-                <div class="text-center">
-                  <div class="w-16 h-16 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-balance-scale text-2xl"></i>
-                  </div>
-                  <h4 class="text-lg font-semibold mb-3">Evaluación</h4>
-                  <p class="text-sm text-gray-600 mb-3">Análisis comparativo de ERPs y soluciones complementarias</p>
-                  <div class="grid grid-cols-2 gap-2 text-sm">
-                    <div class="bg-gray-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Duración</p>
-                      <p class="font-semibold text-gray-700">4 semanas</p>
-                    </div>
-                    <div class="bg-gray-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Estado</p>
-                      <p class="font-semibold text-gray-700">Pendiente</p>
+              <!-- Contenedores para cada categoría -->
+              <div class="rfp-content-container">
+                <!-- 1. Arquitectura Tecnológica y Robustez -->
+                <div class="rfp-content block" data-category="arquitectura">
+                  <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Arquitectura Tecnológica y Robustez</h4>
+                    
+                    <!-- Gráfico de barras para Arquitectura -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-arquitectura"></div>
+                      
+                      <!-- Comparativas detalladas por subitems -->
+                      <div>
+                        <div class="space-y-3 md:space-y-4 subitems-container">
+                          <!-- Los subitems se generarán dinámicamente mediante JavaScript -->
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+                
+                <!-- 2. Adaptabilidad y evolución (Integración) -->
+                <div class="rfp-content hidden" data-category="adaptabilidad">
+                  <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Adaptabilidad y evolución (Integración)</h4>
+                    
+                    <!-- Gráfico de barras para Adaptabilidad -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-adaptabilidad"></div>
+                      
+                      <!-- Comparativas detalladas por subitems -->
+                      <div>
+                        <div class="space-y-3 md:space-y-4 subitems-container">
+                          <!-- Los subitems se generarán dinámicamente mediante JavaScript -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 3. Escalabilidad y Evolución Futura -->
+                <div class="rfp-content hidden" data-category="escalabilidad">
+                  <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Escalabilidad y Evolución Futura</h4>
+                    
+                    <!-- Gráfico de barras para Escalabilidad -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-escalabilidad"></div>
+                      
+                      <!-- Comparativas detalladas por subitems -->
+                      <div>
+                        <div class="space-y-3 md:space-y-4 subitems-container">
+                          <!-- Los subitems se generarán dinámicamente mediante JavaScript -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 4. Usabilidad -->
+                <div class="rfp-content hidden" data-category="usabilidad">
+                  <div class="bg-white rounded-lg p-4 md:p-6 shadow-md">
+                    <h4 class="text-lg font-semibold text-center mb-4 md:mb-6 text-gray-800">Usabilidad</h4>
+                    
+                    <!-- Gráfico de barras para Usabilidad -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div class="chart-container min-h-[200px] md:min-h-[250px] lg:min-h-[300px]" id="chart-usabilidad"></div>
+                      
+                      <!-- Comparativas detalladas por subitems -->
+                      <div>
+                        <div class="space-y-3 md:space-y-4 subitems-container">
+                          <!-- Los subitems se generarán dinámicamente mediante JavaScript -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Puntaje Total RFP -->
+              <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mt-6 md:mt-8">
+                <div class="bg-white rounded-lg p-4 shadow-md w-full md:w-auto md:min-w-[200px] text-center">
+                  <img src="img/logos/dynamics365.webp" alt="Dynamics 365" class="w-16 h-12 mx-auto mb-3 object-contain">
+                  <h5 class="text-sm md:text-base font-semibold text-gray-700">Dynamics 365</h5>
+                  <div class="text-2xl md:text-3xl font-bold text-blue-600" id="dynamics-rfp-total">21,06</div>
+                  <div class="text-xs text-gray-500">sobre 25 puntos</div>
+                </div>
+                
+                <div class="bg-white rounded-lg p-4 shadow-md w-full md:w-auto md:min-w-[200px] text-center">
+                  <img src="img/logos/odoo.webp" alt="Odoo" class="w-16 h-12 mx-auto mb-3 object-contain">
+                  <h5 class="text-sm md:text-base font-semibold text-gray-700">Odoo</h5>
+                  <div class="text-2xl md:text-3xl font-bold text-purple-600" id="odoo-rfp-total">19,94</div>
+                  <div class="text-xs text-gray-500">sobre 25 puntos</div>
+                </div>
+              </div>
+            </div>
 
-                <!-- Fase 3: Recomendación -->
-                <div class="text-center">
-                  <div class="w-16 h-16 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-clipboard-check text-2xl"></i>
+            <!-- 3. Comparativa de Flujo de Caja - Gráfico de líneas -->
+            <div id="flujo-caja" class="bg-gradient-to-br from-green-50 to-teal-100 rounded-lg p-4 md:p-6 lg:p-8 shadow-lg">
+              <h3 class="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-gray-800">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-teal-500 to-blue-600 gradient-animate">Flujo de Caja - 3 Años</span>
+              </h3>
+              
+              <!-- Tabla de costos por año -->
+              <div class="overflow-x-auto mb-8">
+                <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                  <thead>
+                    <tr>
+                      <th class="py-3 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Año</th>
+                      <th class="py-3 px-4 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <img src="img/logos/odoo.webp" alt="Odoo" class="w-10 h-6 inline-block mr-1 object-contain">
+                        Odoo
+                      </th>
+                      <th class="py-3 px-4 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <img src="img/logos/dynamics365.webp" alt="Microsoft Dynamics 365" class="w-10 h-6 inline-block mr-1 object-contain">
+                        Dynamics 365
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="cashflow-table">
+                    <tr class="hover:bg-gray-50">
+                      <td class="py-3 px-4 border-b border-gray-200 text-sm font-medium">Año 1</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="odoo-year1">$32.080,00</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="dynamics-year1">$65.600,00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                      <td class="py-3 px-4 border-b border-gray-200 text-sm font-medium">Año 2</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="odoo-year2">$54.080,00</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="dynamics-year2">$107.600,00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                      <td class="py-3 px-4 border-b border-gray-200 text-sm font-medium">Año 3</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="odoo-year3">$76.080,00</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm" id="dynamics-year3">$149.600,00</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                      <td class="py-3 px-4 border-b border-gray-200 text-sm font-bold">TOTAL 3 AÑOS</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-bold text-green-600" id="odoo-total-3y">$162.240,00</td>
+                      <td class="py-3 px-4 border-b border-gray-200 text-center text-sm font-bold text-green-600" id="dynamics-total-3y">$322.800,00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <!-- Gráfico de líneas para el flujo de caja -->
+              <div class="bg-white rounded-lg p-3 md:p-4 lg:p-6 shadow-md">
+                <h4 class="text-base md:text-lg font-semibold text-center mb-3 md:mb-4 lg:mb-6 text-gray-800">Evolución de Costos</h4>
+                
+                <!-- Contenedor del gráfico SVG con altura responsive -->
+                <div class="relative w-full mb-4 md:mb-6">
+                  <!-- Canvas para el gráfico con altura fija controlada por JS -->
+                  <div id="cashflow-chart" class="w-full"></div>
+                </div>
+                
+                <!-- Leyenda del gráfico - visible solo en móvil -->
+                <div class="flex md:hidden justify-center items-center gap-4">
+                  <div class="flex items-center">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full mr-1"></div>
+                    <span class="text-xs text-gray-700">Odoo</span>
                   </div>
-                  <h4 class="text-lg font-semibold mb-3">Recomendación</h4>
-                  <p class="text-sm text-gray-600 mb-3">Propuesta detallada de soluciones y proveedores recomendados</p>
-                  <div class="grid grid-cols-2 gap-2 text-sm">
-                    <div class="bg-gray-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Duración</p>
-                      <p class="font-semibold text-gray-700">2 semanas</p>
-                    </div>
-                    <div class="bg-gray-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Estado</p>
-                      <p class="font-semibold text-gray-700">Pendiente</p>
-                    </div>
+                  <div class="flex items-center">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-1"></div>
+                    <span class="text-xs text-gray-700">Dynamics 365</span>
                   </div>
                 </div>
-
-                <!-- Fase 4: Acompañamiento -->
-                <div class="text-center">
-                  <div class="w-16 h-16 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-handshake text-2xl"></i>
-                  </div>
-                  <h4 class="text-lg font-semibold mb-3">Acompañamiento</h4>
-                  <p class="text-sm text-gray-600 mb-3">Asesoría durante selección de proveedores e implementación</p>
-                  <div class="grid grid-cols-2 gap-2 text-sm">
-                    <div class="bg-gray-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Duración</p>
-                      <p class="font-semibold text-gray-700">8 semanas</p>
-                    </div>
-                    <div class="bg-gray-50 p-2 rounded-lg">
-                      <p class="text-gray-500 text-xs">Estado</p>
-                      <p class="font-semibold text-gray-700">Pendiente</p>
-                    </div>
-                  </div>
-                </div>
+              </div>
+              
+              <!-- Conclusión -->
+              <div class="mt-8 bg-white rounded-lg p-4 md:p-6 shadow-md">
+                <h4 class="text-lg font-semibold text-center mb-4 text-gray-800">Análisis de Costos</h4>
+                <p class="text-sm md:text-base text-gray-700">
+                  La diferencia de costos totales en un período de 3 años entre ambos proveedores es significativa. Odoo representa aproximadamente el <span class="font-bold text-green-600" id="cost-difference-percentage">50%</span> del costo de Dynamics 365, con un ahorro estimado de <span class="font-bold text-green-600" id="cost-savings">$160.560,00</span> en el período analizado.
+                </p>
               </div>
             </div>
           </div>

@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   initProblemasAccordion();
   initBudgetChart();
   initArchitectureSection();
+  initAlcanceSwipe();
+  initProveedoresSection();
 
   // Actualizar links activos después de cargar todo
   setTimeout(function () {
@@ -1902,4 +1904,853 @@ function initArchitectureSection() {
 
   // Inicializar estilos y estados de los botones
   setupButtonStyles();
+}
+
+/**
+ * Sección de Alcance del Proyecto en dispositivos móviles
+ */
+function initAlcanceSwipe() {
+  const container = document.querySelector(".alcance-swipe-container");
+  if (!container) return;
+
+  const wrapper = container.querySelector(".alcance-swipe-wrapper");
+  const indicators = container.querySelectorAll(".alcance-indicator");
+  const cards = container.querySelectorAll(".alcance-card");
+  const swipeHint = container.querySelector(".swipe-hint");
+  const prevBtn = document.getElementById("prev-alcance");
+  const nextBtn = document.getElementById("next-alcance");
+
+  if (!wrapper || !cards.length || cards.length < 2) return;
+
+  let currentIndex = 0;
+  let startX = 0;
+  let isDragging = false;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let isMobile = window.innerWidth < 768;
+  let hasInteracted = false;
+
+  function setupMobileSwipe() {
+    isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // Establecer ancho para swipe en móvil
+      const cardWidth = container.offsetWidth - 32; // Restar el padding horizontal (16px * 2)
+      cards.forEach((card) => {
+        card.style.width = `${cardWidth}px`;
+      });
+
+      wrapper.addEventListener("touchstart", handleTouchStart, { passive: true });
+      wrapper.addEventListener("touchmove", handleTouchMove, { passive: false });
+      wrapper.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+      if (prevBtn) {
+        prevBtn.style.display = "flex";
+        prevBtn.style.opacity = currentIndex === 0 ? "0.5" : "1";
+        prevBtn.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
+      }
+
+      if (nextBtn) {
+        nextBtn.style.display = "flex";
+        nextBtn.style.opacity = currentIndex === cards.length - 1 ? "0.5" : "1";
+        nextBtn.style.pointerEvents = currentIndex === cards.length - 1 ? "none" : "auto";
+      }
+
+      goToSlide(currentIndex);
+
+      if (swipeHint) {
+        swipeHint.style.display = hasInteracted ? "none" : "flex";
+      }
+    } else {
+      // Resetear estilos en desktop
+      cards.forEach((card) => {
+        card.style.width = "";
+      });
+      wrapper.style.transform = "";
+
+      // Ocultar botones de navegación e indicador de swipe en desktop
+      if (prevBtn) prevBtn.style.display = "none";
+      if (nextBtn) nextBtn.style.display = "none";
+      if (swipeHint) swipeHint.style.display = "none";
+    }
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      hideSwipeHint();
+      if (currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      hideSwipeHint();
+      if (currentIndex < cards.length - 1) {
+        goToSlide(currentIndex + 1);
+      }
+    });
+  }
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      hideSwipeHint();
+      goToSlide(index);
+    });
+  });
+
+  function hideSwipeHint() {
+    if (swipeHint && !hasInteracted) {
+      hasInteracted = true;
+      swipeHint.style.opacity = "0";
+      setTimeout(() => {
+        swipeHint.style.display = "none";
+      }, 300);
+    }
+  }
+
+  function updateNavigation() {
+    indicators.forEach((indicator, index) => {
+      if (index === currentIndex) {
+        indicator.classList.add("opacity-100");
+        indicator.classList.remove("opacity-50");
+      } else {
+        indicator.classList.add("opacity-50");
+        indicator.classList.remove("opacity-100");
+      }
+    });
+
+    if (prevBtn) {
+      prevBtn.style.opacity = currentIndex === 0 ? "0.5" : "1";
+      prevBtn.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
+    }
+
+    if (nextBtn) {
+      nextBtn.style.opacity = currentIndex === cards.length - 1 ? "0.5" : "1";
+      nextBtn.style.pointerEvents = currentIndex === cards.length - 1 ? "none" : "auto";
+    }
+  }
+
+  function handleTouchStart(e) {
+    if (!isMobile) return;
+    hideSwipeHint();
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    prevTranslate = currentTranslate;
+  }
+
+  function handleTouchMove(e) {
+    if (!isMobile || !isDragging) return;
+
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+
+    // Prevenir scroll vertical mientras se hace swipe
+    if (Math.abs(diff) > 5) {
+      e.preventDefault();
+    }
+
+    currentTranslate = prevTranslate + diff;
+    setWrapperPosition();
+  }
+
+  function handleTouchEnd() {
+    if (!isMobile || !isDragging) return;
+    isDragging = false;
+
+    const movedBy = currentTranslate - prevTranslate;
+
+    // Si el movimiento fue significativo, cambiar de slide
+    if (movedBy < -50 && currentIndex < cards.length - 1) {
+      currentIndex++;
+    } else if (movedBy > 50 && currentIndex > 0) {
+      currentIndex--;
+    }
+
+    goToSlide(currentIndex);
+  }
+
+  function goToSlide(index) {
+    if (!isMobile) return;
+
+    currentIndex = index;
+    const cardWidth = container.offsetWidth - 32; // Restar el padding horizontal (16px * 2)
+    currentTranslate = -index * cardWidth;
+    setWrapperPosition();
+    updateNavigation();
+  }
+
+  function setWrapperPosition() {
+    if (isMobile) {
+      wrapper.style.transform = `translateX(${currentTranslate}px)`;
+    }
+  }
+
+  window.addEventListener("resize", setupMobileSwipe);
+
+  setupMobileSwipe();
+  updateNavigation();
+}
+
+/**
+ * Sección de proveedores con gráficos y comparativas
+ */
+function initProveedoresSection() {
+  initRfiChart();
+  initRfpCharts();
+  initComparisonBars();
+  initCashflowChart();
+  initTabNavigation();
+
+  function initComparisonBars() {
+    console.log("Iniciando creación de componentes de gráficos comparativos...");
+
+    if (!window.COMPARISON_DATA || !window.COMPARISON_DATA.rfp) {
+      console.error("No se encontraron los datos de comparación");
+      return;
+    }
+
+    const categories = Object.values(COMPARISON_DATA.rfp.categories);
+
+    // Función para actualizar las barras
+    const updateBars = () => {
+      categories.forEach((category, index) => {
+        const chartContainer = document.getElementById(`chart-${category.id}`);
+        if (!chartContainer) return;
+
+        // Crear el componente si no existe
+        if (!chartContainer.hasChildNodes()) {
+          const component = ChartUtils.createChartComponent("comparison-chart-template", `chart-${category.id}`, {
+            customize: (content, data) => {
+              const odooBar = content.querySelector(".bar-odoo");
+              const dynamicsBar = content.querySelector(".bar-dynamics");
+
+              if (odooBar) {
+                odooBar.id = `odoo-${category.id}-bar`;
+                odooBar.dataset.value = category.odoo * 100;
+              }
+
+              if (dynamicsBar) {
+                dynamicsBar.id = `dynamics-${category.id}-bar`;
+                dynamicsBar.dataset.value = category.dynamics * 100;
+              }
+            },
+          });
+        }
+
+        // Actualizar las barras
+        const odooBar = document.getElementById(`odoo-${category.id}-bar`);
+        const dynamicsBar = document.getElementById(`dynamics-${category.id}-bar`);
+
+        if (odooBar) {
+          ChartUtils.animateBar(odooBar, category.odoo * 100, 300);
+        }
+
+        if (dynamicsBar) {
+          ChartUtils.animateBar(dynamicsBar, category.dynamics * 100, 450);
+        }
+      });
+    };
+
+    // Actualizar barras inicialmente
+    updateBars();
+
+    // Actualizar barras cuando cambie el tamaño de la ventana
+    window.addEventListener(
+      "resize",
+      debounce(() => {
+        updateBars();
+      }, 250)
+    );
+
+    // Actualizar totales
+    const { totalScores } = COMPARISON_DATA.rfp;
+    const dynamicsTotal = document.getElementById("dynamics-rfp-total");
+    const odooTotal = document.getElementById("odoo-rfp-total");
+
+    if (dynamicsTotal) dynamicsTotal.textContent = totalScores.dynamics.toFixed(2);
+    if (odooTotal) odooTotal.textContent = totalScores.odoo.toFixed(2);
+
+    console.log("Componentes de gráficos de barras inicializados");
+  }
+
+  // ----- Funciones para RFI -----
+  function initRfiChart() {
+    if (!window.COMPARISON_DATA || !window.COMPARISON_DATA.rfi) {
+      console.error("No se encontraron los datos de RFI");
+      return;
+    }
+
+    const { categories, providers } = COMPARISON_DATA.rfi;
+
+    let dynamicsTotal = 0;
+    let odooTotal = 0;
+
+    Object.keys(categories).forEach((categoryKey) => {
+      const category = categories[categoryKey];
+      const categoryWeight = category.weight;
+      const dynamicsScore = providers.dynamics.scores[categoryKey];
+      const odooScore = providers.odoo.scores[categoryKey];
+
+      const dynamicsWeightedScore = dynamicsScore * categoryWeight * 100;
+      const odooWeightedScore = odooScore * categoryWeight * 100;
+
+      dynamicsTotal += dynamicsWeightedScore;
+      odooTotal += odooWeightedScore;
+
+      const dynamicsCell = document.getElementById(`dynamics-${categoryKey}`);
+      const odooCell = document.getElementById(`odoo-${categoryKey}`);
+
+      if (dynamicsCell) dynamicsCell.textContent = `${(dynamicsScore * 100).toFixed(0)}%`;
+      if (odooCell) odooCell.textContent = `${(odooScore * 100).toFixed(0)}%`;
+    });
+
+    const dynamicsTotalCell = document.getElementById("dynamics-total");
+    const odooTotalCell = document.getElementById("odoo-total");
+
+    if (dynamicsTotalCell) dynamicsTotalCell.textContent = `${dynamicsTotal.toFixed(1)}%`;
+    if (odooTotalCell) odooTotalCell.textContent = `${odooTotal.toFixed(1)}%`;
+
+    const svgCircumference = 2 * Math.PI * 45; // 2πr con r=45
+    let cumulativeOffset = 0;
+
+    // Mapa de colores para categorías
+    const categoryColors = {
+      funcional: "#2563eb", // blue-500
+      economico: "#10b981", // green-500
+      tecnico: "#8b5cf6", // purple-500
+      proveedor: "#f59e0b", // yellow-500
+    };
+
+    Object.keys(categories).forEach((categoryKey) => {
+      const category = categories[categoryKey];
+      const percentage = category.weight * 100;
+      const dashLength = (percentage / 100) * svgCircumference;
+      const remainingLength = svgCircumference - dashLength;
+
+      const circle = document.getElementById(`chart-${categoryKey}`);
+      if (circle) {
+        const color = categoryColors[categoryKey] || "#6b7280"; // gray-500 por defecto
+
+        circle.setAttribute("stroke-dasharray", `${dashLength} ${remainingLength}`);
+        circle.setAttribute("stroke-dashoffset", `-${cumulativeOffset}`);
+        circle.setAttribute("stroke", color);
+
+        cumulativeOffset += dashLength;
+      }
+    });
+
+    console.log("Gráfico RFI inicializado");
+  }
+
+  // ----- Funciones para RFP -----
+  function initRfpCharts() {
+    if (!window.COMPARISON_DATA || !window.COMPARISON_DATA.rfp) {
+      console.error("No se encontraron los datos de RFP");
+      return;
+    }
+
+    const { categories, totalScores } = COMPARISON_DATA.rfp;
+
+    Object.entries(categories).forEach(([categoryKey, categoryData]) => {
+      const categoryContainer = document.querySelector(`.rfp-content[data-category="${categoryKey}"]`);
+      if (!categoryContainer) return;
+
+      createSubitems(categoryContainer, categoryData);
+    });
+
+    const dynamicsTotal = document.getElementById("dynamics-rfp-total");
+    const odooTotal = document.getElementById("odoo-rfp-total");
+
+    if (dynamicsTotal) dynamicsTotal.textContent = totalScores.dynamics.toFixed(2);
+    if (odooTotal) odooTotal.textContent = totalScores.odoo.toFixed(2);
+
+    console.log("Gráficos RFP inicializados");
+  }
+
+  /**
+   * Crea los elementos de subitems para una categoría
+   * @param {HTMLElement} categoryContainer
+   * @param {Object} categoryData
+   */
+  function createSubitems(categoryContainer, categoryData) {
+    const subitemsContainer = categoryContainer.querySelector(".subitems-container");
+    if (!subitemsContainer || !categoryData.subitems || !categoryData.subitems.length) return;
+
+    subitemsContainer.innerHTML = "";
+
+    const titleSection = document.createElement("div");
+    titleSection.className = "text-center mb-2";
+    titleSection.innerHTML = `<h5 class="text-sm md:text-base font-medium text-gray-800">Comparativas Detalladas</h5>`;
+    subitemsContainer.appendChild(titleSection);
+
+    // Leyenda común
+    const legendContainer = document.createElement("div");
+    legendContainer.className = "flex justify-center text-xs md:text-sm mb-2 gap-4";
+    legendContainer.innerHTML = `
+      <div class="flex items-center">
+        <div class="w-3 h-3 rounded-full bg-gradient-to-r from-purple-400 to-purple-600 mr-1"></div>
+        <span class="text-gray-700">Odoo</span>
+      </div>
+      <div class="flex items-center">
+        <div class="w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 mr-1"></div>
+        <span class="text-gray-700">Dynamics 365</span>
+      </div>
+    `;
+    subitemsContainer.appendChild(legendContainer);
+
+    // Contenedor principal para todos los subitems
+    const allSubitemsContainer = document.createElement("div");
+    allSubitemsContainer.className = "bg-white rounded-lg p-3 shadow-sm";
+
+    // Crear elementos para cada subitem
+    categoryData.subitems.forEach((subitem, index) => {
+      const isLast = index === categoryData.subitems.length - 1;
+      const subitemElement = document.createElement("div");
+      subitemElement.className = `mb-3 ${!isLast ? "border-b border-gray-100 pb-2" : ""}`;
+
+      subitemElement.innerHTML = `
+        <h5 class="text-sm font-medium text-gray-800 mb-2">${subitem.name}</h5>
+        <div class="space-y-2">
+          <!-- Barra Odoo -->
+          <div class="space-y-1">
+            <div class="flex justify-end items-center text-xs">
+              <span class="font-bold text-purple-600">${(subitem.odoo * 100).toFixed(0)}%</span>
+            </div>
+            <div class="h-4 bg-gray-100 rounded-md overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-500 rounded-l-md odoo-progress-bar" 
+                   data-value="${subitem.odoo * 100}" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <!-- Barra Dynamics -->
+          <div class="space-y-1">
+            <div class="flex justify-end items-center text-xs">
+              <span class="font-bold text-blue-600">${(subitem.dynamics * 100).toFixed(0)}%</span>
+            </div>
+            <div class="h-4 bg-gray-100 rounded-md overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 rounded-l-md dynamics-progress-bar" 
+                   data-value="${subitem.dynamics * 100}" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      allSubitemsContainer.appendChild(subitemElement);
+    });
+
+    // Añadir todos los subitems al contenedor principal
+    subitemsContainer.appendChild(allSubitemsContainer);
+
+    // Animar las barras de progreso
+    setTimeout(() => {
+      const progressBars = allSubitemsContainer.querySelectorAll(".odoo-progress-bar, .dynamics-progress-bar");
+      progressBars.forEach((bar) => {
+        bar.style.width = `${bar.dataset.value}%`;
+      });
+    }, 100);
+  }
+
+  // ----- Funciones para Flujo de Caja -----
+  function initCashflowChart() {
+    if (!window.COMPARISON_DATA || !window.COMPARISON_DATA.cashflow) {
+      console.error("No se encontraron los datos de flujo de caja");
+      return;
+    }
+
+    const { years, costs } = COMPARISON_DATA.cashflow;
+
+    for (let i = 0; i < years; i++) {
+      const year = i + 1;
+      const odooAmount = costs.odoo[i];
+      const dynamicsAmount = costs.dynamics[i];
+
+      const odooCell = document.getElementById(`odoo-year${year}`);
+      const dynamicsCell = document.getElementById(`dynamics-year${year}`);
+
+      if (odooCell) odooCell.textContent = ChartUtils.formatCurrency(odooAmount);
+      if (dynamicsCell) dynamicsCell.textContent = ChartUtils.formatCurrency(dynamicsAmount);
+    }
+
+    createCashflowChart();
+
+    console.log("Gráfico de flujo de caja inicializado");
+  }
+
+  /**
+   * Crea el gráfico de líneas para el flujo de caja
+   * Versión responsive y optimizada para móviles
+   */
+  function createCashflowChart() {
+    const chartContainer = document.getElementById("cashflow-chart");
+    if (!chartContainer) {
+      console.error("No se encontró el contenedor del gráfico de flujo de caja");
+      return;
+    }
+
+    if (!window.COMPARISON_DATA || !window.COMPARISON_DATA.cashflow) {
+      console.error("No se encontraron los datos de flujo de caja");
+      return;
+    }
+
+    const { years, costs, savings } = COMPARISON_DATA.cashflow;
+
+    // Limpiar el contenedor antes de crear el nuevo gráfico
+    chartContainer.innerHTML = "";
+
+    // Obtener dimensiones reales del contenedor
+    const containerWidth = chartContainer.clientWidth;
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+    // Configuración responsive
+    const containerHeight = isMobile ? 300 : isTablet ? 340 : 380;
+    const paddingX = isMobile ? 40 : isTablet ? 50 : 70;
+    const paddingY = isMobile ? 20 : isTablet ? 30 : 40;
+    const paddingBottom = isMobile ? 50 : isTablet ? 60 : 70;
+    const chartWidth = containerWidth - paddingX * 2;
+    const chartHeight = containerHeight - paddingY - paddingBottom;
+
+    // Calcular valores máximos para escala dinámica
+    const allValues = [...costs.odoo, ...costs.dynamics];
+    const maxValue = Math.max(...allValues) * 1.2; // 20% de margen
+
+    // Crear elementos SVG con viewBox para escalado automático
+    const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgElement.setAttribute("width", "100%");
+    svgElement.setAttribute("height", containerHeight);
+    svgElement.setAttribute("viewBox", `0 0 ${containerWidth} ${containerHeight}`);
+    svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
+    // Definir filtro de sombra
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    const filter = document.createElementNS("http://www.w3.org/2000/svg", "filter");
+    filter.setAttribute("id", "shadow");
+    filter.setAttribute("x", "-50%");
+    filter.setAttribute("y", "-50%");
+    filter.setAttribute("width", "200%");
+    filter.setAttribute("height", "200%");
+
+    const feDropShadow = document.createElementNS("http://www.w3.org/2000/svg", "feDropShadow");
+    feDropShadow.setAttribute("dx", "0");
+    feDropShadow.setAttribute("dy", "1");
+    feDropShadow.setAttribute("stdDeviation", "2");
+    feDropShadow.setAttribute("flood-color", "rgba(0,0,0,0.3)");
+    feDropShadow.setAttribute("flood-opacity", "0.5");
+
+    filter.appendChild(feDropShadow);
+    defs.appendChild(filter);
+    svgElement.appendChild(defs);
+
+    // Función para convertir valores a coordenadas Y
+    const getYCoordinate = (value) => {
+      return paddingY + chartHeight - (value / maxValue) * chartHeight;
+    };
+
+    // Función para generar path de la línea
+    const generateLinePath = (dataArray) => {
+      let path = "";
+      for (let i = 0; i < years; i++) {
+        const x = paddingX + i * (chartWidth / (years - 1));
+        const y = getYCoordinate(dataArray[i]);
+
+        if (i === 0) {
+          path += `M ${x} ${y}`;
+        } else {
+          path += ` L ${x} ${y}`;
+        }
+      }
+      return path;
+    };
+
+    // Determinar número de pasos en el eje Y basado en el tamaño
+    const steps = isMobile ? 3 : isTablet ? 4 : 5;
+
+    // Eje X (años)
+    for (let i = 0; i < years; i++) {
+      const x = paddingX + i * (chartWidth / (years - 1));
+      const y = containerHeight - paddingBottom;
+
+      // Línea vertical (opcional)
+      const verticalLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      verticalLine.setAttribute("x1", x);
+      verticalLine.setAttribute("y1", paddingY);
+      verticalLine.setAttribute("x2", x);
+      verticalLine.setAttribute("y2", y);
+      verticalLine.setAttribute("stroke", "#e5e7eb");
+      verticalLine.setAttribute("stroke-width", "1");
+      svgElement.appendChild(verticalLine);
+
+      // Etiqueta de año - ajustada para móvil
+      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      text.setAttribute("x", x);
+      text.setAttribute("y", y + (isMobile ? 15 : 20));
+      text.setAttribute("text-anchor", "middle");
+      text.setAttribute("font-size", isMobile ? "10" : "12");
+      text.setAttribute("fill", "#6b7280");
+      text.textContent = isMobile ? `A${i + 1}` : `Año ${i + 1}`;
+      svgElement.appendChild(text);
+    }
+
+    // Eje Y (valores) - Optimizado para móvil
+    for (let i = 0; i <= steps; i++) {
+      const value = (maxValue / steps) * i;
+      const y = getYCoordinate(value);
+
+      // Línea horizontal
+      const horizontalLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      horizontalLine.setAttribute("x1", paddingX);
+      horizontalLine.setAttribute("y1", y);
+      horizontalLine.setAttribute("x2", paddingX + chartWidth);
+      horizontalLine.setAttribute("y2", y);
+      horizontalLine.setAttribute("stroke", "#e5e7eb");
+      horizontalLine.setAttribute("stroke-width", "1");
+      svgElement.appendChild(horizontalLine);
+
+      // Etiqueta de valor - optimizada para móvil
+      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      text.setAttribute("x", paddingX - (isMobile ? 8 : 15));
+      text.setAttribute("y", y + 4);
+      text.setAttribute("text-anchor", "end");
+      text.setAttribute("font-size", isMobile ? "9" : "11");
+      text.setAttribute("fill", "#6b7280");
+      text.setAttribute("font-weight", i === 0 ? "normal" : "bold");
+
+      // Usar el formateador de ChartUtils
+      const formattedValue = ChartUtils.formatCurrency(value, true);
+
+      text.textContent = formattedValue;
+      svgElement.appendChild(text);
+    }
+
+    // Crear líneas de costos
+    // Odoo
+    const odooCostLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    odooCostLine.setAttribute("d", generateLinePath(costs.odoo));
+    odooCostLine.setAttribute("stroke", "#8b5cf6");
+    odooCostLine.setAttribute("stroke-width", isMobile ? "2" : "3");
+    odooCostLine.setAttribute("fill", "none");
+    odooCostLine.setAttribute("stroke-linecap", "round");
+    odooCostLine.setAttribute("stroke-linejoin", "round");
+    svgElement.appendChild(odooCostLine);
+
+    // Dynamics
+    const dynamicsCostLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    dynamicsCostLine.setAttribute("d", generateLinePath(costs.dynamics));
+    dynamicsCostLine.setAttribute("stroke", "#3b82f6");
+    dynamicsCostLine.setAttribute("stroke-width", isMobile ? "2" : "3");
+    dynamicsCostLine.setAttribute("fill", "none");
+    dynamicsCostLine.setAttribute("stroke-linecap", "round");
+    dynamicsCostLine.setAttribute("stroke-linejoin", "round");
+    svgElement.appendChild(dynamicsCostLine);
+
+    // Función para formatear valores de manera óptima según el tamaño
+    const getOptimalValueFormat = (value) => {
+      return ChartUtils.formatCurrency(value, isMobile);
+    };
+
+    // Añadir puntos para cada año con posicionamiento optimizado
+    for (let i = 0; i < years; i++) {
+      const x = paddingX + i * (chartWidth / (years - 1));
+      const pointRadius = isMobile ? 3 : 5;
+      const labelFontSize = isMobile ? 8 : 9;
+
+      // Calcular posición vertical para cada punto
+      const odooY = getYCoordinate(costs.odoo[i]);
+      const dynamicsY = getYCoordinate(costs.dynamics[i]);
+
+      // Determinar si hay suficiente espacio entre puntos para mostrar etiquetas
+      const verticalDistance = Math.abs(odooY - dynamicsY);
+      const minDistance = isMobile ? 30 : 40;
+      const showBothLabels = verticalDistance >= minDistance;
+
+      // Punto para Odoo
+      const odooPoint = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      odooPoint.setAttribute("cx", x);
+      odooPoint.setAttribute("cy", odooY);
+      odooPoint.setAttribute("r", pointRadius);
+      odooPoint.setAttribute("fill", "#8b5cf6");
+      odooPoint.setAttribute("stroke", "white");
+      odooPoint.setAttribute("stroke-width", isMobile ? "1" : "2");
+      odooPoint.setAttribute("filter", "url(#shadow)");
+      svgElement.appendChild(odooPoint);
+
+      // Etiqueta de valor para Odoo - solo si hay espacio o es el primer/último punto
+      if (showBothLabels || i === 0 || i === years - 1) {
+        const odooValue = getOptimalValueFormat(costs.odoo[i]);
+        const labelWidth = isMobile ? 50 : costs.odoo[i] < 100000 ? 70 : 80;
+
+        // Fondo blanco para la etiqueta
+        const odooLabelBg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        odooLabelBg.setAttribute("x", x - labelWidth / 2);
+        odooLabelBg.setAttribute("y", odooY - (isMobile ? 18 : 24));
+        odooLabelBg.setAttribute("width", labelWidth);
+        odooLabelBg.setAttribute("height", isMobile ? 14 : 16);
+        odooLabelBg.setAttribute("rx", 4);
+        odooLabelBg.setAttribute("fill", "white");
+        odooLabelBg.setAttribute("opacity", "0.9");
+        svgElement.appendChild(odooLabelBg);
+
+        // Texto de la etiqueta
+        const odooLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        odooLabel.setAttribute("x", x);
+        odooLabel.setAttribute("y", odooY - (isMobile ? 8 : 12));
+        odooLabel.setAttribute("text-anchor", "middle");
+        odooLabel.setAttribute("font-size", labelFontSize);
+        odooLabel.setAttribute("fill", "#8b5cf6");
+        odooLabel.setAttribute("font-weight", "bold");
+        odooLabel.textContent = odooValue;
+        svgElement.appendChild(odooLabel);
+      }
+
+      // Punto para Dynamics
+      const dynamicsPoint = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      dynamicsPoint.setAttribute("cx", x);
+      dynamicsPoint.setAttribute("cy", dynamicsY);
+      dynamicsPoint.setAttribute("r", pointRadius);
+      dynamicsPoint.setAttribute("fill", "#3b82f6");
+      dynamicsPoint.setAttribute("stroke", "white");
+      dynamicsPoint.setAttribute("stroke-width", isMobile ? "1" : "2");
+      dynamicsPoint.setAttribute("filter", "url(#shadow)");
+      svgElement.appendChild(dynamicsPoint);
+
+      // Etiqueta de valor para Dynamics - solo si hay espacio o es el primer/último punto
+      if (showBothLabels || i === 0 || i === years - 1) {
+        const dynamicsValue = getOptimalValueFormat(costs.dynamics[i]);
+        const labelWidth = isMobile ? 50 : costs.dynamics[i] < 100000 ? 70 : 80;
+
+        // Fondo blanco para la etiqueta
+        const dynamicsLabelBg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        dynamicsLabelBg.setAttribute("x", x - labelWidth / 2);
+        dynamicsLabelBg.setAttribute("y", dynamicsY + (isMobile ? 4 : 8));
+        dynamicsLabelBg.setAttribute("width", labelWidth);
+        dynamicsLabelBg.setAttribute("height", isMobile ? 14 : 16);
+        dynamicsLabelBg.setAttribute("rx", 4);
+        dynamicsLabelBg.setAttribute("fill", "white");
+        dynamicsLabelBg.setAttribute("opacity", "0.9");
+        svgElement.appendChild(dynamicsLabelBg);
+
+        // Texto de la etiqueta
+        const dynamicsLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        dynamicsLabel.setAttribute("x", x);
+        dynamicsLabel.setAttribute("y", dynamicsY + (isMobile ? 14 : 20));
+        dynamicsLabel.setAttribute("text-anchor", "middle");
+        dynamicsLabel.setAttribute("font-size", labelFontSize);
+        dynamicsLabel.setAttribute("fill", "#3b82f6");
+        dynamicsLabel.setAttribute("font-weight", "bold");
+        dynamicsLabel.textContent = dynamicsValue;
+        svgElement.appendChild(dynamicsLabel);
+      }
+    }
+
+    // Leyenda - Posicionada según el tamaño de pantalla
+    if (!isMobile) {
+      const legendGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      const legendX = containerWidth - (isTablet ? 120 : 150);
+      const legendY = paddingY + 10;
+      legendGroup.setAttribute("transform", `translate(${legendX}, ${legendY})`);
+
+      // Leyenda para Odoo
+      const odooLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      odooLegendLine.setAttribute("x1", 0);
+      odooLegendLine.setAttribute("y1", 5);
+      odooLegendLine.setAttribute("x2", isTablet ? 20 : 25);
+      odooLegendLine.setAttribute("y2", 5);
+      odooLegendLine.setAttribute("stroke", "#8b5cf6");
+      odooLegendLine.setAttribute("stroke-width", isTablet ? "2" : "3");
+      legendGroup.appendChild(odooLegendLine);
+
+      const odooLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      odooLegendText.setAttribute("x", isTablet ? 25 : 30);
+      odooLegendText.setAttribute("y", 9);
+      odooLegendText.setAttribute("font-size", isTablet ? "10" : "12");
+      odooLegendText.setAttribute("fill", "#4b5563");
+      odooLegendText.textContent = "Odoo";
+      legendGroup.appendChild(odooLegendText);
+
+      // Leyenda para Dynamics
+      const dynamicsLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      dynamicsLegendLine.setAttribute("x1", 0);
+      dynamicsLegendLine.setAttribute("y1", 25);
+      dynamicsLegendLine.setAttribute("x2", isTablet ? 20 : 25);
+      dynamicsLegendLine.setAttribute("y2", 25);
+      dynamicsLegendLine.setAttribute("stroke", "#3b82f6");
+      dynamicsLegendLine.setAttribute("stroke-width", isTablet ? "2" : "3");
+      legendGroup.appendChild(dynamicsLegendLine);
+
+      const dynamicsLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      dynamicsLegendText.setAttribute("x", isTablet ? 25 : 30);
+      dynamicsLegendText.setAttribute("y", 29);
+      dynamicsLegendText.setAttribute("font-size", isTablet ? "10" : "12");
+      dynamicsLegendText.setAttribute("fill", "#4b5563");
+      dynamicsLegendText.textContent = "Dynamics 365";
+      legendGroup.appendChild(dynamicsLegendText);
+
+      svgElement.appendChild(legendGroup);
+    }
+
+    // Agregar el SVG al contenedor
+    chartContainer.appendChild(svgElement);
+
+    // Calcular y mostrar ahorros
+    const odooTotal = costs.odoo.reduce((sum, cost) => sum + cost, 0);
+    const dynamicsTotal = costs.dynamics.reduce((sum, cost) => sum + cost, 0);
+    const savingsAmount = dynamicsTotal - odooTotal;
+    const savingsPercentage = (((dynamicsTotal - odooTotal) / dynamicsTotal) * 100).toFixed(0);
+
+    const totalOdooElement = document.getElementById("odoo-total-3y");
+    const totalDynamicsElement = document.getElementById("dynamics-total-3y");
+    const savingsElement = document.getElementById("cost-savings");
+    const percentageElement = document.getElementById("cost-difference-percentage");
+
+    // Actualizar elementos con los valores calculados
+    if (totalOdooElement) totalOdooElement.textContent = ChartUtils.formatCurrency(odooTotal, false);
+    if (totalDynamicsElement) totalDynamicsElement.textContent = ChartUtils.formatCurrency(dynamicsTotal, false);
+    if (savingsElement) savingsElement.textContent = ChartUtils.formatCurrency(savingsAmount, false);
+    if (percentageElement) percentageElement.textContent = `${savingsPercentage}%`;
+  }
+
+  // ----- Navegación por pestañas para RFP -----
+  function initTabNavigation() {
+    const tabButtons = document.querySelectorAll(".rfp-tab-btn");
+    const tabContents = document.querySelectorAll(".rfp-content");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.getAttribute("data-category");
+
+        // Desactivar todos los botones y contenidos
+        tabButtons.forEach((btn) => {
+          btn.classList.remove("bg-indigo-600", "text-white");
+          btn.classList.add("bg-gray-200", "text-gray-700");
+        });
+
+        tabContents.forEach((content) => {
+          content.classList.add("hidden");
+        });
+
+        // Activar el botón y contenido seleccionado
+        button.classList.remove("bg-gray-200", "text-gray-700");
+        button.classList.add("bg-indigo-600", "text-white");
+
+        // Mostrar el contenido correspondiente
+        const activeContent = document.querySelector(`.rfp-content[data-category="${category}"]`);
+        if (activeContent) {
+          activeContent.classList.remove("hidden");
+        }
+      });
+    });
+  }
+
+  // Agregar listener para redimensionar el gráfico cuando cambia el tamaño de la ventana
+  let resizeTimeout;
+  window.addEventListener("resize", function () {
+    // Usar debounce para evitar múltiples renderizados
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function () {
+      // Volver a crear el gráfico con las nuevas dimensiones
+      createCashflowChart();
+    }, 250); // Esperar 250ms después del último evento de resize
+  });
 }

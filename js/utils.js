@@ -1,4 +1,7 @@
-// Utilidades - se usan por todos lados
+/**
+ * utils.js
+ * Utilidades para animación y generación de gráficos
+ */
 
 // Para mostrar plata con formato correcto
 function formatearMoneda(numero) {
@@ -124,6 +127,114 @@ function actualizarVisualizacionResponsiva() {
   }
 }
 
+/**
+ * Utilidades para gráficos
+ */
+const ChartUtils = {
+  /**
+   * Formatea un valor monetario para mostrar en gráficos
+   * @param {number} value - Valor a formatear
+   * @param {boolean} compact - Si debe usar formato compacto
+   * @returns {string} Valor formateado
+   */
+  formatCurrency: function (value, compact = false) {
+    if (compact) {
+      if (value >= 1000000) {
+        return `$${(value / 1000000).toFixed(1)}M`;
+      } else if (value >= 1000) {
+        return `$${(value / 1000).toFixed(0)}K`;
+      }
+      return `$${value.toFixed(0)}`;
+    }
+
+    return formatearMoneda(value);
+  },
+
+  /**
+   * Determina el espaciado óptimo para etiquetas en gráficos según el ancho
+   * @param {number} containerWidth - Ancho del contenedor
+   * @param {number} itemCount - Cantidad de elementos a mostrar
+   * @returns {boolean} - True si debe mostrar todas las etiquetas
+   */
+  shouldShowAllLabels: function (containerWidth, itemCount) {
+    const minWidthPerItem = 80; // Ancho mínimo para mostrar cada etiqueta
+    return containerWidth >= itemCount * minWidthPerItem;
+  },
+
+  /**
+   * Anima una barra de progreso
+   * @param {HTMLElement} barElement - Elemento de la barra
+   * @param {number} value - Valor final
+   * @param {number} delay - Retraso antes de la animación
+   */
+  animateBar: function (barElement, value, delay = 0) {
+    if (!barElement) return;
+
+    // Configuración inicial
+    barElement.style.willChange = "height";
+    barElement.style.height = "0%";
+    barElement.style.transition = "height 1s cubic-bezier(0.34, 1.3, 0.64, 1)";
+
+    // Actualizar el valor mostrado
+    const valueLabel = barElement.querySelector("span");
+    if (valueLabel) {
+      valueLabel.textContent = `${Math.round(value)}%`;
+    }
+
+    // Iniciar animación con retraso
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        barElement.style.height = `${value}%`;
+      });
+    }, delay);
+
+    // Limpiar willChange después de la animación
+    setTimeout(() => {
+      barElement.style.willChange = "auto";
+    }, delay + 1000);
+  },
+
+  /**
+   * Crea un componente de gráfico a partir de un template
+   * @param {string} templateId - ID del template HTML
+   * @param {string} targetId - ID del contenedor destino
+   * @param {Object} options - Opciones de personalización
+   * @returns {Object|null} - Objeto con referencias al contenedor y contenido
+   */
+  createChartComponent: function (templateId, targetId, options = {}) {
+    // Obtener el template
+    const template = document.getElementById(templateId);
+    if (!template) {
+      console.error(`Template no encontrado: ${templateId}`);
+      return null;
+    }
+
+    // Obtener el contenedor destino
+    const container = document.getElementById(targetId);
+    if (!container) {
+      console.error(`Contenedor no encontrado: ${targetId}`);
+      return null;
+    }
+
+    // Clonar el contenido del template
+    const content = template.content.cloneNode(true);
+
+    // Aplicar personalización si se proporciona
+    if (options.customize && typeof options.customize === "function") {
+      options.customize(content, options);
+    }
+
+    // Limpiar y agregar el nuevo contenido
+    container.innerHTML = "";
+    container.appendChild(content);
+
+    return {
+      container,
+      content,
+    };
+  },
+};
+
 // Exportar al global para que main.js los use
 window.formatearMoneda = formatearMoneda;
 window.esEmailValido = esEmailValido;
@@ -132,3 +243,4 @@ window.esMobile = esMobile;
 window.esTablet = esTablet;
 window.esDesktop = esDesktop;
 window.actualizarVisualizacionResponsiva = actualizarVisualizacionResponsiva;
+window.ChartUtils = ChartUtils;
