@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initArchitectureSection();
   initAlcanceSwipe();
   initProveedoresSection();
+  initDocumentacionSection();
 
   // Actualizar links activos después de cargar todo
   setTimeout(function () {
@@ -184,15 +185,6 @@ function initCalendar() {
       if (card) {
         card.classList.remove(shadow);
       }
-    });
-
-    // Alerta medio falopa
-    item.addEventListener("click", function () {
-      const title = this.querySelector("h4").textContent;
-      const date = this.querySelector("p.text-sm").textContent;
-      const description = this.querySelector("p.text-xs").textContent;
-
-      alert(`${title}\n${date}\n\n${description}`);
     });
   });
 }
@@ -2224,6 +2216,9 @@ function initProveedoresSection() {
     if (dynamicsTotalCell) dynamicsTotalCell.textContent = `${dynamicsTotal.toFixed(1)}%`;
     if (odooTotalCell) odooTotalCell.textContent = `${odooTotal.toFixed(1)}%`;
 
+    // Actualizar los totales en la sección de Proveedor Elegido
+    updateProviderScores(odooTotal, dynamicsTotal);
+
     const svgCircumference = 2 * Math.PI * 45; // 2πr con r=45
     let cumulativeOffset = 0;
 
@@ -2254,6 +2249,44 @@ function initProveedoresSection() {
     });
 
     console.log("Gráfico RFI inicializado");
+  }
+
+  function updateProviderScores(odooScore, dynamicsScore, costSavings, costPercentage) {
+    const odooTotalProveedorElegido = document.getElementById("odoo-total-proveedor");
+    const dynamicsTotalProveedorElegido = document.getElementById("dynamics-total-proveedor");
+
+    if (odooTotalProveedorElegido && odooScore !== undefined) {
+      odooTotalProveedorElegido.textContent = `${odooScore.toFixed(1)}%`;
+    }
+
+    if (dynamicsTotalProveedorElegido && dynamicsScore !== undefined) {
+      dynamicsTotalProveedorElegido.textContent = `${dynamicsScore.toFixed(1)}%`;
+    }
+
+    const odooFuncionalElement = document.getElementById("odoo-funcional-score");
+    if (odooFuncionalElement && window.COMPARISON_DATA && window.COMPARISON_DATA.rfp && window.COMPARISON_DATA.rfp.categories.funcionalRFP) {
+      const funcionalScore = window.COMPARISON_DATA.rfp.categories.funcionalRFP.odoo * 100;
+      odooFuncionalElement.textContent = `${funcionalScore.toFixed(0)}%`;
+    }
+
+    const odooEscalabilidadElement = document.getElementById("odoo-escalabilidad-score");
+    if (odooEscalabilidadElement && window.COMPARISON_DATA && window.COMPARISON_DATA.rfp && window.COMPARISON_DATA.rfp.categories.tecnicoRFP) {
+      const escalabilidadScore = window.COMPARISON_DATA.rfp.categories.tecnicoRFP.subitems[4].odoo * 100;
+      odooEscalabilidadElement.textContent = `${escalabilidadScore.toFixed(0)}%`;
+    }
+
+    if (costSavings !== undefined && costPercentage !== undefined) {
+      const costPercentageElement = document.getElementById("odoo-cost-percentage");
+      const costSavingsElement = document.getElementById("odoo-cost-savings");
+
+      if (costPercentageElement) {
+        costPercentageElement.textContent = `${costPercentage}%`;
+      }
+
+      if (costSavingsElement) {
+        costSavingsElement.textContent = `$${costSavings.toLocaleString()}`;
+      }
+    }
   }
 
   // ----- Funciones para RFP -----
@@ -2317,7 +2350,7 @@ function initProveedoresSection() {
       subitemElement.className = `mb-3 ${!isLast ? "border-b border-gray-100 pb-2" : ""}`;
 
       subitemElement.innerHTML = `
-        <h5 class="text-sm font-medium text-gray-800 mb-2">${subitem.name}</h5>
+        <h5 class="text-sm font-medium text-gray-800 mb-0">${subitem.name}</h5>
         <div class="space-y-2">
           <!-- Barra Odoo -->
           <div class="space-y-1">
@@ -2686,6 +2719,9 @@ function initProveedoresSection() {
     // if (totalDynamicsElement) totalDynamicsElement.textContent = ChartUtils.formatCurrency(dynamicsTotal, false);
     if (savingsElement) savingsElement.textContent = ChartUtils.formatCurrency(savingsAmount, false);
     if (percentageElement) percentageElement.textContent = `${savingsPercentage}%`;
+
+    // Actualizar los datos de costo-beneficio en la sección de Proveedor Elegido
+    updateProviderScores(undefined, undefined, savingsAmount, savingsPercentage);
   }
 
   // ----- Navegación por pestañas para RFP -----
@@ -2792,5 +2828,45 @@ function initProveedoresSection() {
       // Volver a crear el gráfico con las nuevas dimensiones
       createCashflowChart();
     }, 250); // Esperar 250ms después del último evento de resize
+  });
+}
+
+// ===== DOCUMENTACIÓN =====
+function initDocumentacionSection() {
+  const shareButton = document.querySelector("#documentacion button");
+
+  if (shareButton) {
+    shareButton.addEventListener("click", function () {
+      // Chequear si el navegador soporta la API de Web Share
+      if (navigator.share) {
+        navigator
+          .share({
+            title: "Análisis Completo del Proyecto - Aceleratik",
+            text: "Te comparto el documento de análisis detallado del proyecto.",
+            url: window.location.href + "#documentacion",
+          })
+          .then(() => console.log("Compartido exitosamente"))
+          .catch((error) => console.log("Error al compartir:", error));
+      } else {
+        // Fallback para navegadores que no soportan la API de Web Share
+        prompt("Copia este enlace para compartir el documento:", window.location.href + "#documentacion");
+      }
+    });
+  }
+
+  // Añadir tracking para descargas
+  const downloadLinks = document.querySelectorAll("#documentacion a");
+  downloadLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const isPdf = this.innerHTML.includes("fa-file-pdf");
+      const isZip = this.innerHTML.includes("fa-file-archive");
+
+      if (isPdf) {
+        e.preventDefault();
+        alert(`La descarga de PDF estará disponible próximamente.`);
+      }
+
+      console.log(`Usuario descargó: ${isPdf ? "PDF" : isZip ? "ZIP" : "archivo"}`);
+    });
   });
 }
