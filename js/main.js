@@ -1326,7 +1326,7 @@ function initBudgetChart() {
   const BUDGET_ITEMS = {
     analisis: {
       name: "Análisis",
-      displayName: "Análisis y Evaluación de ERP",
+      displayName: "Análisis y evaluación de ERP",
       color: "#2563eb", // blue-500
       items: [
         { name: "Diagnóstico de situación actual", value: 150000 },
@@ -1337,7 +1337,7 @@ function initBudgetChart() {
     },
     gestion: {
       name: "Gestión",
-      displayName: "Gestión del Cambio",
+      displayName: "Gestión del cambio",
       color: "#10b981", // green-500
       items: [
         { name: "Mapeo de procesos actuales", value: 180000 },
@@ -1348,7 +1348,7 @@ function initBudgetChart() {
     },
     supervision: {
       name: "Supervisión",
-      displayName: "Supervisión de Implementación",
+      displayName: "Supervisión de implementación",
       color: "#8b5cf6", // purple-500
       items: [
         { name: "Control de calidad del proveedor", value: 175000 },
@@ -1359,7 +1359,7 @@ function initBudgetChart() {
     },
     capacitacion: {
       name: "Capacitación",
-      displayName: "Capacitación y Documentación",
+      displayName: "Capacitación y documentación",
       color: "#f59e0b", // yellow-500
       items: [
         { name: "Plan de capacitación personalizado", value: 135000 },
@@ -2321,7 +2321,7 @@ function initProveedoresSection() {
 
     const titleSection = document.createElement("div");
     titleSection.className = "text-center mb-2";
-    titleSection.innerHTML = `<h5 class="text-sm md:text-base font-medium text-gray-800">Comparativas Detalladas</h5>`;
+    titleSection.innerHTML = `<h5 class="text-sm md:text-base font-medium text-gray-800">Comparativas detalladas</h5>`;
     subitemsContainer.appendChild(titleSection);
 
     // Leyenda común
