@@ -2833,8 +2833,320 @@ function initProveedoresSection() {
 
 // ===== DOCUMENTACIÓN =====
 function initDocumentacionSection() {
-  const shareButton = document.querySelector("#documentacion button");
+  const shareButton = document.getElementById("share-document");
+  const closeProtectedDocsButton = document.getElementById("close-protected-docs");
 
+  // Inicializar el módulo de autenticación
+  if (window.AuthModule) {
+    window.AuthModule.init();
+  }
+
+  // Datos de los documentos (en una aplicación real, estos vendrían de una API o base de datos)
+  const documents = [
+    {
+      title: "Selección del Caso",
+      icon: "fas fa-hand-pointer",
+      iconColor: "#f59e0b",
+      link: "https://drive.google.com/file/d/1CgV4BhWHv3Ud5N4-jpEywcSR7dFidaoS/view?usp=drive_link",
+    },
+    {
+      title: "Requerimientos y funcionalidades",
+      icon: "fas fa-cogs",
+      iconColor: "#10b981",
+      link: "https://drive.google.com/file/placeholder/requerimientos",
+    },
+    {
+      title: "Arquitectura Empresarial Base",
+      icon: "fas fa-hard-hat",
+      iconColor: "#ef4444",
+      link: "https://drive.google.com/file/placeholder/arquitectura-base",
+    },
+    {
+      title: "Innovación Tecnológica",
+      icon: "fas fa-lightbulb",
+      iconColor: "#f59e0b",
+      link: "https://drive.google.com/file/placeholder/innovacion",
+    },
+    {
+      title: "Arquitectura Empresarial Destino",
+      icon: "fas fa-sitemap",
+      iconColor: "#3b82f6",
+      link: "https://drive.google.com/file/placeholder/arquitectura-destino",
+    },
+    {
+      title: "Brechas y Escenarios",
+      icon: "fas fa-chart-bar",
+      iconColor: "#10b981",
+      link: "https://drive.google.com/file/placeholder/brechas",
+    },
+    {
+      title: "Alcance",
+      icon: "fas fa-bullseye",
+      iconColor: "#10b981",
+      link: "https://drive.google.com/file/placeholder/alcance",
+    },
+    {
+      title: "Análisis de soluciones y RFI",
+      icon: "fas fa-search",
+      iconColor: "#f59e0b",
+      link: "https://drive.google.com/file/placeholder/analisis-soluciones",
+    },
+    {
+      title: "Matriz RFP",
+      icon: "fas fa-tools",
+      iconColor: "#6b7280",
+      link: "https://drive.google.com/file/placeholder/matriz-rfp",
+    },
+    {
+      title: "Comparación de cumplimiento y evaluación económica",
+      icon: "fas fa-chart-line",
+      iconColor: "#10b981",
+      link: "https://drive.google.com/file/placeholder/comparacion",
+    },
+    {
+      title: "Análisis de propuesta y conclusiones",
+      icon: "fas fa-handshake",
+      iconColor: "#3b82f6",
+      link: "https://drive.google.com/file/placeholder/analisis-propuesta",
+    },
+    {
+      title: "Carpeta de cierre de proyecto",
+      icon: "fas fa-folder",
+      iconColor: "#f59e0b",
+      link: "https://drive.google.com/file/placeholder/cierre-proyecto",
+    },
+  ];
+
+  // Función para ocultar el modal de documentos protegidos
+  function hideProtectedDocsModal() {
+    const protectedDocsModal = document.getElementById("protected-docs-modal");
+    if (protectedDocsModal) {
+      protectedDocsModal.classList.add("hidden");
+    }
+  }
+
+  // Función para renderizar los documentos en grid (desktop) y swiper (mobile)
+  window.renderDocuments = function () {
+    // Renderizar grid para desktop
+    const gridContainer = document.querySelector("#protected-docs-modal .grid");
+    gridContainer.innerHTML = "";
+
+    documents.forEach((doc) => {
+      const docElement = document.createElement("div");
+      docElement.className = "bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-4 flex flex-col items-center text-center";
+      docElement.innerHTML = `
+        <div class="w-16 h-16 mb-3 rounded-full flex items-center justify-center" style="background-color: ${doc.iconColor}20;">
+          <i class="${doc.icon} text-2xl" style="color: ${doc.iconColor};"></i>
+        </div>
+        <h4 class="font-medium text-gray-800 mb-2">${doc.title}</h4>
+        <a href="${doc.link}" target="_blank" class="mt-auto text-primary hover:text-secondary text-sm flex items-center">
+          <i class="fas fa-external-link-alt mr-1"></i> Ver documento
+        </a>
+      `;
+      gridContainer.appendChild(docElement);
+    });
+
+    // Renderizar swiper para móvil
+    const swiperContainer = document.querySelector(".docs-swiper-wrapper");
+    const navigationContainer = document.querySelector(".docs-navigation");
+    swiperContainer.innerHTML = "";
+    navigationContainer.innerHTML = "";
+
+    documents.forEach((doc, index) => {
+      // Crear slide
+      const slide = document.createElement("div");
+      slide.className = "docs-slide absolute inset-0 transition-opacity duration-300";
+      slide.style.opacity = index === 0 ? "1" : "0";
+      slide.style.pointerEvents = index === 0 ? "auto" : "none";
+      slide.setAttribute("data-index", index);
+
+      slide.innerHTML = `
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex flex-col items-center text-center h-full">
+          <div class="w-20 h-20 mb-4 rounded-full flex items-center justify-center" style="background-color: ${doc.iconColor}20;">
+            <i class="${doc.icon} text-3xl" style="color: ${doc.iconColor};"></i>
+          </div>
+          <h4 class="font-medium text-gray-800 mb-3 text-lg">${doc.title}</h4>
+          <a href="${doc.link}" target="_blank" class="mt-auto py-2 px-4 bg-primary text-white rounded-lg hover:bg-secondary transition-colors text-sm flex items-center">
+            <i class="fas fa-external-link-alt mr-1"></i> Ver documento
+          </a>
+        </div>
+      `;
+
+      swiperContainer.appendChild(slide);
+
+      // Crear indicador
+      const indicator = document.createElement("button");
+      indicator.className = `w-2 h-2 rounded-full ${index === 0 ? "bg-primary" : "bg-gray-300"}`;
+      indicator.setAttribute("data-index", index);
+      indicator.setAttribute("aria-label", `Ver documento ${index + 1}`);
+      indicator.addEventListener("click", () => goToSlide(index));
+
+      navigationContainer.appendChild(indicator);
+    });
+
+    // Inicializar eventos táctiles para swiper móvil
+    initDocsSwiperTouchEvents();
+  };
+
+  // Función para navegar entre slides en móvil
+  function goToSlide(index) {
+    const slides = document.querySelectorAll(".docs-slide");
+    const indicators = document.querySelectorAll(".docs-navigation button");
+    const currentDocIndex = document.getElementById("current-doc-index");
+    const totalDocsCount = document.getElementById("total-docs-count");
+
+    // Validar que el índice esté dentro del rango
+    if (index < 0) index = 0;
+    if (index >= slides.length) index = slides.length - 1;
+
+    // Actualizar slides
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.style.opacity = "1";
+        slide.style.pointerEvents = "auto";
+      } else {
+        slide.style.opacity = "0";
+        slide.style.pointerEvents = "none";
+      }
+    });
+
+    // Actualizar indicadores
+    indicators.forEach((indicator, i) => {
+      if (i === index) {
+        indicator.classList.remove("bg-gray-300");
+        indicator.classList.add("bg-primary");
+      } else {
+        indicator.classList.remove("bg-primary");
+        indicator.classList.add("bg-gray-300");
+      }
+    });
+
+    // Actualizar contador
+    if (currentDocIndex) currentDocIndex.textContent = index + 1;
+    if (totalDocsCount && !totalDocsCount.textContent) totalDocsCount.textContent = slides.length;
+
+    // Actualizar el estado de los botones de navegación
+    updateNavButtons(index, slides.length);
+
+    // Guardar el índice actual para el swiper táctil
+    currentIndex = index;
+  }
+
+  // Función para actualizar el estado de los botones de navegación
+  function updateNavButtons(currentIndex, totalSlides) {
+    const prevButton = document.getElementById("prev-doc");
+    const nextButton = document.getElementById("next-doc");
+
+    if (prevButton && nextButton) {
+      // Habilitar/deshabilitar botón anterior
+      if (currentIndex === 0) {
+        prevButton.classList.add("opacity-50", "cursor-not-allowed");
+        prevButton.disabled = true;
+      } else {
+        prevButton.classList.remove("opacity-50", "cursor-not-allowed");
+        prevButton.disabled = false;
+      }
+
+      // Habilitar/deshabilitar botón siguiente
+      if (currentIndex === totalSlides - 1) {
+        nextButton.classList.add("opacity-50", "cursor-not-allowed");
+        nextButton.disabled = true;
+      } else {
+        nextButton.classList.remove("opacity-50", "cursor-not-allowed");
+        nextButton.disabled = false;
+      }
+    }
+  }
+
+  // Variable global para el índice actual
+  let currentIndex = 0;
+
+  // Inicializar eventos táctiles para el swiper de documentos en móvil
+  function initDocsSwiperTouchEvents() {
+    const swiperContainer = document.querySelector(".docs-swiper");
+    let startX, moveX;
+    const slides = document.querySelectorAll(".docs-slide");
+    const prevButton = document.getElementById("prev-doc");
+    const nextButton = document.getElementById("next-doc");
+
+    // Inicializar el contador total
+    const totalDocsCount = document.getElementById("total-docs-count");
+    if (totalDocsCount) totalDocsCount.textContent = slides.length;
+
+    // Eventos táctiles
+    swiperContainer.addEventListener("touchstart", handleTouchStart, { passive: true });
+    swiperContainer.addEventListener("touchmove", handleTouchMove, { passive: true });
+    swiperContainer.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    // Eventos de botones de navegación
+    if (prevButton) {
+      prevButton.addEventListener("click", function () {
+        if (currentIndex > 0) {
+          currentIndex--;
+          goToSlide(currentIndex);
+        }
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener("click", function () {
+        if (currentIndex < slides.length - 1) {
+          currentIndex++;
+          goToSlide(currentIndex);
+        }
+      });
+    }
+
+    // Inicializar estado de los botones
+    updateNavButtons(currentIndex, slides.length);
+
+    function handleTouchStart(e) {
+      startX = e.touches[0].clientX;
+    }
+
+    function handleTouchMove(e) {
+      moveX = e.touches[0].clientX;
+    }
+
+    function handleTouchEnd() {
+      if (startX && moveX) {
+        const diff = startX - moveX;
+        const threshold = 50;
+
+        if (diff > threshold) {
+          // Deslizar a la derecha (siguiente)
+          if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            goToSlide(currentIndex);
+          }
+        } else if (diff < -threshold) {
+          // Deslizar a la izquierda (anterior)
+          if (currentIndex > 0) {
+            currentIndex--;
+            goToSlide(currentIndex);
+          }
+        }
+      }
+
+      startX = null;
+      moveX = null;
+    }
+  }
+
+  // Event listeners
+  if (closeProtectedDocsButton) {
+    closeProtectedDocsButton.addEventListener("click", hideProtectedDocsModal);
+  }
+
+  // Cerrar modal al hacer clic fuera
+  window.addEventListener("click", function (e) {
+    const protectedDocsModal = document.getElementById("protected-docs-modal");
+    if (e.target === protectedDocsModal) {
+      hideProtectedDocsModal();
+    }
+  });
+
+  // Compartir documento
   if (shareButton) {
     shareButton.addEventListener("click", function () {
       // Chequear si el navegador soporta la API de Web Share
@@ -2855,18 +3167,20 @@ function initDocumentacionSection() {
   }
 
   // Añadir tracking para descargas
-  const downloadLinks = document.querySelectorAll("#documentacion a");
+  const downloadLinks = document.querySelectorAll("#documentacion a[download]");
   downloadLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      const isPdf = this.innerHTML.includes("fa-file-pdf");
-      const isZip = this.innerHTML.includes("fa-file-archive");
-
-      if (isPdf) {
-        e.preventDefault();
-        alert(`La descarga de PDF estará disponible próximamente.`);
-      }
-
-      console.log(`Usuario descargó: ${isPdf ? "PDF" : isZip ? "ZIP" : "archivo"}`);
+    link.addEventListener("click", function () {
+      console.log(`Usuario descargó: ${this.textContent.trim()}`);
     });
   });
+
+  // Añadir tracking para el PDF
+  const pdfLink = document.querySelector("#documentacion a:not([download])");
+  if (pdfLink) {
+    pdfLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      alert(`La descarga de PDF estará disponible próximamente.`);
+      console.log("Usuario intentó descargar PDF");
+    });
+  }
 }

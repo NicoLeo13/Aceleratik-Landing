@@ -57,7 +57,13 @@ Aceleratik es un proyecto de la materia Actuación Profesional de la Licenciatur
 ├── css/
 │   └── tailwind.css     # Estilos y Tailwind
 ├── js/
-│   └── main.js          # JavaScript principal
+│   ├── main.js          # JavaScript principal
+│   ├── auth.js          # Sistema de autenticación
+│   ├── utils.js         # Utilidades
+│   ├── data.js          # Datos de la aplicación
+│   ├── charts.js        # Gráficos y visualizaciones
+│   ├── scroll.js        # Navegación por scroll
+│   └── maps.js          # Integración con mapas
 ├── img/                 # Imágenes
 ├── LICENSE              # Licencia MIT
 ├── README.md            # Documentación
@@ -195,3 +201,29 @@ Modifica las variables en `css/tailwind.css`:
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## Sistema de Autenticación
+
+El sitio incluye un sistema de autenticación seguro para acceder a documentos protegidos:
+
+- Protección con contraseña utilizando hash SHA-256
+- No se almacenan contraseñas en texto plano en el código
+- Persistencia de sesión utilizando localStorage
+- Compatible con GitHub Pages (sin necesidad de backend)
+
+### Seguridad
+
+- Las contraseñas nunca se transmiten en texto plano
+- El hash SHA-256 protege contra la exposición de la contraseña en el repositorio
+- La autenticación se realiza completamente en el lado del cliente
+
+## Desarrollo
+
+Para ejecutar el proyecto localmente:
+
+1. Clona el repositorio
+2. Abre `index.html` en tu navegador
+
+## Despliegue
+
+El sitio está diseñado para ser desplegado en GitHub Pages o cualquier servicio de hosting estático.
