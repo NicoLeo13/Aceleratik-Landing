@@ -70,11 +70,11 @@ const COMPARISON_DATA = {
         odoo: 0.86,
         dynamics: 0.74,
         subitems: [
-          { name: "Módulo de Finanzas y Contabilidad", odoo: 0.7, dynamics: 1.0 },
-          { name: "Gestión de Intermediación", odoo: 0.93, dynamics: 0.85 },
+          { name: "Módulo de finanzas y contabilidad", odoo: 0.7, dynamics: 1.0 },
+          { name: "Gestión de intermediación", odoo: 0.93, dynamics: 0.85 },
           { name: "Integraciones", odoo: 0.7, dynamics: 0.35 },
-          { name: "Análisis de Negocio", odoo: 1.0, dynamics: 1.0 },
-          { name: "Módulo de Gestión del Personal", odoo: 1.0, dynamics: 0.84 },
+          { name: "Análisis de negocio", odoo: 1.0, dynamics: 1.0 },
+          { name: "Módulo de gestión del personal", odoo: 1.0, dynamics: 0.84 },
         ],
       },
       economicoRFP: {
@@ -84,7 +84,7 @@ const COMPARISON_DATA = {
         dynamics: 0.44,
         subitems: [
           { name: "Financiamiento", odoo: 0.9, dynamics: 0.75 },
-          { name: "Costos Generales", odoo: 0.8, dynamics: 0.3 },
+          { name: "Costos generales", odoo: 0.8, dynamics: 0.3 },
           // { name: "Modelo de licenciamiento", odoo: 0.95, dynamics: 0.65 },
         ],
       },
@@ -94,11 +94,11 @@ const COMPARISON_DATA = {
         odoo: 0.82,
         dynamics: 0.89,
         subitems: [
-          { name: "Arquitectura del Sistema", odoo: 0.93, dynamics: 1.0 },
-          { name: "Integración con Aplicaciones", odoo: 0.75, dynamics: 0.88 },
-          { name: "Gestión de Datos y Usuarios", odoo: 0.8, dynamics: 0.9 },
+          { name: "Arquitectura del sistema", odoo: 0.93, dynamics: 1.0 },
+          { name: "Integración con aplicaciones", odoo: 0.75, dynamics: 0.88 },
+          { name: "Gestión de datos y usuarios", odoo: 0.8, dynamics: 0.9 },
           { name: "Mantenibilidad", odoo: 0.68, dynamics: 1.0 },
-          { name: "Escalabilidad y Evolución Futura", odoo: 0.9, dynamics: 0.75 },
+          { name: "Escalabilidad y evolución futura", odoo: 0.9, dynamics: 0.75 },
         ],
       },
       proveedorRFP: {
@@ -108,8 +108,8 @@ const COMPARISON_DATA = {
         dynamics: 0.88,
         subitems: [
           { name: "Trayectoria", odoo: 0.88, dynamics: 1.0 },
-          { name: "Soporte y Mantenimiento", odoo: 0.88, dynamics: 0.88 },
-          { name: "Plan de Implementación y Migración", odoo: 0.4, dynamics: 0.6 },
+          { name: "Soporte y mantenimiento", odoo: 0.88, dynamics: 0.88 },
+          { name: "Plan de implementación y migración", odoo: 0.4, dynamics: 0.6 },
           { name: "Certificaciones", odoo: 0.65, dynamics: 1.0 },
           // { name: "Plan de capacitación", odoo: 0.92, dynamics: 0.75 },
         ],
