@@ -2741,9 +2741,14 @@ function initProveedoresSection() {
       const categoryData = window.COMPARISON_DATA.rfp.categories[categoryKey];
 
       if (!categoryData) {
+        document.getElementById("dynamic-category-points").style.display = "none";
+        document.getElementById("category-footer").style.display = "none";
         console.error(`No se encontraron datos para la categoría: ${categoryKey}`);
         return;
       }
+
+      document.getElementById("dynamic-category-points").style.display = "block";
+      document.getElementById("category-footer").style.display = "block";
 
       // Obtener el peso de la categoría desde los datos RFI
       let categoryWeight = 0.25; // Valor por defecto en caso de error
