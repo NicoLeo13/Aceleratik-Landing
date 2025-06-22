@@ -1631,3 +1631,164 @@ img {
     animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
+
+.improvement-toggle {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #4b5563;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.improvement-toggle:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.improvement-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+
+.improvement-toggle i {
+  transition: transform 0.2s ease;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.improvement-toggle[aria-expanded="true"] {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid transparent;
+}
+
+.improvement-content {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  line-height: 1.5;
+  padding: 0.75rem;
+  margin-top: -1px;
+  background-color: #f9fafb;
+  font-size: 0.75rem;
+  color: #4b5563;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform-origin: top;
+  transition: all 0.2s ease;
+}
+
+.improvement-content.hidden {
+  display: none;
+}
+
+.improvement-content.visible {
+  display: block;
+  animation: slideDown 0.2s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo específico para cada proveedor */
+.improvement-toggle[data-target*="odoo"] {
+  border-left: 3px solid #8b5cf6;
+}
+
+.improvement-toggle[data-target*="dynamics"] {
+  border-left: 3px solid #3b82f6;
+}
+
+.improvement-toggle[data-target*="odoo"]:hover,
+.improvement-toggle[data-target*="odoo"][aria-expanded="true"] {
+  background-color: rgba(139, 92, 246, 0.05);
+}
+
+.improvement-toggle[data-target*="dynamics"]:hover,
+.improvement-toggle[data-target*="dynamics"][aria-expanded="true"] {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.improvement-content[id*="odoo"] {
+  border-left: 3px solid #8b5cf6;
+  background-color: rgba(139, 92, 246, 0.02);
+}
+
+.improvement-content[id*="dynamics"] {
+  border-left: 3px solid #3b82f6;
+  background-color: rgba(59, 130, 246, 0.02);
+}
+
+@media (max-width: 640px) {
+  .improvement-toggle {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .improvement-content {
+    padding: 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Category Summary Grid - Vercel/NextJS style */
+.rfp-summary-btn {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.rfp-summary-btn i {
+  transition: transform 0.2s ease;
+}
+
+.rfp-summary-btn:hover i {
+  transform: translateX(3px);
+}
+
+.rfp-summary-btn:focus {
+  outline: none;
+}
+
+.rfp-summary-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.2s ease;
+}
+
+.rfp-summary-btn:hover::after {
+  width: 100%;
+}
+
+/* Hover effect for category cards */
+.bg-gradient-to-br {
+  background-size: 200% 200%;
+  transition: all 0.3s ease;
+}
+
+.bg-gradient-to-br:hover {
+  background-position: bottom right;
+  transform: translateY(-2px);
+}

@@ -2296,13 +2296,74 @@ function initProveedoresSection() {
       return;
     }
 
-    const { categories, totalScores } = COMPARISON_DATA.rfp;
+    const { categories } = COMPARISON_DATA.rfp;
 
+    // Inicializar todos los contenidos de categorías
     Object.entries(categories).forEach(([categoryKey, categoryData]) => {
       const categoryContainer = document.querySelector(`.rfp-content[data-category="${categoryKey}"]`);
       if (!categoryContainer) return;
 
       createSubitems(categoryContainer, categoryData);
+    });
+
+    // Agregar listeners para los botones de pestañas para reinicializar los event listeners
+    const tabButtons = document.querySelectorAll(".rfp-tab-btn");
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.getAttribute("data-category");
+        const categoryData = categories[category];
+        const categoryContainer = document.querySelector(`.rfp-content[data-category="${category}"]`);
+
+        if (categoryContainer && categoryData) {
+          // Asegurarse de que los event listeners estén correctamente configurados
+          const toggleButtons = categoryContainer.querySelectorAll(".improvement-toggle");
+          toggleButtons.forEach((button) => {
+            // Eliminar listeners existentes para evitar duplicados
+            const newButton = button.cloneNode(true);
+            button.parentNode.replaceChild(newButton, button);
+
+            // Agregar nuevo listener
+            newButton.addEventListener("click", function () {
+              const targetId = this.getAttribute("data-target");
+              const targetContent = document.getElementById(targetId);
+              const icon = this.querySelector("i");
+              const allSubitemsContainer = this.closest(".bg-white.rounded-lg");
+
+              if (targetContent) {
+                // Toggle content visibility with animation
+                if (targetContent.classList.contains("hidden")) {
+                  // Close any other open dropdowns in the same category
+                  if (allSubitemsContainer) {
+                    const openContents = allSubitemsContainer.querySelectorAll(".improvement-content:not(.hidden)");
+                    openContents.forEach((content) => {
+                      const openButton = allSubitemsContainer.querySelector(`[data-target="${content.id}"]`);
+                      if (openButton && content.id !== targetId) {
+                        content.classList.add("hidden");
+                        content.classList.remove("visible");
+                        openButton.setAttribute("aria-expanded", "false");
+                        const openIcon = openButton.querySelector("i");
+                        if (openIcon) openIcon.classList.remove("transform", "rotate-180");
+                      }
+                    });
+                  }
+
+                  // Open this dropdown
+                  targetContent.classList.remove("hidden");
+                  targetContent.classList.add("visible");
+                  this.setAttribute("aria-expanded", "true");
+                  icon.classList.add("transform", "rotate-180");
+                } else {
+                  // Close this dropdown
+                  targetContent.classList.add("hidden");
+                  targetContent.classList.remove("visible");
+                  this.setAttribute("aria-expanded", "false");
+                  icon.classList.remove("transform", "rotate-180");
+                }
+              }
+            });
+          });
+        }
+      });
     });
 
     console.log("Gráficos RFP inicializados");
@@ -2343,35 +2404,75 @@ function initProveedoresSection() {
     const allSubitemsContainer = document.createElement("div");
     allSubitemsContainer.className = "bg-white rounded-lg p-3 shadow-sm";
 
+    // Crear un prefijo único para los IDs basado en la categoría
+    const categoryPrefix = categoryData.id || "category";
+
     // Crear elementos para cada subitem
     categoryData.subitems.forEach((subitem, index) => {
       const isLast = index === categoryData.subitems.length - 1;
       const subitemElement = document.createElement("div");
       subitemElement.className = `mb-3 ${!isLast ? "border-b border-gray-100 pb-2" : ""}`;
 
+      // Crear IDs únicos usando el prefijo de categoría
+      const odooImprovementId = `${categoryPrefix}-odoo-improvement-${index}`;
+      const dynamicsImprovementId = `${categoryPrefix}-dynamics-improvement-${index}`;
+
+      // Crear el HTML para el subitem con dropdowns
       subitemElement.innerHTML = `
-        <h5 class="text-sm font-medium text-gray-800 mb-0">${subitem.name}</h5>
-        <div class="space-y-2">
+        <h5 class="text-sm font-medium text-gray-800 mb-1">${subitem.name}</h5>
+        <div class="space-y-3">
           <!-- Barra Odoo -->
           <div class="space-y-1">
-            <div class="flex justify-end items-center text-xs">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-medium text-purple-600">Odoo</span>
               <span class="font-bold text-purple-600">${(subitem.odoo * 100).toFixed(0)}%</span>
             </div>
             <div class="h-4 bg-gray-100 rounded-md overflow-hidden">
               <div class="h-full bg-gradient-to-r from-purple-400 to-purple-600 transition-all duration-500 rounded-l-md odoo-progress-bar" 
                    data-value="${subitem.odoo * 100}" style="width: 0%"></div>
             </div>
+            ${
+              subitem.improvements && subitem.improvements.odoo
+                ? `
+              <div class="mt-2">
+                <button class="improvement-toggle w-full text-left" data-target="${odooImprovementId}" aria-expanded="false">
+                  <span>${subitem.odoo < 1.0 ? "¿Qué podría mejorar?" : "Detalles"}</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div id="${odooImprovementId}" class="improvement-content hidden">
+                  ${subitem.improvements.odoo}
+                </div>
+              </div>
+            `
+                : ""
+            }
           </div>
           
           <!-- Barra Dynamics -->
           <div class="space-y-1">
-            <div class="flex justify-end items-center text-xs">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-medium text-blue-600">Dynamics 365</span>
               <span class="font-bold text-blue-600">${(subitem.dynamics * 100).toFixed(0)}%</span>
             </div>
             <div class="h-4 bg-gray-100 rounded-md overflow-hidden">
               <div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-500 rounded-l-md dynamics-progress-bar" 
                    data-value="${subitem.dynamics * 100}" style="width: 0%"></div>
             </div>
+            ${
+              subitem.improvements && subitem.improvements.dynamics
+                ? `
+              <div class="mt-2">
+                <button class="improvement-toggle w-full text-left" data-target="${dynamicsImprovementId}" aria-expanded="false">
+                  <span>${subitem.dynamics < 1.0 ? "¿Qué podría mejorar?" : "Detalles"}</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div id="${dynamicsImprovementId}" class="improvement-content hidden">
+                  ${subitem.improvements.dynamics}
+                </div>
+              </div>
+            `
+                : ""
+            }
           </div>
         </div>
       `;
@@ -2389,6 +2490,44 @@ function initProveedoresSection() {
         bar.style.width = `${bar.dataset.value}%`;
       });
     }, 100);
+
+    // Añadir event listeners para los toggles de mejoras
+    const toggleButtons = allSubitemsContainer.querySelectorAll(".improvement-toggle");
+    toggleButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const targetId = this.getAttribute("data-target");
+        const targetContent = document.getElementById(targetId);
+        const icon = this.querySelector("i");
+
+        // Visualizar contenido
+        if (targetContent.classList.contains("hidden")) {
+          // Cerrar otros dropdowns si se esta en la misma categoria
+          const openContents = allSubitemsContainer.querySelectorAll(".improvement-content:not(.hidden)");
+          openContents.forEach((content) => {
+            const openButton = allSubitemsContainer.querySelector(`[data-target="${content.id}"]`);
+            if (openButton && content.id !== targetId) {
+              content.classList.add("hidden");
+              content.classList.remove("visible");
+              openButton.setAttribute("aria-expanded", "false");
+              const openIcon = openButton.querySelector("i");
+              if (openIcon) openIcon.classList.remove("transform", "rotate-180");
+            }
+          });
+
+          // Abrir
+          targetContent.classList.remove("hidden");
+          targetContent.classList.add("visible");
+          this.setAttribute("aria-expanded", "true");
+          icon.classList.add("transform", "rotate-180");
+        } else {
+          // Cerrar
+          targetContent.classList.add("hidden");
+          targetContent.classList.remove("visible");
+          this.setAttribute("aria-expanded", "false");
+          icon.classList.remove("transform", "rotate-180");
+        }
+      });
+    });
   }
 
   // ----- Funciones para Flujo de Caja -----
@@ -2731,6 +2870,26 @@ function initProveedoresSection() {
     const dynamicsTotal = document.getElementById("dynamics-rfp-total");
     const odooTotal = document.getElementById("odoo-rfp-total");
 
+    // Inicializar los botones de resumen de categorías
+    const summaryButtons = document.querySelectorAll(".rfp-summary-btn");
+    summaryButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const category = this.getAttribute("data-category");
+        const targetTabButton = document.querySelector(`.rfp-tab-btn[data-category="${category}"]`);
+
+        if (targetTabButton) {
+          // Simular clic en el botón de pestaña correspondiente
+          targetTabButton.click();
+
+          // Desplazarse suavemente hasta la sección de contenido
+          const contentSection = document.querySelector(`.rfp-content[data-category="${category}"]`);
+          if (contentSection) {
+            contentSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      });
+    });
+
     // Función para actualizar los totales según la categoría seleccionada
     function updateTotalScores(categoryKey) {
       if (!window.COMPARISON_DATA || !window.COMPARISON_DATA.rfp || !window.COMPARISON_DATA.rfp.categories) {
@@ -2747,7 +2906,7 @@ function initProveedoresSection() {
         return;
       }
 
-      document.getElementById("dynamic-category-points").style.display = "block";
+      document.getElementById("dynamic-category-points").style.display = "flex";
       document.getElementById("category-footer").style.display = "block";
 
       // Obtener el peso de la categoría desde los datos RFI
@@ -2818,8 +2977,21 @@ function initProveedoresSection() {
       });
     });
 
-    const firstCategory = tabButtons[0]?.getAttribute("data-category");
-    if (firstCategory) {
+    // Activar la primera pestaña por defecto
+    if (tabButtons.length > 0) {
+      const firstCategory = tabButtons[0].getAttribute("data-category");
+
+      // Activar visualmente el primer botón
+      tabButtons[0].classList.remove("bg-gray-200", "text-gray-700");
+      tabButtons[0].classList.add("bg-indigo-600", "text-white");
+
+      // Mostrar el primer contenido
+      const firstContent = document.querySelector(`.rfp-content[data-category="${firstCategory}"]`);
+      if (firstContent) {
+        firstContent.classList.remove("hidden");
+      }
+
+      // Actualizar los totales para la primera categoría
       updateTotalScores(firstCategory);
     }
   }
