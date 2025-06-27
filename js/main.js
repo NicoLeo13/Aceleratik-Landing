@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initBudgetChart();
   initArchitectureSection();
   initAlcanceSwipe();
+  initPropuestasSwipe();
   initProveedoresSection();
   initDocumentacionSection();
 
@@ -2092,6 +2093,193 @@ function initAlcanceSwipe() {
 }
 
 /**
+ * Sección de Propuestas de solución en dispositivos móviles
+ */
+function initPropuestasSwipe() {
+  const container = document.querySelector(".propuestas-swipe-container");
+  if (!container) return;
+
+  const wrapper = container.querySelector(".propuestas-swipe-wrapper");
+  const indicators = container.querySelectorAll(".propuesta-indicator");
+  const cards = container.querySelectorAll(".propuesta-card");
+  const swipeHint = container.querySelector(".propuestas-swipe-hint");
+  const prevBtn = document.getElementById("prev-propuesta");
+  const nextBtn = document.getElementById("next-propuesta");
+
+  if (!wrapper || !cards.length || cards.length < 2) return;
+
+  let currentIndex = 0;
+  let startX = 0;
+  let isDragging = false;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let isMobile = window.innerWidth < 768;
+  let hasInteracted = false;
+
+  function setupMobileSwipe() {
+    isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // Establecer ancho para swipe en móvil
+      const cardWidth = container.offsetWidth - 32; // Restar el padding horizontal (16px * 2)
+      cards.forEach((card) => {
+        card.style.width = `${cardWidth}px`;
+      });
+
+      wrapper.addEventListener("touchstart", handleTouchStart, { passive: true });
+      wrapper.addEventListener("touchmove", handleTouchMove, { passive: false });
+      wrapper.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+      if (prevBtn) {
+        prevBtn.style.display = "flex";
+        prevBtn.style.opacity = currentIndex === 0 ? "0.5" : "1";
+        prevBtn.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
+      }
+
+      if (nextBtn) {
+        nextBtn.style.display = "flex";
+        nextBtn.style.opacity = currentIndex === cards.length - 1 ? "0.5" : "1";
+        nextBtn.style.pointerEvents = currentIndex === cards.length - 1 ? "none" : "auto";
+      }
+
+      goToSlide(currentIndex);
+
+      if (swipeHint) {
+        swipeHint.style.display = hasInteracted ? "none" : "flex";
+      }
+    } else {
+      // Resetear estilos en desktop
+      cards.forEach((card) => {
+        card.style.width = "";
+      });
+      wrapper.style.transform = "";
+
+      // Ocultar botones de navegación e indicador de swipe en desktop
+      if (prevBtn) prevBtn.style.display = "none";
+      if (nextBtn) nextBtn.style.display = "none";
+      if (swipeHint) swipeHint.style.display = "none";
+    }
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      hideSwipeHint();
+      if (currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      hideSwipeHint();
+      if (currentIndex < cards.length - 1) {
+        goToSlide(currentIndex + 1);
+      }
+    });
+  }
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      hideSwipeHint();
+      goToSlide(index);
+    });
+  });
+
+  function hideSwipeHint() {
+    if (swipeHint && !hasInteracted) {
+      hasInteracted = true;
+      swipeHint.style.opacity = "0";
+      setTimeout(() => {
+        swipeHint.style.display = "none";
+      }, 300);
+    }
+  }
+
+  function updateNavigation() {
+    indicators.forEach((indicator, index) => {
+      if (index === currentIndex) {
+        indicator.classList.add("opacity-100");
+        indicator.classList.remove("opacity-50");
+      } else {
+        indicator.classList.add("opacity-50");
+        indicator.classList.remove("opacity-100");
+      }
+    });
+
+    if (prevBtn) {
+      prevBtn.style.opacity = currentIndex === 0 ? "0.5" : "1";
+      prevBtn.style.pointerEvents = currentIndex === 0 ? "none" : "auto";
+    }
+
+    if (nextBtn) {
+      nextBtn.style.opacity = currentIndex === cards.length - 1 ? "0.5" : "1";
+      nextBtn.style.pointerEvents = currentIndex === cards.length - 1 ? "none" : "auto";
+    }
+  }
+
+  function handleTouchStart(e) {
+    if (!isMobile) return;
+    hideSwipeHint();
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    prevTranslate = currentTranslate;
+  }
+
+  function handleTouchMove(e) {
+    if (!isMobile || !isDragging) return;
+
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+
+    // Prevenir scroll vertical mientras se hace swipe
+    if (Math.abs(diff) > 5) {
+      e.preventDefault();
+    }
+
+    currentTranslate = prevTranslate + diff;
+    setWrapperPosition();
+  }
+
+  function handleTouchEnd() {
+    if (!isMobile || !isDragging) return;
+    isDragging = false;
+
+    const movedBy = currentTranslate - prevTranslate;
+
+    // Si el movimiento fue significativo, cambiar de slide
+    if (movedBy < -50 && currentIndex < cards.length - 1) {
+      currentIndex++;
+    } else if (movedBy > 50 && currentIndex > 0) {
+      currentIndex--;
+    }
+
+    goToSlide(currentIndex);
+  }
+
+  function goToSlide(index) {
+    if (!isMobile) return;
+
+    currentIndex = index;
+    const cardWidth = container.offsetWidth - 32; // Restar el padding horizontal (16px * 2)
+    currentTranslate = -index * cardWidth;
+    setWrapperPosition();
+    updateNavigation();
+  }
+
+  function setWrapperPosition() {
+    if (isMobile) {
+      wrapper.style.transform = `translateX(${currentTranslate}px)`;
+    }
+  }
+
+  window.addEventListener("resize", setupMobileSwipe);
+
+  setupMobileSwipe();
+  updateNavigation();
+}
+
+/**
  * Sección de proveedores con gráficos y comparativas
  */
 function initProveedoresSection() {
@@ -3094,16 +3282,56 @@ function initDocumentacionSection() {
     },
   ];
 
+  // Variable global para el índice actual
+  let currentIndex = 0;
+
+  // Variables para almacenar los event listeners
+  let touchStartHandler, touchMoveHandler, touchEndHandler;
+  let prevButtonHandler, nextButtonHandler;
+
   // Función para ocultar el modal de documentos protegidos
   function hideProtectedDocsModal() {
     const protectedDocsModal = document.getElementById("protected-docs-modal");
     if (protectedDocsModal) {
       protectedDocsModal.classList.add("hidden");
+
+      // Limpiar event listeners al cerrar el modal
+      cleanupEventListeners();
+
+      // Resetear el índice actual
+      currentIndex = 0;
+    }
+  }
+
+  // Función para limpiar los event listeners
+  function cleanupEventListeners() {
+    const swiperContainer = document.querySelector(".docs-swiper");
+    const prevButton = document.getElementById("prev-doc");
+    const nextButton = document.getElementById("next-doc");
+
+    if (swiperContainer) {
+      if (touchStartHandler) swiperContainer.removeEventListener("touchstart", touchStartHandler);
+      if (touchMoveHandler) swiperContainer.removeEventListener("touchmove", touchMoveHandler);
+      if (touchEndHandler) swiperContainer.removeEventListener("touchend", touchEndHandler);
+    }
+
+    if (prevButton && prevButtonHandler) {
+      prevButton.removeEventListener("click", prevButtonHandler);
+    }
+
+    if (nextButton && nextButtonHandler) {
+      nextButton.removeEventListener("click", nextButtonHandler);
     }
   }
 
   // Función para renderizar los documentos en grid (desktop) y swiper (mobile)
   window.renderDocuments = function () {
+    // Limpiar event listeners existentes antes de recrear los elementos
+    cleanupEventListeners();
+
+    // Resetear el índice actual
+    currentIndex = 0;
+
     // Renderizar grid para desktop
     const gridContainer = document.querySelector("#protected-docs-modal .grid");
     gridContainer.innerHTML = "";
@@ -3160,6 +3388,15 @@ function initDocumentacionSection() {
 
       navigationContainer.appendChild(indicator);
     });
+
+    // Actualizar el contador total
+    const totalDocsCount = document.getElementById("total-docs-count");
+    const slides = document.querySelectorAll(".docs-slide");
+    if (totalDocsCount) totalDocsCount.textContent = slides.length;
+
+    // Actualizar el contador actual
+    const currentDocIndex = document.getElementById("current-doc-index");
+    if (currentDocIndex) currentDocIndex.textContent = "1";
 
     // Inicializar eventos táctiles para swiper móvil
     initDocsSwiperTouchEvents();
@@ -3235,9 +3472,6 @@ function initDocumentacionSection() {
     }
   }
 
-  // Variable global para el índice actual
-  let currentIndex = 0;
-
   // Inicializar eventos táctiles para el swiper de documentos en móvil
   function initDocsSwiperTouchEvents() {
     const swiperContainer = document.querySelector(".docs-swiper");
@@ -3250,42 +3484,16 @@ function initDocumentacionSection() {
     const totalDocsCount = document.getElementById("total-docs-count");
     if (totalDocsCount) totalDocsCount.textContent = slides.length;
 
-    // Eventos táctiles
-    swiperContainer.addEventListener("touchstart", handleTouchStart, { passive: true });
-    swiperContainer.addEventListener("touchmove", handleTouchMove, { passive: true });
-    swiperContainer.addEventListener("touchend", handleTouchEnd, { passive: true });
-
-    // Eventos de botones de navegación
-    if (prevButton) {
-      prevButton.addEventListener("click", function () {
-        if (currentIndex > 0) {
-          currentIndex--;
-          goToSlide(currentIndex);
-        }
-      });
-    }
-
-    if (nextButton) {
-      nextButton.addEventListener("click", function () {
-        if (currentIndex < slides.length - 1) {
-          currentIndex++;
-          goToSlide(currentIndex);
-        }
-      });
-    }
-
-    // Inicializar estado de los botones
-    updateNavButtons(currentIndex, slides.length);
-
-    function handleTouchStart(e) {
+    // Definir los handlers
+    touchStartHandler = function (e) {
       startX = e.touches[0].clientX;
-    }
+    };
 
-    function handleTouchMove(e) {
+    touchMoveHandler = function (e) {
       moveX = e.touches[0].clientX;
-    }
+    };
 
-    function handleTouchEnd() {
+    touchEndHandler = function () {
       if (startX && moveX) {
         const diff = startX - moveX;
         const threshold = 50;
@@ -3307,7 +3515,38 @@ function initDocumentacionSection() {
 
       startX = null;
       moveX = null;
+    };
+
+    // Eventos táctiles
+    swiperContainer.addEventListener("touchstart", touchStartHandler, { passive: true });
+    swiperContainer.addEventListener("touchmove", touchMoveHandler, { passive: true });
+    swiperContainer.addEventListener("touchend", touchEndHandler, { passive: true });
+
+    // Eventos de botones de navegación
+    prevButtonHandler = function () {
+      if (currentIndex > 0) {
+        currentIndex--;
+        goToSlide(currentIndex);
+      }
+    };
+
+    nextButtonHandler = function () {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        goToSlide(currentIndex);
+      }
+    };
+
+    if (prevButton) {
+      prevButton.addEventListener("click", prevButtonHandler);
     }
+
+    if (nextButton) {
+      nextButton.addEventListener("click", nextButtonHandler);
+    }
+
+    // Inicializar estado de los botones
+    updateNavButtons(currentIndex, slides.length);
   }
 
   // Event listeners
